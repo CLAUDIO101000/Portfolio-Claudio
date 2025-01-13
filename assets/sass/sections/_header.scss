@@ -6,7 +6,7 @@ header {
   z-index: 100;
 
   .navbar {
-    background-color: #081b29;
+    background: linear-gradient(135deg, #081b29, #0a2a3e);
     color: #ededed;
     padding: 20px 10%;
     display: flex;
@@ -21,7 +21,7 @@ header {
         transition: color 0.3s ease;
 
         &:hover {
-          color: #00abf0;
+          color: #32e0c4;
         }
 
         .navbar-toggler-icon {
@@ -38,7 +38,7 @@ header {
         transition: color 0.3s ease;
 
         &:hover {
-          color: #00abf0;
+          color: #32e0c4;
         }
       }
 
@@ -48,7 +48,7 @@ header {
         transition: color 0.3s ease;
 
         &:hover {
-          color: #00abf0;
+          color: #32e0c4;
         }
       }
 
@@ -65,8 +65,8 @@ header {
         transition: color 0.3s ease;
 
         &:hover {
-          background-color: #00abf0;
-          color: #ededed;
+          background-color: #32e0c4;
+          color: #081b29;
         }
       }
 
@@ -84,11 +84,11 @@ header {
           transition: color 0.3s ease;
 
           &:hover {
-            color: #00abf0;
+            color: #32e0c4;
           }
 
           &.active {
-            color: #00abf0;
+            color: #32e0c4;
             text-decoration: underline;
           }
 
