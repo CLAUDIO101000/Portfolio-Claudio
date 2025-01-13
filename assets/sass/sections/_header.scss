@@ -1,0 +1,102 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  .navbar {
+    background-color: #081b29;
+    color: #ededed;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 7.5px rgba(0, 171, 240, 0.5);
+
+    .container-fluid {
+
+      .toggler {
+        color: #ededed;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #00abf0;
+        }
+
+        .navbar-toggler-icon {
+          color: #ededed;
+        }
+      }
+
+      .brand {
+        padding-left: 25px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ededed;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #00abf0;
+        }
+      }
+
+      .language-icon {
+        color: #ededed;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #00abf0;
+        }
+      }
+
+      .dropdown-menu {
+        background-color: #f8f9fa;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        min-width: 120px;
+      }
+
+      .dropdown-item {
+        color: #495057;
+        padding: 10px 15px;
+        transition: color 0.3s ease;
+
+        &:hover {
+          background-color: #00abf0;
+          color: #ededed;
+        }
+      }
+
+      .navbar-collapse {
+        .navbar-nav {
+          display: flex;
+          justify-content: flex-end;
+          padding-left: 0;
+        }
+
+        .nav-link {
+          font-size: 1rem;
+          color: #ededed;
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #00abf0;
+          }
+
+          &.active {
+            color: #00abf0;
+            text-decoration: underline;
+          }
+
+          i {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}

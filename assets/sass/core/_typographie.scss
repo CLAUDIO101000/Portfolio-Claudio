@@ -1,0 +1,14 @@
+body {
+    font-family: $font-poppins-regular;
+    font-weight: 400;
+}
+
+h1, h2, h3 {
+    font-family: $font-poppins-bold;
+    font-weight: 700;
+}
+
+button, .btn {
+    font-family: $font-poppins-medium;
+    font-weight: 500;
+}

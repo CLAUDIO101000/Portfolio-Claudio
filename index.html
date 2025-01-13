@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio de RANAIVOSON Nantenaina Claudio, développeur passionné et créatif spécialisé dans les solutions numériques.">
+    <title>Portfolio - RANAIVOSON Nantenaina Claudio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container-fluid">
+                <button class="toggler animate__animated animate__fadeInLeft" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                    aria-label="Toggle navigation" style="--animate-duration: 0.8s;">
+                    <i class="fa-duotone fa-solid fa-bars" id="menu-icon"></i>
+                </button>
+
+                <a class="brand animate__animated animate__fadeInLeft" href="#" style="--animate-duration: 1s;">
+                    Claudio.
+                </a>
+
+                <div class="dropdown ms-auto animate__animated animate__fadeInRight" style="--animate-duration: 1.2s;">
+                    <i class="bi bi-translate language-icon" id="change-lang" title="Changer la langue"
+                        style="cursor: pointer;" data-bs-toggle="dropdown"></i>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#" id="lang-fr">French</a></li>
+                        <li><a class="dropdown-item" href="#" id="lang-en">English</a></li>
+                    </ul>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link nav-accueil" href="#accueil"><i class="bi bi-house-door"></i> Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-a-propos" href="#a-propos"><i class="bi bi-person-circle"></i> À
+                                propos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-competences" href="#competences"><i
+                                    class="bi bi-file-earmark-code"></i>
+                                Compétences</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-projets" href="#projets"><i class="bi bi-briefcase"></i> Projets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-education" href="#education"><i class="bi bi-mortarboard"></i>
+                                Éducation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-contact" href="#contact"><i class="bi bi-telephone"></i> Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="accueil" class="accueil">
+            <div class="container text-center">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <h1 class="animate__animated animate__fadeInLeft" style="--animate-duration: 1.5s;">
+                            Plongez dans mon univers créatif !
+                        </h1>
+                        <p class="lead animate__animated animate__fadeInLeft" style="--animate-duration: 1.7s;">
+                            Bonjour, C'est <br><strong>RANAIVOSON Nantenaina <span
+                                    class="prenom">Claudio</span></strong><br>Et je suis un
+                            développeur passionné, prêt à donner vie à vos idées grâce à des solutions numériques sur
+                            mesure.
+                        </p>
+                        <div id="typed-text-container" class="animate__animated animate__fadeInLeft"
+                            style="--animate-duration: 2s;">
+                            <span id="typed-text"></span>
+                            <span class="Typed-cursor">|</span>
+                        </div>
+                        <div class="contact-links animate__animated animate__fadeInLeft"
+                            style="--animate-duration: 2.3s;">
+                            <div class="contact-item">
+                                <a href="#contact" class="btn btn-lg btn-outline-light btn-primary">
+                                    <i class="fa fa-envelope"></i> Me Contacter
+                                </a>
+                            </div>
+                            <div class="contact-item">
+                                <a href="assets/download/CV Claudio.pdf" download
+                                    class="btn btn-lg btn-outline-light btn-primary">
+                                    <i class="fa fa-download"></i> Télécharger mon CV
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="d-flex justify-content-center">
+                            <img src="assets/images/Profil.jpg" alt="Photo de profil de Claudio"
+                                class="img-fluid rounded-circle profil-img animate__animated animate__zoomIn"
+                                style="--animate-duration: 2.5s;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="a-propos" class="a-propos">
+            <div class="container">
+                <div class="row align-items-center">
+                    <h1 class="animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">
+                        À propos de <span>moi</span>
+                    </h1>
+                    <p class="lead animate__animated animate__fadeInUp p1" style="--animate-duration: 1s;">
+                        Bonjour ! Je suis <strong>RANAIVOSON Nantenaina Claudio</strong>, un développeur passionné
+                        par la technologie et l'innovation. Depuis que j'ai découvert le monde de la programmation,
+                        j'ai toujours été fasciné par le pouvoir qu'ont les solutions numériques de résoudre des
+                        problèmes complexes et de simplifier la vie des utilisateurs.
+                    </p>
+                    <p class="lead animate__animated animate__fadeInUp p2" style="--animate-duration: 1.2s;">
+                        J'ai acquis des compétences solides en développement web, en travaillant avec des
+                        technologies comme HTML, CSS, JavaScript, PHP, et Python, ainsi que des frameworks comme
+                        Bootstrap, React, et Django. Mon objectif est de créer des sites web modernes, intuitifs et
+                        efficaces qui répondent aux besoins spécifiques de mes clients.
+                    </p>
+                    <p class="lead animate__animated animate__fadeInUp citation" style="--animate-duration: 1.4s;">
+                        <em>"En programmation, si quelqu'un vous dit 'vous compliquez trop les choses', il a soit 10
+                            pas de retard, soit 10 pas d'avance sur vous." – Andrew Clark</em>
+                    </p>
+                    <p class="lead animate__animated animate__fadeInUp p3" style="--animate-duration: 1.6s;">
+                        Cette citation résonne particulièrement avec ma manière d'aborder les défis en
+                        développement. Elle me rappelle que chaque problème a plusieurs niveaux de compréhension et
+                        que la complexité apparente d'une solution peut souvent refléter une vision plus avancée ou
+                        une perspective différente. Dans mon travail, je m'efforce toujours de trouver l'équilibre
+                        entre simplicité et innovation, tout en gardant en tête les besoins de l'utilisateur et les
+                        contraintes techniques.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences" class="container skill">
+            <h1 class="text-center mb-4 animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">
+                Compétences</h1>
+
+            <div class="categorie mb-4">
+                <h2 class="mb-4 animate__animated animate__fadeInLeft categorie1" style="--animate-duration: 1s;">
+                    Langages de
+                    Programmation</h2>
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item1 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 0.8s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/php.svg" alt="PHP Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>PHP</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item2 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/python.svg" alt="Python Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>Python</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item3 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.2s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/javascript.svg"
+                                alt="JavaScript Logo" class="me-2 colored-icon" width="50" height="50">
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item4 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.4s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/typescript.svg"
+                                alt="TypeScript Logo" class="me-2 colored-icon" width="50" height="50">
+                            <span>TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categorie mb-4">
+                <h2 class="mb-4 animate__animated animate__fadeInLeft categorie2" style="--animate-duration: 0.8s;">
+                    Frameworks et
+                    Bibliothèques</h2>
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item5 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 0.8s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/django.svg" alt="Django Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>Django</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item6 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/react.svg" alt="React Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>React</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item7 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.2s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/laravel.svg" alt="Laravel Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>Laravel</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item8 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.4s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/jquery.svg" alt="jQuery Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>jQuery</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item9 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.6s;">
+                            <img src="https://simpleicons.org/icons/nodedotjs.svg" alt="Node.js Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item10 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.8s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/bootstrap.svg"
+                                alt="Bootstrap5 Logo" class="me-2 colored-icon" width="50" height="50">
+                            <span>Bootstrap5</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item20 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 2s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/express.svg" alt="Express Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>Express</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item21 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 2.2s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/socket-dot-io.svg"
+                                alt="Socket.io Logo" class="me-2 colored-icon" width="50" height="50">
+                            <span>Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categorie mb-4">
+                <h2 class="mb-4 animate__animated animate__fadeInLeft categorie3" style="--animate-duration: 0.8s;">
+                    Bases de
+                    Données</h2>
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item11 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 0.8s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/mysql.svg" alt="MySQL Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item12 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/sqlite.svg" alt="SQLite Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>SQLite</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item13 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.2s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/postgresql.svg"
+                                alt="PostgreSQL Logo" class="me-2 colored-icon" width="50" height="50">
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categorie">
+                <h2 class="mb-4 animate__animated animate__fadeInLeft categorie4" style="--animate-duration: 0.8s;">
+                    Outils et Extras</h2>
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item14 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 0.8s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/git.svg" alt="Git Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>Git</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item15 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/github.svg" alt="GitHub Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>GitHub</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item16 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.2s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/sass.svg" alt="SASS Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>SASS</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item17 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.4s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/linux.svg" alt="Linux Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>Linux</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item18 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.6s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/figma.svg" alt="Figma Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>Figma</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="item item19 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
+                            style="--animate-duration: 1.8s;">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/npm.svg" alt="npm Logo"
+                                class="me-2 colored-icon" width="50" height="50">
+                            <span>npm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets" class="project">
+            <div class="container">
+                <h1 class="text-center mb-4 animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">Mes
+                    <span>Projets</span>
+                </h1>
+                <div class="row">
+
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp"
+                            style="--animate-duration: 1.4s;">
+                            <img src="assets/images/G-congés.JPG" class="card-img-top"
+                                alt="Projet de Gestion de Congés">
+                            <div class="card-body">
+                                <h5 class="card-title">1. CongeSystem</h5>
+                                <p class="card-text desc1">
+                                    CongeSystem est une application de gestion de congés permettant aux employés de demander des congés et de suivre leur solde de congé, en excluant les jours fériés et les weekends.
+                                </p>
+                                <ul>
+                                    <li>PHP</li>
+                                    <li>MySQL</li>
+                                    <li>Bootstrap 5</li>
+                                    <li>Sweetalert2</li>
+                                </ul>
+                                <div class="d-flex justify-content-between">
+                                    <a href="https://github.com/CLAUDIO101000/CongeSystem.git" class="btn btn-primary" target="_blank">
+                                        <i class="bi bi-code"></i> Source
+                                    </a>
+                                    <a href="https://github.com/CLAUDIO101000/CongeSystem.git" class="btn btn-secondary btnDemo1" target="_blank">
+                                        <i class="bi bi-play-circle"></i> Démo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp"
+                            style="--animate-duration: 2s;">
+                            <img src="assets/images/Chatroom.JPG" class="card-img-top"
+                                alt="Application de Gestion des Touristes">
+                            <div class="card-body">
+                                <h5 class="card-title">2. Chatroom</h5>
+                                <p class="card-text desc2">
+                                    Le projet Chatroom est une application de chat en temps réel construite avec
+                                    Node.js, Express, et Socket.io. Cette application permet aux utilisateurs de
+                                    rejoindre une salle de chat avec un nom d'utilisateur et une image de profil
+                                    optionnelle, d'envoyer des messages et de partager des images en temps réel.
+                                </p>
+                                <ul>
+                                    <li>Node.js</li>
+                                    <li>Socket.io</li>
+                                    <li>Express</li>
+                                </ul>
+                                <div class="d-flex justify-content-between">
+                                    <a href="https://github.com/CLAUDIO101000/Chatroom.git" class="btn btn-primary"
+                                        target="_blank">
+                                        <i class="bi bi-code"></i> Source
+                                    </a>
+                                    <a href="https://chatroom-silk.vercel.app" class="btn btn-secondary btnDemo2"
+                                        target="_blank">
+                                        <i class="bi bi-play-circle"></i> Démo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="education">
+            <div class="container">
+                <h1 class="text-center mb-4 animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">
+                    Éducation</h1>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="education-item animate__animated animate__fadeInUp"
+                            style="--animate-duration: 1.4s;">
+                            <p class="educationP1"><strong>2021 - Présent :</strong></p>
+                            <p>Institut Supérieur d’Informatique (<a href="https://isinfo.mg/"
+                                    target="_blank">IS-INFO</a>), Ampasamadinika</p>
+                            <p class="diplome1"><em>Licence Professionnelle en Informatique de gestion - En cours</em>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="education-item animate__animated animate__fadeInUp" style="--animate-duration: 2s;">
+                            <p><strong>2020 - 2021 :</strong></p>
+                            <p>Institution Sainte Famille (La Salle), Mahamasina</p>
+                            <p class="diplome2"><em>Baccalauréat série C - Obtenu</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h1 class="text-center mb-4 animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">
+                    Contact</h1>
+                <p class="lead text-center mb-4 animate__animated animate__fadeInUp"
+                    style="--animate-duration: 1.2s; --animate-delay: 0.2s;">
+                    N'hésitez pas à me contacter via les moyens ci-dessous pour toute question ou collaboration.
+                </p>
+                <div class="row">
+
+                    <div class="col-12 col-md-6 mb-4 animate__animated animate__fadeInUp"
+                        style="--animate-duration: 1.4s; --animate-delay: 0.4s;">
+                        <div class="contact-links">
+                            <a href="https://github.com/CLAUDIO101000" target="_blank"
+                                class="d-block animate__animated animate__fadeInUp"
+                                style="--animate-duration: 1.2s; --animate-delay: 0.5s;">
+                                <i class="fab fa-github me-2"></i>GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/claudio-ranaivoson-8145aa341" target="_blank"
+                                class="d-block animate__animated animate__fadeInUp"
+                                style="--animate-duration: 1.2s; --animate-delay: 0.6s;">
+                                <i class="fab fa-linkedin me-2"></i>LinkedIn
+                            </a>
+                            <a href="mailto:ranaivosonclaudio@gmail.com"
+                                class="d-block animate__animated animate__fadeInUp"
+                                style="--animate-duration: 1.2s; --animate-delay: 0.7s;">
+                                <i class="bi bi-envelope me-2"></i>ranaivosonclaudio@gmail.com
+                            </a>
+                            <a href="tel:+261324337246" class="d-block animate__animated animate__fadeInUp"
+                                style="--animate-duration: 1.2s; --animate-delay: 0.8s;">
+                                <i class="bi bi-telephone me-2"></i>+261 32 43 372 46
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 mb-4 animate__animated animate__fadeInUp formContact"
+                        style="--animate-duration: 1.6s; --animate-delay: 0.6s;">
+                        <div class="card h-100 shadow-sm p-4">
+                            <form action="https://formspree.io/f/mzzzydjj" method="POST" class="contact-form">
+                                <div class="mb-3 animate__animated animate__fadeInUp"
+                                    style="--animate-duration: 1.2s; --animate-delay: 0.7s;">
+                                    <label for="name" class="form-label">Nom :</label>
+                                    <input type="text" id="name" name="name" class="form-control" required
+                                        placeholder="Votre nom">
+                                </div>
+                                <div class="mb-3 animate__animated animate__fadeInUp"
+                                    style="--animate-duration: 1.2s; --animate-delay: 0.8s;">
+                                    <label for="email" class="form-label">Email :</label>
+                                    <input type="email" id="email" name="email" class="form-control" required
+                                        placeholder="votreemail@exemple.com">
+                                </div>
+                                <div class="mb-4 animate__animated animate__fadeInUp"
+                                    style="--animate-duration: 1.2s; --animate-delay: 0.9s;">
+                                    <label for="message" class="form-label">Message :</label>
+                                    <textarea id="message" name="message" class="form-control" rows="5" required
+                                        placeholder="Votre message"></textarea>
+                                </div>
+                                <div class="text-center animate__animated animate__fadeInUp"
+                                    style="--animate-duration: 1.2s; --animate-delay: 1s;">
+                                    <button type="submit" class="btn btn-primary px-4">
+                                        <i class="bi bi-send me-2"></i> Envoyer
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-4 animate__animated animate__fadeInUp">
+        <div class="container">
+            <div class="text-center">
+                <p>&copy; Copyright <a href="https://github.com/CLAUDIO101000" target="_blank">Claudio</a> 2025. Tous
+                    droits réservés | Conçu avec passion par Claudio</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
