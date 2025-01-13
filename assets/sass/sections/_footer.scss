@@ -1,5 +1,5 @@
 footer {
-    background-color: transparent;
+    background: linear-gradient(135deg, #081b29, #0a2a3e);
 
     p {
         font-size: 14px;
@@ -10,6 +10,7 @@ footer {
         color: #00abf0;
 
         &:hover {
+            color: #32e0c4;
             text-decoration: underline;
         }
     }
