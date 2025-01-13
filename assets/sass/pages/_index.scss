@@ -5,7 +5,7 @@ main {
         width: 100%;
         height: auto;
         padding: 3rem 10%;
-        background-color: transparent;
+        background: linear-gradient(135deg, #081b29, #0a2a3e);
 
         .container {
             text-align: center;
@@ -20,27 +20,38 @@ main {
 
                         h1 {
                             margin-bottom: 20px;
-                            font-size: 2.5rem;
+                            font-size: 3rem;
                             color: #00abf0;
+                            font-weight: bold;
+                            text-transform: uppercase;
+
+                            @media (max-width: 576px) {
+                                font-size: 2rem;
+                            }
                         }
 
                         p {
                             margin-bottom: 30px;
-                            font-size: 1.2rem;
+                            font-size: 1.5rem;
+                            color: #ededed;
+
+                            @media (max-width: 576px) {
+                                font-size: 1.2rem;
+                            }
 
                             strong {
                                 font-weight: 700;
-                                font-size: 1.4rem;
+                                font-size: 1.8rem;
 
                                 .prenom {
-                                    color: #00abf0;
+                                    color: #32e0c4;
                                 }
                             }
                         }
 
                         #typed-text-container {
                             #typed-text {
-                                font-size: 30px;
+                                font-size: 2rem;
                                 background: linear-gradient(90deg, #00abf0, #32e0c4, #00abf0);
                                 background-size: 200% auto;
                                 color: transparent;
@@ -48,10 +59,14 @@ main {
                                 -webkit-background-clip: text;
                                 animation: gradientAnimation 3s linear infinite;
                                 margin-bottom: 20px;
+
+                                @media (max-width: 576px) {
+                                    font-size: 1.5rem;
+                                }
                             }
 
                             .Typed-cursor {
-                                font-size: 30px;
+                                font-size: 2rem;
                                 display: inline-block;
                                 background: linear-gradient(90deg, #00abf0, #32e0c4, #00abf0);
                                 background-size: 200% auto;
@@ -60,6 +75,10 @@ main {
                                 background-clip: text;
                                 -webkit-background-clip: text;
                                 animation: blink 0.8s infinite;
+
+                                @media (max-width: 576px) {
+                                    font-size: 1.5rem;
+                                }
                             }
                         }
 
@@ -75,8 +94,8 @@ main {
                                     position: relative;
                                     display: inline-flex;
                                     align-items: center;
-                                    padding: 10px 20px;
-                                    font-size: 1rem;
+                                    padding: 15px 30px;
+                                    font-size: 1.2rem;
                                     letter-spacing: 1px;
                                     gap: 0.5rem;
                                     color: #081b29;
@@ -85,6 +104,11 @@ main {
                                     transition: background-color 0.3s ease, transform 0.3s ease;
                                     z-index: 1;
                                     overflow: hidden;
+
+                                    @media (max-width: 576px) {
+                                        font-size: 1rem;
+                                        padding: 10px 20px;
+                                    }
 
                                     i {
                                         font-size: 1.5rem;
@@ -137,6 +161,10 @@ main {
                                 }
                             }
                         }
+
+                        h1, p, #typed-text-container, .contact-links {
+                            animation: fadeInSmooth 1.5s ease-in-out forwards;
+                        }
                     }
 
                     &:last-child {
@@ -155,6 +183,8 @@ main {
                                 &:hover {
                                     transform: scale(1.05);
                                 }
+
+                                animation: fadeInSmooth 1.5s ease-in-out forwards;
                             }
                         }
                     }
@@ -190,7 +220,7 @@ main {
 
     #a-propos {
         padding: 3rem 10%;
-        background-color: #2b3e50;
+        background: linear-gradient(135deg, #2b3e50, #081b29);
 
         .container {
             .row {
@@ -199,9 +229,14 @@ main {
 
                 h1 {
                     text-align: center;
-                    font-size: 2.5rem;
+                    font-size: 3rem;
                     font-weight: bold;
                     margin-bottom: 1rem;
+                    color: #ededed;
+
+                    @media (max-width: 576px) {
+                        font-size: 2.5rem;
+                    }
 
                     span {
                         color: #00abf0;
@@ -209,13 +244,18 @@ main {
                 }
 
                 .lead {
-                    font-size: 1.2rem;
+                    font-size: 1.5rem;
                     color: #ededed;
-                    margin-bottom: 1.2rem;
+                    margin-bottom: 1.5rem;
                     line-height: 1.8;
 
-                    strong{
+                    @media (max-width: 576px) {
+                        font-size: 1.2rem;
+                    }
+
+                    strong {
                         font-weight: 700;
+                        color: #32e0c4;
                     }
 
                     em {
@@ -238,6 +278,10 @@ main {
                     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
                     transition: transform 0.3s ease-in-out;
 
+                    @media (max-width: 576px) {
+                        font-size: 1.2rem;
+                    }
+
                     &::before {
                         content: '';
                         position: absolute;
@@ -251,7 +295,7 @@ main {
                     }
 
                     em {
-                        color: #00abf0;
+                        color: #32e0c4;
                         font-style: italic;
                     }
 
@@ -270,17 +314,39 @@ main {
         }
     }
 
+    #a-propos, #competences, #projets, #education, #contact {
+        animation: fadeInSmooth 1.5s ease-in-out forwards;
+    }
+
     #competences {
         padding: 3rem 10%;
+        background: linear-gradient(135deg, #2b3e50, #081b29);
 
         h1 {
             color: #00abf0;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+
+            @media (max-width: 576px) {
+                font-size: 2.5rem;
+            }
         }
 
         .categorie {
+            margin-bottom: 4rem;
 
             h2 {
                 color: #ededed;
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 2rem;
+                text-transform: uppercase;
+
+                @media (max-width: 576px) {
+                    font-size: 1.5rem;
+                }
             }
 
             .row {
@@ -289,17 +355,21 @@ main {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    padding: 15px;
+                    padding: 20px;
                     border-radius: 10px;
-                    transition: all .3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                    background: linear-gradient(135deg, #081b29, #0a2a3e);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
                     &:hover {
                         transform: scale(1.05);
-                        box-shadow: 0 8px 16px rgba(43, 62, 80);
+                        box-shadow: 0 8px 16px rgba(43, 62, 80, 0.5);
                     }
 
                     img {
                         margin-bottom: 10px;
+                        width: 50px;
+                        height: 50px;
                     }
 
                     .colored-icon {
@@ -308,6 +378,12 @@ main {
 
                     span {
                         color: #ededed;
+                        font-size: 1.2rem;
+                        font-weight: bold;
+
+                        @media (max-width: 576px) {
+                            font-size: 1rem;
+                        }
                     }
                 }
 
@@ -398,12 +474,18 @@ main {
 
     #projets {
         padding: 3rem 10%;
-        background-color: #2b3e50;
+        background: linear-gradient(135deg, #2b3e50, #081b29);
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: bold;
             color: #ededed;
+            text-align: center;
+            margin-bottom: 2rem;
+
+            @media (max-width: 576px) {
+                font-size: 2.5rem;
+            }
 
             span {
                 color: #00abf0;
@@ -416,19 +498,29 @@ main {
         }
 
         .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             margin-top: 2rem;
 
             .col-12 {
+                flex: 1 1 calc(50% - 1rem);
                 margin-bottom: 2rem;
 
                 .card {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
                     border: none;
                     border-radius: 0.5rem;
                     overflow: hidden;
-                    transition: all .3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                    background: linear-gradient(135deg, #081b29, #0a2a3e);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
                     &:hover {
-                        transform: scale(1.02);
+                        transform: scale(1.05);
+                        box-shadow: 0 8px 16px rgba(43, 62, 80, 0.5);
                     }
 
                     &-img-top {
@@ -439,43 +531,69 @@ main {
                     .card-body {
                         padding: 1.5rem;
                         background-color: #081b29;
+                        flex-grow: 1;
 
                         h5.card-title {
-                            font-size: 1.25rem;
+                            font-size: 1.5rem;
                             font-weight: 600;
                             color: #00abf0;
                             margin-bottom: 1rem;
+
+                            @media (max-width: 576px) {
+                                font-size: 1.2rem;
+                            }
                         }
 
                         p.card-text {
-                            font-size: 1rem;
+                            font-size: 1.2rem;
                             color: #ededed;
                             margin-bottom: 1.5rem;
                             line-height: 1.6;
+
+                            @media (max-width: 576px) {
+                                font-size: 1rem;
+                            }
                         }
 
                         ul {
                             list-style-type: none;
                             display: grid;
-                            grid-template-columns: repeat(auto-fit, 110px);
-                            gap: 20px;
+                            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                            gap: 10px;
                             padding: 0;
                             margin-bottom: 1.5rem;
 
                             li {
-                                font-size: 0.95rem;
+                                font-size: 1rem;
                                 text-align: center;
                                 color: #00abf0;
                                 padding: 10px;
                                 border-radius: 10px;
-                                background-color: #2b3e50;
+                                background: linear-gradient(135deg, #2b3e50, #00abf0);
+                                border: 1px solid #00abf0;
+                                transition: all 0.3s ease;
+
+                                @media (max-width: 576px) {
+                                    font-size: 0.9rem;
+                                }
+
+                                &:hover {
+                                    transform: scale(1.05);
+                                    background: linear-gradient(135deg, #00abf0, #2b3e50);
+                                    color: #ffffff;
+                                }
                             }
                         }
 
                         .btn {
-                            font-size: 0.9rem;
+                            font-size: 1rem;
                             padding: 0.5rem 1rem;
                             border-radius: 0.3rem;
+
+                            @media (max-width: 576px) {
+                                font-size: 0.8rem;
+                                padding: 0.4rem 0.8rem;
+                            }
 
                             &.btn-primary {
                                 background-color: #007bff;
@@ -520,6 +638,10 @@ main {
 
             h1 {
                 color: #00abf0;
+
+                @media (max-width: 576px) {
+                    font-size: 2.5rem;
+                }
             }
 
             .row {
@@ -527,23 +649,39 @@ main {
                     .education-item {
                         border: 2px solid #ededed;
                         border-radius: 0.5rem;
-                        background-color: #2b3e50;
+                        background: linear-gradient(135deg, #2b3e50, #081b29);
                         padding: 1.5rem;
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                         transition: all .3s ease-in-out;
 
                         &:hover {
-                            transform: scale(1.02);
-                            box-shadow: 0 4px 8px rgba(43, 62, 80);
+                            transform: scale(1.05);
+                            box-shadow: 0 8px 16px rgba(43, 62, 80, 0.5);
                         }
 
                         p {
                             margin-bottom: 0.8rem;
                             font-size: 1rem;
                             line-height: 1.6;
+                            color: #ededed;
+
+                            @media (max-width: 576px) {
+                                font-size: 1rem;
+                            }
 
                             strong {
                                 color: #00abf0;
+                            }
+
+                            a {
+                                color: #00abf0;
+                                text-decoration: none;
+                                transition: color 0.3s ease;
+
+                                &:hover {
+                                    color: #32e0c4;
+                                    text-decoration: underline;
+                                }
                             }
                         }
                     }
@@ -558,10 +696,18 @@ main {
 
         h1 {
             color: #00abf0;
+
+            @media (max-width: 576px) {
+                font-size: 2.5rem;
+            }
         }
 
         p {
             color: #ededed;
+
+            @media (max-width: 576px) {
+                font-size: 1.2rem;
+            }
         }
 
         .row {
@@ -588,6 +734,11 @@ main {
                         z-index: 1;
                         overflow: hidden;
                         transition: content 0.3s ease;
+
+                        @media (max-width: 576px) {
+                            font-size: 1rem;
+                            padding: 10px 20px;
+                        }
 
                         i {
                             margin-right: 8px;
@@ -625,34 +776,60 @@ main {
                     .contact-form {
                         .form-label {
                             color: #ededed;
+                            font-weight: bold;
+
+                            @media (max-width: 576px) {
+                                font-size: 1rem;
+                            }
                         }
 
                         input,
                         textarea {
-                            border: 1px solid #ededed;
-                            border-radius: 0.25rem;
+                            border: 1px solid #00abf0;
+                            border-radius: 0.5rem;
                             padding: 0.75rem;
                             font-size: 1rem;
+                            background: linear-gradient(135deg, #2b3e50, #081b29);
+                            color: #ededed;
+                            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+                            @media (max-width: 576px) {
+                                font-size: 1rem;
+                            }
+
+                            &::placeholder {
+                                color: #a0a0a0;
+                                opacity: 1;
+                            }
 
                             &:focus {
-                                border-color: #00abf0;
-                                box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+                                border-color: #32e0c4;
+                                box-shadow: 0 0 10px rgba(50, 224, 196, 0.5);
                             }
                         }
 
                         button {
-                            background-color: #007bff;
+                            background: linear-gradient(135deg, #007bff, #0056b3);
                             border: none;
-                            border-radius: 10px;
-                            padding: 10px;
-                            transition: background-color 0.3s ease;
+                            border-radius: 0.5rem;
+                            padding: 10px 20px;
+                            font-size: 1rem;
+                            color: #ededed;
+                            transition: background 0.3s ease, transform 0.3s ease;
+
+                            @media (max-width: 576px) {
+                                font-size: 0.9rem;
+                                padding: 0.5rem 1rem;
+                            }
 
                             &:hover {
-                                background-color: #0056b3;
+                                background: linear-gradient(135deg, #0056b3, #003f7f);
+                                transform: scale(1.05);
                             }
 
                             i {
                                 font-size: 1.2rem;
+                                margin-right: 0.5rem;
                             }
                         }
                     }
