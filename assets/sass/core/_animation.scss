@@ -57,3 +57,16 @@
 .animate-slide-bottom {
     animation: slideInBottom 1s ease-out forwards;
 }
+
+@keyframes fadeInSmooth {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in-smooth {
+    animation: fadeInSmooth 1.5s ease-in-out forwards;
+}
