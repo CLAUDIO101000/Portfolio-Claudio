@@ -1,0 +1,18 @@
+// Mixins réutilisables
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin mono  { font-family: var(--font-mono); }
+@mixin sans  { font-family: var(--font-sans); }
+@mixin serif { font-family: var(--font-serif); }
+
+// Étiquette technique : mono, petite, capitales espacées
+@mixin label($size: var(--fs-2xs)) {
+  font-family: var(--font-mono);
+  font-size: $size;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}

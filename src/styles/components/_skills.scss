@@ -1,0 +1,50 @@
+#skills { border-top: 1px solid var(--border); }
+
+// Catégories en grille numérotée, façon index de magazine
+.skills-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: var(--sp-8) var(--sp-10);
+  counter-reset: skcat;
+}
+
+.skills-categories > div { counter-increment: skcat; }
+
+.skill-cat-title {
+  display: flex; align-items: baseline; gap: var(--sp-3);
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: var(--fs-xl); letter-spacing: -.03em;
+  color: var(--text); margin-bottom: var(--sp-4);
+  padding-bottom: var(--sp-3); border-bottom: 1px solid var(--border);
+
+  &::before {
+    content: counter(skcat, decimal-leading-zero);
+    font-family: var(--font-mono); font-weight: 400;
+    font-size: var(--fs-2xs); letter-spacing: .12em;
+    color: var(--accent);
+  }
+}
+
+.skills-row { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+.skill-pill {
+  display: flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  font-size: var(--fs-sm); font-weight: 500; color: var(--text);
+  transition: border-color .2s, color .2s, background-color .2s, transform .3s var(--ease-out);
+
+  &:hover {
+    border-color: var(--text); background: var(--text); color: var(--ink);
+    transform: translateY(var(--lift)) rotate(-2deg);
+  }
+
+  &.main {
+    border-color: var(--accent-dim); color: var(--accent);
+    background: var(--accent-glow);
+    &::before { content: '✦'; font-size: .8em; }
+    &:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+  }
+}

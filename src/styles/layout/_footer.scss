@@ -1,0 +1,33 @@
+footer {
+  background: var(--ink);
+  padding: var(--sp-8) var(--gutter) var(--sp-5);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); color: var(--muted);
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+}
+
+// Signature géante, coupée par le bas de page
+.footer-mark {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: clamp(5rem, 22vw, 20rem);
+  line-height: .8; letter-spacing: -.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border-strong);
+  text-align: center;
+  user-select: none;
+  margin-bottom: var(--sp-6);
+
+  span { color: var(--accent); -webkit-text-stroke: 0; }
+}
+
+.footer-row {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: var(--sp-4);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border);
+
+  > span { display: inline-flex; align-items: center; gap: var(--sp-2); }
+}

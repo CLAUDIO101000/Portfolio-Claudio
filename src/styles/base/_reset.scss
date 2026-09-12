@@ -1,0 +1,54 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  // Les ancres ne passent plus sous la nav fixe
+  scroll-padding-top: calc(var(--nav-h) + var(--sp-4));
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: var(--ink); }
+
+// ── Curseur personnalisé
+// La classe n'est posée par le JS que sur pointeur fin : si le script échoue
+// ou sur tactile, le curseur natif reste disponible.
+// `cursor` s'hérite, mais la feuille de style UA repose `pointer`/`default` sur
+// les éléments interactifs : il faut les viser explicitement.
+html.has-custom-cursor body,
+html.has-custom-cursor :is(a, button, [role='button'], label, summary) { cursor: none; }
+// Sauf les champs de saisie : le curseur texte y est une vraie aide
+html.has-custom-cursor :is(input, textarea) { cursor: text; }
+
+img, svg { display: block; max-width: 100%; }
+
+// Grain papier
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 1000; opacity: .55;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+// Sprite d'icônes inline : présent dans le DOM, jamais rendu
+.sprite { display: none; }

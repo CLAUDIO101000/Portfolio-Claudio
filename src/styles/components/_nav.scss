@@ -1,0 +1,93 @@
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(126, 217, 154, .45); }
+  50%      { box-shadow: 0 0 0 6px rgba(126, 217, 154, 0); }
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: var(--sp-4) var(--gutter);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: var(--sp-6);
+  background: rgba(16, 14, 12, .78);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid var(--border);
+
+  // Barre de progression de lecture, pilotée par --progress (0 → 1) en JS
+  &::after {
+    content: '';
+    position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%;
+    background: var(--accent);
+    transform-origin: left;
+    transform: scaleX(var(--progress, 0));
+  }
+}
+
+.nav-logo {
+  a {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.75rem; line-height: 1;
+    color: var(--text);
+    text-decoration: none;
+    display: inline-flex; align-items: baseline; gap: 2px;
+
+    &::after { content: '●'; font-style: normal; font-size: .45em; color: var(--accent); }
+  }
+}
+
+.nav-links {
+  display: flex; gap: var(--sp-1); list-style: none;
+
+  a {
+    display: block;
+    padding: var(--sp-2) var(--sp-3);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    color: var(--muted); text-decoration: none;
+    font-size: var(--fs-2xs); letter-spacing: .12em; text-transform: uppercase;
+    transition: color .2s, background-color .2s;
+    &:hover { color: var(--text); background: var(--surface2); }
+  }
+}
+
+.nav-status {
+  display: flex; align-items: center; gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); color: var(--green);
+  white-space: nowrap;
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid rgba(126, 217, 154, .3);
+  border-radius: 999px;
+}
+
+.status-dot {
+  width: 7px; height: 7px; flex: none;
+  background: var(--green); border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 42px; height: 36px; flex: none;
+  padding: 10px 11px;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  transition: border-color .2s;
+
+  &:hover { border-color: var(--accent); }
+
+  span {
+    display: block; height: 1.5px; width: 100%;
+    background: var(--text);
+    transition: transform .25s ease, opacity .25s ease;
+  }
+}
+
+nav.open .nav-burger {
+  span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  span:nth-child(2) { opacity: 0; }
+  span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+}

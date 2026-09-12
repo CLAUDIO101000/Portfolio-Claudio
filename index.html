@@ -1,551 +1,651 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Portfolio de RANAIVOSON Nantenaina Claudio, développeur passionné et créatif spécialisé dans les solutions numériques.">
-    <title>Portfolio - RANAIVOSON Nantenaina Claudio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-</head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Portfolio de RANAIVOSON Nantenaina Claudio, développeur web passionné spécialisé en solutions numériques sur mesure — Odoo, Python, PHP, React."/>
+    <meta name="theme-color" content="#100e0c"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Claudio · Développeur Web &amp; Odoo"/>
+    <meta property="og:description" content="Portfolio de RANAIVOSON Nantenaina Claudio — solutions numériques sur mesure : Odoo, Python, PHP, React. Disponible pour missions freelance."/>
+    <meta property="og:locale" content="fr_FR"/>
+    <!-- og:image doit être une URL ABSOLUE pour LinkedIn/Facebook/WhatsApp.
+         À remplacer par https://<votre-domaine>/img/photo_profile.jpg au déploiement. -->
+    <meta property="og:image" content="/img/photo_profile.jpg"/>
+    <meta property="og:image:alt" content="RANAIVOSON Nantenaina Claudio, développeur web et Odoo"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <title>Claudio · Développeur Web Freelance</title>
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="container-fluid">
-                <button class="toggler animate__animated animate__fadeInLeft" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation" style="--animate-duration: 0.8s;">
-                    <i class="fa-duotone fa-solid fa-bars" id="menu-icon" aria-hidden="true"></i>
-                </button>
+<!-- ── Sprite d'icônes (inline : aucune requête, aucun souci de compat sur <use> externe) -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-gear" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="3.2"/>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+  </symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>
+    <path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/>
+  </symbol>
+  <symbol id="i-link" viewBox="0 0 24 24">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+  </symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24">
+    <rect x="4" y="9" width="16" height="11" rx="2.5"/>
+    <path d="M12 9V5.5"/><circle cx="12" cy="3.6" r="1.6"/>
+    <path d="M9 14h.01M15 14h.01"/><path d="M2 13v3M22 13v3"/>
+  </symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  </symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+  </symbol>
+  <symbol id="i-branch" viewBox="0 0 24 24">
+    <line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/>
+    <circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/>
+  </symbol>
+  <symbol id="i-external" viewBox="0 0 24 24">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24">
+    <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v1.5A6 6 0 0 1 16 8z"/>
+    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+  </symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24">
+    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+    <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+  </symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24">
+    <line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/>
+  </symbol>
+</svg>
 
-                <a class="brand animate__animated animate__fadeInLeft" href="#" style="--animate-duration: 1s;" aria-label="Home">
-                    Claudio.
-                </a>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
 
-                <div class="dropdown ms-auto animate__animated animate__fadeInRight" style="--animate-duration: 1.2s;">
-                    <i class="bi bi-translate language-icon" id="change-lang" title="Changer la langue"
-                        style="cursor: pointer;" data-bs-toggle="dropdown"></i>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#" id="lang-fr">French</a></li>
-                        <li><a class="dropdown-item" href="#" id="lang-en">English</a></li>
-                    </ul>
-                </div>
+<nav>
+  <div class="nav-logo"><a href="#">Claudio.</a></div>
+  <ul class="nav-links">
+    <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+    <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
+    <li><a href="#services" data-i18n="nav.services">Services</a></li>
+    <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
+    <li><a href="#education" data-i18n="nav.education">Éducation</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    <span data-i18n="nav.status">Disponible pour missions</span>
+  </div>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link nav-accueil" href="#accueil"><i class="bi bi-house-door"></i> Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-a-propos" href="#a-propos"><i class="bi bi-person-circle"></i> À
-                                propos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-competences" href="#competences"><i
-                                    class="bi bi-file-earmark-code"></i>
-                                Compétences</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-projets" href="#projets"><i class="bi bi-briefcase"></i> Projets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-education" href="#education"><i class="bi bi-mortarboard"></i>
-                                Éducation</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-contact" href="#contact"><i class="bi bi-telephone"></i> Contact</a>
-                        </li>
-                    </ul>
-                </div>
+  <!-- Onglets de langue : bascule FR / EN -->
+  <div class="lang-switch" id="lang-switch" role="tablist" aria-label="Langue du site / Site language">
+    <button type="button" class="lang-tab is-active" data-lang="fr" role="tab" aria-selected="true"
+            aria-label="Basculer le site en français">FR</button>
+    <button type="button" class="lang-tab" data-lang="en" role="tab" aria-selected="false"
+            aria-label="Switch the site to English">EN</button>
+  </div>
+
+  <button class="nav-burger" id="nav-burger" data-i18n-aria-label="nav.burger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section id="hero">
+  <!-- Courbes de niveau : un même contour répété à des échelles croissantes -->
+  <svg class="hero-topo" viewBox="-800 -500 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <path id="topo" d="M0-300C170-315 330-210 335-40 340 120 250 255 70 290-110 325-290 240-330 70-370-100-190-285 0-300Z"/>
+    </defs>
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <g transform="translate(330 -40)">
+        <use href="#topo" class="topo-hot" transform="rotate(4) scale(.12)"/>
+        <use href="#topo" class="topo-hot" transform="rotate(10) scale(.24)"/>
+        <use href="#topo" transform="rotate(16) scale(.38)"/>
+        <use href="#topo" transform="rotate(22) scale(.54)"/>
+        <use href="#topo" transform="rotate(28) scale(.72)"/>
+        <use href="#topo" transform="rotate(34) scale(.92)"/>
+        <use href="#topo" transform="rotate(40) scale(1.14)"/>
+        <use href="#topo" transform="rotate(46) scale(1.38)"/>
+        <use href="#topo" transform="rotate(52) scale(1.64)"/>
+        <use href="#topo" transform="rotate(58) scale(1.92)"/>
+        <use href="#topo" transform="rotate(64) scale(2.22)"/>
+      </g>
+      <g transform="translate(-560 360)">
+        <use href="#topo" transform="rotate(-20) scale(.2)"/>
+        <use href="#topo" transform="rotate(-12) scale(.4)"/>
+        <use href="#topo" transform="rotate(-4) scale(.62)"/>
+        <use href="#topo" transform="rotate(4) scale(.86)"/>
+      </g>
+    </g>
+  </svg>
+  <div class="hero-glow"></div>
+
+  <div class="hero-meta">
+    <span><strong>18°52′S</strong> · <strong>47°30′E</strong></span>
+    <span><span data-i18n="hero.localTime">Heure locale</span> · Antananarivo <strong id="local-time">--:--</strong></span>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag" data-i18n="hero.tag">Développeur Web &amp; Odoo — Freelance · Madagascar</div>
+      <h1 class="hero-name">
+        <span class="line"><span>RANAIVOSON</span></span>
+        <span class="line"><span class="outline">Nantenaina</span></span>
+        <span class="line"><span><em>Claudio.</em></span></span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">Donner vie à vos idées grâce à des solutions numériques sur mesure.</p>
+      <div class="typed-wrap">
+        <span id="typed-text"></span><span class="typed-cursor">|</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">
+          <svg class="icon solid" aria-hidden="true"><use href="#i-play"/></svg> <span data-i18n="hero.ctaProjects">Voir mes projets</span>
+        </a>
+        <button type="button" class="btn-ghost" id="cv-download">
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> <span data-i18n="hero.ctaCv">Télécharger mon CV (PDF)</span>
+        </button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="avatar-wrap">
+        <img src="/img/photo_profile.jpg"
+             alt="RANAIVOSON Nantenaina Claudio"
+             width="1536" height="2048"
+             decoding="async" fetchpriority="high"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <span class="avatar-initials" style="display:none;">RC</span>
+      </div>
+      <div class="hero-badge" aria-hidden="true">
+        <svg class="badge-ring" viewBox="0 0 120 120">
+          <defs><path id="badge-circle" d="M60 60m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs>
+          <text textLength="312" lengthAdjust="spacing"><textPath href="#badge-circle" data-i18n="hero.badge">Disponible ✦ Freelance ✦ Antananarivo ✦</textPath></text>
+        </svg>
+        <span class="badge-core"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" data-i18n="hero.scroll">Défiler</div>
+</section>
+
+<!-- Bandeau défilant : contenu dupliqué pour une boucle sans couture -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Odoo</span><i>✦</i><span>Python</span><i>✦</i><span>React</span><i>✦</i><span>Django</span><i>✦</i>
+      <span>Laravel</span><i>✦</i><span>Node.js</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>Flutter</span><i>✦</i>
+      <span>Socket.io</span><i>✦</i><span>QWeb</span><i>✦</i>
+    </div>
+    <div class="marquee-track">
+      <span>Odoo</span><i>✦</i><span>Python</span><i>✦</i><span>React</span><i>✦</i><span>Django</span><i>✦</i>
+      <span>Laravel</span><i>✦</i><span>Node.js</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>Flutter</span><i>✦</i>
+      <span>Socket.io</span><i>✦</i><span>QWeb</span><i>✦</i>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-label reveal" data-i18n="about.label">01 — À propos</div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-title" data-i18n-html="about.title">Passionné par la<br/><em class="title-accent">technologie.</em></div>
+      <p data-i18n-html="about.p1">Bonjour ! Je suis <strong>RANAIVOSON Nantenaina Claudio</strong>, développeur passionné basé à <span class="hl">Madagascar</span>. Depuis que j'ai découvert la programmation, je suis fasciné par le pouvoir des solutions numériques pour résoudre des problèmes complexes.</p>
+      <p data-i18n-html="about.p2">Mes compétences couvrent le développement <strong>web</strong> et les solutions <span class="hl">Odoo</span>, avec des technologies comme Python, PHP, JavaScript, React, Django et bien d'autres. Mon objectif : créer des applications <strong>modernes, intuitives et robustes</strong>.</p>
+      <div class="quote-block">
+        <em data-i18n="about.quote">"En programmation, si quelqu'un vous dit 'vous compliquez trop les choses', il a soit 10 pas de retard, soit 10 pas d'avance sur vous." – Andrew Clark</em>
+      </div>
+      <p data-i18n-html="about.p3">Cette citation guide mon approche : trouver l'équilibre parfait entre <strong>simplicité et innovation</strong>, toujours centré sur les besoins de l'utilisateur.</p>
+    </div>
+    <div class="about-stats reveal reveal-delay-2">
+      <div class="stat-card">
+        <div class="stat-number">2+</div>
+        <div class="stat-label" data-i18n="about.stat1">Années d'expérience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10+</div>
+        <div class="stat-label" data-i18n="about.stat2">Technologies maîtrisées</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">M2</div>
+        <div class="stat-label" data-i18n="about.stat3">Master Informatique (IS-INFO)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label" data-i18n="about.stat4">Dédié à chaque projet</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-label reveal" data-i18n="skills.label">02 — Compétences</div>
+  <div class="section-title reveal" data-i18n="skills.title">Ce que je maîtrise.</div>
+  <div class="skills-categories">
+
+    <div class="reveal">
+      <div class="skill-cat-title" data-i18n="skills.cat1">Langages de programmation</div>
+      <div class="skills-row">
+        <div class="skill-pill main">Python</div>
+        <div class="skill-pill main">Odoo / QWeb</div>
+        <div class="skill-pill">PHP</div>
+        <div class="skill-pill">JavaScript</div>
+        <div class="skill-pill">TypeScript</div>
+        <div class="skill-pill">HTML / CSS</div>
+        <div class="skill-pill">R</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <div class="skill-cat-title" data-i18n="skills.cat2">Frameworks &amp; Bibliothèques</div>
+      <div class="skills-row">
+        <div class="skill-pill">React</div>
+        <div class="skill-pill">Django</div>
+        <div class="skill-pill">Laravel</div>
+        <div class="skill-pill">Node.js</div>
+        <div class="skill-pill">Express</div>
+        <div class="skill-pill">Socket.io</div>
+        <div class="skill-pill">Bootstrap 5</div>
+        <div class="skill-pill">jQuery</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <div class="skill-cat-title" data-i18n="skills.cat3">Développement Mobile &amp; Embarqué</div>
+      <div class="skills-row">
+        <div class="skill-pill main" data-i18n="skills.mobileApp">App Mobile</div>
+        <div class="skill-pill main">Flutter</div>
+        <div class="skill-pill">Arduino</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <div class="skill-cat-title" data-i18n="skills.cat4">Bases de données</div>
+      <div class="skills-row">
+        <div class="skill-pill main">PostgreSQL</div>
+        <div class="skill-pill">MySQL</div>
+        <div class="skill-pill">SQLite</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-3">
+      <div class="skill-cat-title" data-i18n="skills.cat5">Outils &amp; Environnement</div>
+      <div class="skills-row">
+        <div class="skill-pill">Git / GitHub</div>
+        <div class="skill-pill">Linux</div>
+        <div class="skill-pill">Figma</div>
+        <div class="skill-pill">SASS</div>
+        <div class="skill-pill">npm</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <div class="skill-cat-title" data-i18n="skills.cat6">IA &amp; Data Mining</div>
+      <div class="skills-row">
+        <div class="skill-pill" data-i18n="skills.ml">Machine Learning</div>
+        <div class="skill-pill" data-i18n="skills.dm">Data Mining</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label reveal" data-i18n="services.label">03 — Services</div>
+  <div class="section-title reveal" data-i18n-html="services.title">Ce que je fais<br/>pour vous.</div>
+  <div class="bento reveal">
+    <div class="bento-card wide">
+      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></div>
+      <div class="card-title" data-i18n="services.c1.title">Développement Odoo</div>
+      <div class="card-desc" data-i18n="services.c1.desc">Création de modules Odoo personnalisés, extension des modules existants, personnalisation des vues et workflows. Spécialisé en Odoo avec maîtrise de l'ORM, QWeb et des patterns de développement avancés.</div>
+      <div class="card-tags">
+        <span class="tag amber">Odoo</span>
+        <span class="tag">Python</span>
+        <span class="tag">XML / QWeb</span>
+        <span class="tag">PostgreSQL</span>
+      </div>
+    </div>
+
+    <div class="bento-card">
+      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div>
+      <div class="card-title" data-i18n="services.c2.title">Développement Web</div>
+      <div class="card-desc" data-i18n="services.c2.desc">Applications web complètes de la base de données à l'interface utilisateur, avec React, Django, Laravel ou Node.js selon vos besoins.</div>
+      <div class="card-tags">
+        <span class="tag amber">React</span>
+        <span class="tag">Django</span>
+        <span class="tag">Laravel</span>
+        <span class="tag">Node.js</span>
+      </div>
+    </div>
+
+    <div class="bento-card">
+      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg></div>
+      <div class="card-title" data-i18n="services.c3.title">Intégrations &amp; API</div>
+      <div class="card-desc" data-i18n="services.c3.desc">Connexion de vos systèmes à des services tiers via REST, JSON-RPC, webhooks. Automatisation des flux de données entre plateformes.</div>
+      <div class="card-tags">
+        <span class="tag">REST API</span>
+        <span class="tag">JSON-RPC</span>
+        <span class="tag">Webhooks</span>
+      </div>
+    </div>
+
+    <div class="bento-card">
+      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-bot"/></svg></div>
+      <div class="card-title" data-i18n="services.c4.title">Automatisation Python</div>
+      <div class="card-desc" data-i18n="services.c4.desc">Scripts d'automatisation, tâches planifiées (cron), traitement de données en masse et outils CLI pour vos équipes métier.</div>
+      <div class="card-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Cron</span>
+        <span class="tag">CLI</span>
+      </div>
+    </div>
+
+    <div class="bento-card">
+      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></div>
+      <div class="card-title" data-i18n="services.c5.title">Apps Temps Réel</div>
+      <div class="card-desc" data-i18n="services.c5.desc">Développement d'applications avec communication temps réel : chat, notifications live, tableaux de bord dynamiques via Socket.io.</div>
+      <div class="card-tags">
+        <span class="tag amber">Socket.io</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+      </div>
+    </div>
+
+    <div class="bento-card">
+      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></div>
+      <div class="card-title" data-i18n="services.c6.title">Support &amp; Maintenance</div>
+      <div class="card-desc" data-i18n="services.c6.desc">Débogage, correction de bugs, refactoring, documentation technique et formation des équipes internes sur les outils développés.</div>
+      <div class="card-tags">
+        <span class="tag" data-i18n="services.tagSupport">Support</span>
+        <span class="tag" data-i18n="services.tagDoc">Documentation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" class="section-split">
+  <div class="split-head reveal">
+    <div class="section-label" data-i18n="stack.label">04 — Stack technique</div>
+    <div class="section-title" data-i18n-html="stack.title">Mon environnement<br/>de travail.</div>
+    <p class="split-intro" data-i18n="stack.intro">Les langages, frameworks et outils qui rythment mon quotidien de développeur.</p>
+  </div>
+  <div class="split-body">
+  <div class="terminal reveal">
+    <div class="terminal-bar">
+      <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+      <span class="terminal-title">claudio@dev-mg — ~/stack — zsh</span>
+    </div>
+    <div class="terminal-body" id="term-body"></div>
+  </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label reveal" data-i18n="projects.label">05 — Projets</div>
+  <div class="section-title reveal" data-i18n="projects.title">Mes réalisations.</div>
+  <div class="projects-grid reveal">
+
+    <div class="project-card">
+      <div class="project-num" data-i18n="projects.p1.num">01 — 2024 · Application Web</div>
+      <div class="project-name">CongeSystem</div>
+      <div class="project-desc" data-i18n="projects.p1.desc">Application de gestion de congés permettant aux employés de soumettre des demandes et de suivre leur solde. Calcul intelligent excluant les jours fériés et weekends. Interface admin complète pour la validation des requêtes.</div>
+      <div class="project-tags">
+        <span class="tag amber">PHP</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Bootstrap 5</span>
+        <span class="tag">SweetAlert2</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/CLAUDIO101000/CongeSystem.git" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
+          <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num" data-i18n="projects.p2.num">02 — 2024 · Application Temps Réel</div>
+      <div class="project-name">Chatroom</div>
+      <div class="project-desc" data-i18n="projects.p2.desc">Application de chat temps réel avec gestion de pseudonyme, avatar optionnel et partage d'images. Architecture Node.js + Socket.io pour une communication instantanée et fluide entre utilisateurs. Déployée sur Vercel.</div>
+      <div class="project-tags">
+        <span class="tag amber">Node.js</span>
+        <span class="tag">Socket.io</span>
+        <span class="tag">Express</span>
+        <span class="tag">JavaScript</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/CLAUDIO101000/Chatroom.git" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
+          <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> GitHub
+        </a>
+        <a href="https://chatroom-silk.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-btn">
+          <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg> <span data-i18n="projects.demo">Démo live</span>
+        </a>
+      </div>
+    </div>
+
+    <a href="https://github.com/CLAUDIO101000?tab=repositories" target="_blank" rel="noopener noreferrer" class="project-more">
+      <span class="project-more-text" data-i18n-html="projects.moreText">D'autres dépôts, expérimentations et projets en cours sont publiés sur <strong>mon profil GitHub</strong>.</span>
+      <span class="project-more-cta">
+        <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> <span data-i18n="projects.moreCta">Voir tous les dépôts</span>
+      </span>
+    </a>
+
+  </div>
+</section>
+
+<section id="experience" class="section-split">
+  <div class="split-head reveal">
+    <div class="section-label" data-i18n="exp.label">06 — Expérience professionnelle</div>
+    <div class="section-title" data-i18n-html="exp.title">Mes expériences<br/>en entreprise.</div>
+    <p class="split-intro" data-i18n="exp.intro">Mon parcours au sein du Groupe Viseo, du stage de licence au poste de développeur Odoo.</p>
+  </div>
+  <div class="split-body">
+  <div class="exp-timeline reveal">
+
+    <div class="exp-item">
+      <div class="exp-item-inner">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Groupe Viseo</div>
+            <div class="exp-location">
+              <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+              <span data-i18n="exp.place">Andraharo, Antananarivo · Madagascar</span>
             </div>
-        </nav>
-    </header>
-
-    <main>
-
-        <section id="accueil" class="accueil">
-            <div class="container text-center">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-6">
-                        <h1 class="animate__animated animate__fadeInLeft" style="--animate-duration: 1.5s;">
-                            Plongez dans mon univers créatif !
-                        </h1>
-                        <p class="lead animate__animated animate__fadeInLeft" style="--animate-duration: 1.7s;">
-                            Bonjour, C'est <br><strong>RANAIVOSON Nantenaina <span
-                                    class="prenom">Claudio</span></strong><br>Et je suis un
-                            développeur passionné, prêt à donner vie à vos idées grâce à des solutions numériques sur
-                            mesure.
-                        </p>
-                        <div id="typed-text-container" class="animate__animated animate__fadeInLeft"
-                            style="--animate-duration: 2s;">
-                            <span id="typed-text"></span>
-                            <span class="Typed-cursor">|</span>
-                        </div>
-                        <div class="contact-links animate__animated animate__fadeInLeft"
-                            style="--animate-duration: 2.3s;">
-                            <div class="contact-item">
-                                <a href="#contact" class="btn btn-lg btn-outline-light btn-primary">
-                                    <i class="fa fa-envelope"></i> Me Contacter
-                                </a>
-                            </div>
-                            <div class="contact-item">
-                                <a href="assets/download/CV Claudio.pdf" download
-                                    class="btn btn-lg btn-outline-light btn-primary">
-                                    <i class="fa fa-download"></i> Télécharger mon CV
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="d-flex justify-content-center">
-                            <img src="assets/images/Profil.jpg" alt="Photo de profil de Claudio"
-                                class="img-fluid rounded-circle profil-img animate__animated animate__zoomIn"
-                                style="--animate-duration: 2.5s;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="a-propos" class="a-propos">
-            <div class="container">
-                <div class="row align-items-center">
-                    <h1 class="animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">
-                        À propos de <span>moi</span>
-                    </h1>
-                    <p class="lead animate__animated animate__fadeInUp p1" style="--animate-duration: 1s;">
-                        Bonjour ! Je suis <strong>RANAIVOSON Nantenaina Claudio</strong>, un développeur passionné
-                        par la technologie et l'innovation. Depuis que j'ai découvert le monde de la programmation,
-                        j'ai toujours été fasciné par le pouvoir qu'ont les solutions numériques de résoudre des
-                        problèmes complexes et de simplifier la vie des utilisateurs.
-                    </p>
-                    <p class="lead animate__animated animate__fadeInUp p2" style="--animate-duration: 1.2s;">
-                        J'ai acquis des compétences solides en développement web, en travaillant avec des
-                        technologies comme HTML, CSS, JavaScript, PHP, et Python, ainsi que des frameworks comme
-                        Bootstrap, React, et Django. Mon objectif est de créer des sites web modernes, intuitifs et
-                        efficaces qui répondent aux besoins spécifiques de mes clients.
-                    </p>
-                    <p class="lead animate__animated animate__fadeInUp citation" style="--animate-duration: 1.4s;">
-                        <em>"En programmation, si quelqu'un vous dit 'vous compliquez trop les choses', il a soit 10
-                            pas de retard, soit 10 pas d'avance sur vous." – Andrew Clark</em>
-                    </p>
-                    <p class="lead animate__animated animate__fadeInUp p3" style="--animate-duration: 1.6s;">
-                        Cette citation résonne particulièrement avec ma manière d'aborder les défis en
-                        développement. Elle me rappelle que chaque problème a plusieurs niveaux de compréhension et
-                        que la complexité apparente d'une solution peut souvent refléter une vision plus avancée ou
-                        une perspective différente. Dans mon travail, je m'efforce toujours de trouver l'équilibre
-                        entre simplicité et innovation, tout en gardant en tête les besoins de l'utilisateur et les
-                        contraintes techniques.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="competences" class="container skill">
-            <h1 class="text-center mb-4 animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">
-                Compétences</h1>
-
-            <div class="categorie mb-4">
-                <h2 class="mb-4 animate__animated animate__fadeInLeft categorie1" style="--animate-duration: 1s;">
-                    Langages de
-                    Programmation</h2>
-                <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item1 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 0.8s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/php.svg" alt="PHP Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>PHP</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item2 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/python.svg" alt="Python Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>Python</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item3 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.2s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/javascript.svg"
-                                alt="JavaScript Logo" class="me-2 colored-icon" width="50" height="50">
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item4 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.4s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/typescript.svg"
-                                alt="TypeScript Logo" class="me-2 colored-icon" width="50" height="50">
-                            <span>TypeScript</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="categorie mb-4">
-                <h2 class="mb-4 animate__animated animate__fadeInLeft categorie2" style="--animate-duration: 0.8s;">
-                    Frameworks et
-                    Bibliothèques</h2>
-                <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item5 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 0.8s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/django.svg" alt="Django Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>Django</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item6 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/react.svg" alt="React Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>React</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item7 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.2s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/laravel.svg" alt="Laravel Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>Laravel</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item8 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.4s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/jquery.svg" alt="jQuery Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>jQuery</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item9 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.6s;">
-                            <img src="https://simpleicons.org/icons/nodedotjs.svg" alt="Node.js Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>Node.js</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item10 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.8s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/bootstrap.svg"
-                                alt="Bootstrap5 Logo" class="me-2 colored-icon" width="50" height="50">
-                            <span>Bootstrap5</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item20 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 2s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/express.svg" alt="Express Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>Express</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item21 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 2.2s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/socket-dot-io.svg"
-                                alt="Socket.io Logo" class="me-2 colored-icon" width="50" height="50">
-                            <span>Socket.io</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="categorie mb-4">
-                <h2 class="mb-4 animate__animated animate__fadeInLeft categorie3" style="--animate-duration: 0.8s;">
-                    Bases de
-                    Données</h2>
-                <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item11 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 0.8s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/mysql.svg" alt="MySQL Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>MySQL</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item12 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/sqlite.svg" alt="SQLite Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>SQLite</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item13 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.2s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/postgresql.svg"
-                                alt="PostgreSQL Logo" class="me-2 colored-icon" width="50" height="50">
-                            <span>PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="categorie">
-                <h2 class="mb-4 animate__animated animate__fadeInLeft categorie4" style="--animate-duration: 0.8s;">
-                    Outils et Extras</h2>
-                <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item14 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 0.8s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/git.svg" alt="Git Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>Git</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item15 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/github.svg" alt="GitHub Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>GitHub</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item16 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.2s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/sass.svg" alt="SASS Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>SASS</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item17 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.4s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/linux.svg" alt="Linux Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>Linux</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item18 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.6s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/figma.svg" alt="Figma Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>Figma</span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="item item19 d-flex align-items-center p-3 rounded animate__animated animate__zoomIn"
-                            style="--animate-duration: 1.8s;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/npm.svg" alt="npm Logo"
-                                class="me-2 colored-icon" width="50" height="50">
-                            <span>npm</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projets" class="project">
-            <div class="container">
-                <h1 class="text-center mb-4 animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">Mes
-                    <span>Projets</span>
-                </h1>
-                <div class="row">
-
-                    <div class="col-12 col-md-6 mb-4">
-                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp"
-                            style="--animate-duration: 1.4s;">
-                            <img src="assets/images/G-congés.JPG" class="card-img-top"
-                                alt="Projet de Gestion de Congés">
-                            <div class="card-body">
-                                <h5 class="card-title">1. CongeSystem</h5>
-                                <p class="card-text desc1">
-                                    CongeSystem est une application de gestion de congés permettant aux employés de demander des congés et de suivre leur solde de congé, en excluant les jours fériés et les weekends.
-                                </p>
-                                <ul>
-                                    <li>PHP</li>
-                                    <li>MySQL</li>
-                                    <li>Bootstrap 5</li>
-                                    <li>Sweetalert2</li>
-                                </ul>
-                                <div class="d-flex justify-content-between">
-                                    <a href="https://github.com/CLAUDIO101000/CongeSystem.git" class="btn btn-primary" target="_blank">
-                                        <i class="bi bi-code"></i> Source
-                                    </a>
-                                    <a href="https://github.com/CLAUDIO101000/CongeSystem.git" class="btn btn-secondary btnDemo1" target="_blank">
-                                        <i class="bi bi-play-circle"></i> Démo
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 mb-4">
-                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp"
-                            style="--animate-duration: 2s;">
-                            <img src="assets/images/Chatroom.JPG" class="card-img-top"
-                                alt="Application de Gestion des Touristes">
-                            <div class="card-body">
-                                <h5 class="card-title">2. Chatroom</h5>
-                                <p class="card-text desc2">
-                                    Le projet Chatroom est une application de chat en temps réel construite avec
-                                    Node.js, Express, et Socket.io. Cette application permet aux utilisateurs de
-                                    rejoindre une salle de chat avec un nom d'utilisateur et une image de profil
-                                    optionnelle, d'envoyer des messages et de partager des images en temps réel.
-                                </p>
-                                <ul>
-                                    <li>Node.js</li>
-                                    <li>Socket.io</li>
-                                    <li>Express</li>
-                                </ul>
-                                <div class="d-flex justify-content-between">
-                                    <a href="https://github.com/CLAUDIO101000/Chatroom.git" class="btn btn-primary"
-                                        target="_blank">
-                                        <i class="bi bi-code"></i> Source
-                                    </a>
-                                    <a href="https://chatroom-silk.vercel.app" class="btn btn-secondary btnDemo2"
-                                        target="_blank">
-                                        <i class="bi bi-play-circle"></i> Démo
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="education" class="education">
-            <div class="container">
-                <h1 class="text-center mb-4 animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">
-                    Éducation</h1>
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="education-item animate__animated animate__fadeInUp"
-                            style="--animate-duration: 1.4s;">
-                            <p class="educationP1"><strong>2021 - Présent :</strong></p>
-                            <p>Institut Supérieur d’Informatique (<a href="https://isinfo.mg/"
-                                    target="_blank">IS-INFO</a>), Ampasamadinika</p>
-                            <p class="diplome1"><em>Licence Professionnelle en Informatique de gestion - Obtenu</em>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="education-item animate__animated animate__fadeInUp" style="--animate-duration: 2s;">
-                            <p><strong>2020 - 2021 :</strong></p>
-                            <p>Institution Sainte Famille (La Salle), Mahamasina</p>
-                            <p class="diplome2"><em>Baccalauréat série C - Obtenu</em></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="container">
-                <h1 class="text-center mb-4 animate__animated animate__fadeInUp" style="--animate-duration: 0.8s;">
-                    Contact</h1>
-                <p class="lead text-center mb-4 animate__animated animate__fadeInUp"
-                    style="--animate-duration: 1.2s; --animate-delay: 0.2s;">
-                    N'hésitez pas à me contacter via les moyens ci-dessous pour toute question ou collaboration.
-                </p>
-                <div class="row">
-
-                    <div class="col-12 col-md-6 mb-4 animate__animated animate__fadeInUp"
-                        style="--animate-duration: 1.4s; --animate-delay: 0.4s;">
-                        <div class="contact-links">
-                            <a href="https://github.com/CLAUDIO101000" target="_blank"
-                                class="d-block animate__animated animate__fadeInUp"
-                                style="--animate-duration: 1.2s; --animate-delay: 0.5s;">
-                                <i class="fab fa-github me-2"></i>GitHub
-                            </a>
-                            <a href="https://www.linkedin.com/in/claudio-ranaivoson-8145aa341" target="_blank"
-                                class="d-block animate__animated animate__fadeInUp"
-                                style="--animate-duration: 1.2s; --animate-delay: 0.6s;">
-                                <i class="fab fa-linkedin me-2"></i>LinkedIn
-                            </a>
-                            <a href="mailto:ranaivosonclaudio@gmail.com"
-                                class="d-block animate__animated animate__fadeInUp"
-                                style="--animate-duration: 1.2s; --animate-delay: 0.7s;">
-                                <i class="bi bi-envelope me-2"></i>ranaivosonclaudio@gmail.com
-                            </a>
-                            <a href="tel:+261324337246" class="d-block animate__animated animate__fadeInUp"
-                                style="--animate-duration: 1.2s; --animate-delay: 0.8s;">
-                                <i class="bi bi-telephone me-2"></i>+261 32 43 372 46
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 mb-4 animate__animated animate__fadeInUp formContact"
-                        style="--animate-duration: 1.6s; --animate-delay: 0.6s;">
-                        <div class="card h-100 shadow-sm p-4">
-                            <form action="https://formspree.io/f/mzzzydjj" method="POST" class="contact-form">
-                                <div class="mb-3 animate__animated animate__fadeInUp"
-                                    style="--animate-duration: 1.2s; --animate-delay: 0.7s;">
-                                    <label for="name" class="form-label">Nom :</label>
-                                    <input type="text" id="name" name="name" class="form-control" required
-                                        placeholder="Votre nom">
-                                </div>
-                                <div class="mb-3 animate__animated animate__fadeInUp"
-                                    style="--animate-duration: 1.2s; --animate-delay: 0.8s;">
-                                    <label for="email" class="form-label">Email :</label>
-                                    <input type="email" id="email" name="email" class="form-control" required
-                                        placeholder="votreemail@exemple.com">
-                                </div>
-                                <div class="mb-4 animate__animated animate__fadeInUp"
-                                    style="--animate-duration: 1.2s; --animate-delay: 0.9s;">
-                                    <label for="message" class="form-label">Message :</label>
-                                    <textarea id="message" name="message" class="form-control" rows="5" required
-                                        placeholder="Votre message"></textarea>
-                                </div>
-                                <div class="text-center animate__animated animate__fadeInUp"
-                                    style="--animate-duration: 1.2s; --animate-delay: 1s;">
-                                    <button type="submit" class="btn btn-primary px-4">
-                                        <i class="bi bi-send me-2"></i> Envoyer
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="py-4 animate__animated animate__fadeInUp">
-        <div class="container">
-            <div class="text-center">
-                <p>&copy; Copyright <a href="https://github.com/CLAUDIO101000" target="_blank">Claudio</a> 2025. Tous
-                    droits réservés | Conçu avec passion par Claudio</p>
-            </div>
+          </div>
+          <div class="exp-right">
+            <span class="exp-badge active" data-i18n="exp.e1.badge">● En poste</span>
+            <span class="exp-badge cdd" data-i18n="exp.e1.contract">CDD · 1 an</span>
+            <div class="exp-date" data-i18n="exp.e1.date">1 Juil. 2025 — 30 juin. 2026</div>
+          </div>
         </div>
-    </footer>
+        <div class="exp-role" data-i18n="exp.e1.role">Développeur Odoo Junior</div>
+        <div class="exp-desc" data-i18n="exp.e1.desc">
+          Intégré à l'équipe technique après mon stage, je participe activement au développement et à la maintenance des solutions Odoo pour les clients du groupe.
+        </div>
+        <ul class="exp-tasks">
+          <li data-i18n="exp.e1.t1">Développement de modules Odoo personnalisés (Python, XML, QWeb)</li>
+          <li data-i18n="exp.e1.t2">Extension et surcharge de modules existants selon les besoins métier</li>
+          <li data-i18n="exp.e1.t3">Conception de vues, wizards et rapports QWeb</li>
+          <li data-i18n="exp.e1.t4">Collaboration avec les équipes fonctionnelles pour l'analyse des besoins</li>
+          <li data-i18n="exp.e1.t5">Corrections de bugs, refactoring et maintenance corrective</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="tag amber">Odoo</span>
+          <span class="tag amber">Python</span>
+          <span class="tag">XML / QWeb</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Git</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <div class="exp-item">
+      <div class="exp-item-inner">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Groupe Viseo</div>
+            <div class="exp-location">
+              <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+              <span data-i18n="exp.place">Andraharo, Antananarivo · Madagascar</span>
+            </div>
+          </div>
+          <div class="exp-right">
+            <span class="exp-badge stage" data-i18n="exp.e2.badge">Stage · Licence</span>
+            <div class="exp-date" data-i18n="exp.e2.date">12 Fév. 2025 — 16 Mai 2025</div>
+          </div>
+        </div>
+        <div class="exp-role" data-i18n="exp.e2.role">Stagiaire Développeur Odoo</div>
+        <div class="exp-desc" data-i18n="exp.e2.desc">
+          Stage de fin de licence réalisé au sein du département technique. Première immersion professionnelle dans l'écosystème Odoo en environnement d'entreprise.
+        </div>
+        <ul class="exp-tasks">
+          <li data-i18n="exp.e2.t1">Découverte et prise en main de l'architecture Odoo (ORM, modèles, vues)</li>
+          <li data-i18n="exp.e2.t2">Développement de fonctionnalités sur des modules existants</li>
+          <li data-i18n="exp.e2.t3">Rédaction de rapports QWeb et personnalisation d'interfaces</li>
+          <li data-i18n="exp.e2.t4">Participation aux revues de code et réunions d'équipe</li>
+        </ul>
+        <div class="exp-tech">
+          <span class="tag amber">Odoo</span>
+          <span class="tag amber">Python</span>
+          <span class="tag">QWeb</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Git</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<section id="education" class="section-split">
+  <div class="split-head reveal">
+    <div class="section-label" data-i18n="edu.label">07 — Éducation</div>
+    <div class="section-title" data-i18n-html="edu.title">Mon parcours<br/>académique.</div>
+    <p class="split-intro" data-i18n="edu.intro">De la Terminale C au Master en Informatique de Gestion.</p>
+  </div>
+  <div class="split-body">
+  <div class="edu-timeline reveal">
+    <div class="edu-item">
+      <div class="edu-badge current" data-i18n="edu.current">⟳ En cours</div>
+      <div class="edu-date" data-i18n="edu.d1.date">2025 — Présent</div>
+      <div class="edu-school">Institut Supérieur d'Informatique (IS-INFO)</div>
+      <div class="edu-location">Ampasamadinika, Antananarivo</div>
+      <div class="edu-diploma" data-i18n="edu.d1.diploma">Master — Génie Logiciel</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-badge" data-i18n="edu.done">✓ Obtenu</div>
+      <div class="edu-date">2022 — 2025</div>
+      <div class="edu-school">Institut Supérieur d'Informatique (IS-INFO)</div>
+      <div class="edu-location">Ampasamadinika, Antananarivo</div>
+      <div class="edu-diploma" data-i18n="edu.d2.diploma">Licence Professionnelle en Informatique de Gestion</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-badge" data-i18n="edu.done">✓ Obtenu</div>
+      <div class="edu-date">2020 — 2021</div>
+      <div class="edu-school">Institution Sainte Famille (La Salle)</div>
+      <div class="edu-location">Mahamasina, Antananarivo</div>
+      <div class="edu-diploma" data-i18n="edu.d3.diploma">Baccalauréat série C</div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="section-label reveal" data-i18n="contact.label">08 — Contact</div>
+  <div class="contact-big reveal" data-i18n-html="contact.big">
+    Construisons quelque<br/>chose <em>ensemble.</em>
+  </div>
+  <div class="contact-sub reveal" data-i18n="contact.sub">Disponible pour des missions freelance locales et à distance.</div>
+
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <a href="mailto:ranaivosonclaudio@gmail.com" class="contact-item-row">
+        <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+        <div><div class="ci-label">Email</div><div class="ci-val">ranaivosonclaudio@gmail.com</div></div>
+      </a>
+      <a href="tel:+261324337246" class="contact-item-row">
+        <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+        <div><div class="ci-label" data-i18n="contact.phone">Téléphone</div><div class="ci-val">+261 32 43 372 46</div></div>
+      </a>
+      <a href="https://github.com/CLAUDIO101000" target="_blank" rel="noopener noreferrer" class="contact-item-row">
+        <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg></span>
+        <div><div class="ci-label">GitHub</div><div class="ci-val">github.com/CLAUDIO101000</div></div>
+      </a>
+      <a href="https://www.linkedin.com/in/claudio-ranaivoson-8145aa341" target="_blank" rel="noopener noreferrer" class="contact-item-row">
+        <span class="ci-icon"><svg class="icon solid" aria-hidden="true"><use href="#i-linkedin"/></svg></span>
+        <div><div class="ci-label">LinkedIn</div><div class="ci-val">Claudio Ranaivoson</div></div>
+      </a>
+    </div>
+
+    <div class="contact-form-wrap reveal reveal-delay-2">
+      <form action="https://formspree.io/f/mzzzydjj" method="POST" id="contact-form">
+        <div class="hp-field" aria-hidden="true">
+          <label data-i18n="contact.hp">Ne pas remplir</label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" name="_subject" value="[Portfolio] Nouveau message de contact">
+        <div class="form-group">
+          <label for="cf-name" data-i18n="contact.name">Nom</label>
+          <input type="text" id="cf-name" name="name" data-i18n-placeholder="contact.namePh" placeholder="Votre nom" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="cf-email" data-i18n="contact.email">Email</label>
+          <input type="email" id="cf-email" name="email" data-i18n-placeholder="contact.emailPh" placeholder="votreemail@exemple.com" autocomplete="email" required>
+        </div>
+        <div class="form-group">
+          <label for="cf-message" data-i18n="contact.message">Message</label>
+          <textarea id="cf-message" name="message" data-i18n-placeholder="contact.messagePh" placeholder="Décrivez votre projet..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg> <span data-i18n="contact.send">Envoyer le message</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-mark" aria-hidden="true">Claudio<span>.</span></div>
+  <div class="footer-row">
+    <span>© <span id="footer-year">2026</span> — <a href="https://github.com/CLAUDIO101000">RANAIVOSON Nantenaina Claudio</a></span>
+    <span>Madagascar · L'Île Rouge</span>
+    <span>
+      <span data-i18n="footer.madeWith">Conçu avec</span>
+      <svg class="icon" aria-hidden="true"><use href="#i-coffee"/></svg>
+      <span data-i18n="footer.andPassion">et passion</span>
+    </span>
+  </div>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+
 </body>
-
 </html>

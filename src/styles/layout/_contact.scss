@@ -1,0 +1,84 @@
+// Section finale en aplat latérite : le point d'orgue de la page
+#contact {
+  --ink-soft: #3a1a0e; // 5.8:1 sur --accent
+
+  background: var(--accent); color: var(--ink);
+  text-align: left;
+  padding-block: var(--sp-12);
+  position: relative; overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+
+  .section-label {
+    color: var(--ink);
+    &::before { background: var(--ink); box-shadow: 0 0 0 4px rgba(18, 15, 12, .15); }
+  }
+
+  :is(a, button, input, textarea):focus-visible { outline-color: var(--ink); }
+  .contact-form-wrap :is(input, textarea, button):focus-visible { outline-color: var(--accent); }
+}
+
+// Ondes concentriques, comme un caillou jeté dans l'eau
+.contact-glow {
+  position: absolute; width: 1400px; height: 1400px;
+  right: -500px; top: -380px;
+  background: repeating-radial-gradient(circle, transparent 0 46px, rgba(18, 15, 12, .09) 46px 47px);
+  mask-image: radial-gradient(circle, black 30%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-big {
+  font-family: var(--font-sans); font-weight: 800;
+  font-size: clamp(2.6rem, 8vw, 7.5rem);
+  line-height: .9; margin-bottom: var(--sp-5); letter-spacing: -.06em;
+  position: relative;
+  em {
+    font-family: var(--font-serif); font-weight: 400; font-style: italic;
+    letter-spacing: -.02em; color: var(--text);
+  }
+}
+
+.contact-sub {
+  color: var(--ink-soft); font-size: var(--fs-lg);
+  margin-bottom: var(--sp-10); position: relative; max-width: 50ch;
+}
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: var(--sp-8); text-align: left;
+  position: relative; align-items: end;
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(18, 15, 12, .3); }
+
+.contact-item-row {
+  display: flex; align-items: center; gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-2);
+  border-bottom: 1px solid rgba(18, 15, 12, .3);
+  color: var(--ink); text-decoration: none;
+  transition: background-color .3s, padding-left .4s var(--ease-out), color .3s;
+
+  &::after {
+    content: '→'; margin-left: auto; font-size: 1.3rem;
+    transition: transform .4s var(--ease-out);
+  }
+
+  &:hover {
+    background: var(--ink); color: var(--text); padding-left: var(--sp-5);
+    .ci-label { color: var(--muted); }
+    .ci-icon  { color: var(--accent); }
+    &::after  { transform: translateX(-8px) rotate(-45deg); color: var(--accent); }
+  }
+}
+
+.ci-icon {
+  color: var(--ink); font-size: 1.3rem; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px;
+  transition: color .3s;
+}
+.ci-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); color: var(--ink-soft);
+  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px;
+}
+.ci-val { font-size: var(--fs-lg); font-weight: 600; letter-spacing: -.02em; overflow-wrap: anywhere; }

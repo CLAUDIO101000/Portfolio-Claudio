@@ -1,0 +1,55 @@
+#education { border-top: 1px solid var(--border); }
+
+// Liste façon registre : une ligne par diplôme, date en colonne
+.edu-timeline {
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--border);
+  max-width: 100%;
+}
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  grid-template-areas:
+    'date school badge'
+    'date loc    badge'
+    'date diploma badge';
+  column-gap: var(--sp-6);
+  padding: var(--sp-6) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  transition: background-color .3s, padding-left .4s var(--ease-out);
+
+  &::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--accent);
+    transform: scaleY(0); transform-origin: top;
+    transition: transform .4s var(--ease-out);
+  }
+  &:hover { background: var(--surface); padding-left: var(--sp-6); }
+  &:hover::before { transform: none; }
+}
+
+.edu-date {
+  grid-area: date;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs); color: var(--accent); letter-spacing: .1em;
+  padding-top: .35em;
+}
+.edu-school   { grid-area: school; font-size: var(--fs-xl); font-weight: 700; letter-spacing: -.03em; line-height: 1.25; }
+.edu-location {
+  grid-area: loc;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); color: var(--muted); letter-spacing: .06em; margin: var(--sp-1) 0 var(--sp-2);
+}
+.edu-diploma  { grid-area: diploma; font-family: var(--font-serif); font-size: var(--fs-xl); color: var(--text); opacity: .85; font-style: italic; line-height: 1.35; }
+
+.edu-badge {
+  grid-area: badge; align-self: start;
+  font-family: var(--font-mono);
+  font-size: var(--fs-3xs); padding: .3rem .7rem;
+  border: 1px solid var(--green); color: var(--green); border-radius: 999px;
+  letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+
+  &.current { border-color: var(--accent); color: var(--ink); background: var(--accent); }
+}

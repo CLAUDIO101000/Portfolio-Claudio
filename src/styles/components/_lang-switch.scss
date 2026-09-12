@@ -1,0 +1,91 @@
+// ── Onglets de langue (FR / EN) dans la barre de navigation
+.lang-switch {
+  display: flex;
+  flex: none;
+  padding: 3px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+}
+
+.lang-tab {
+  padding: var(--sp-1) var(--sp-3);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  letter-spacing: .12em;
+  color: var(--muted);
+  line-height: 1.6;
+  transition: color .2s, background-color .2s;
+
+  &:hover { color: var(--text); }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  &.is-active {
+    color: var(--ink);
+    background: var(--accent);
+    font-weight: 700;
+  }
+}
+
+// ── Toast SweetAlert2, aligné sur la palette sombre du portfolio.
+// La feuille de SweetAlert2 étant chargée après celle-ci, chaque sélecteur
+// ci-dessous est volontairement plus spécifique que le sien.
+.swal2-popup.lang-toast {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .55);
+  color: var(--text);
+  padding: var(--sp-3) var(--sp-4);
+  margin-top: calc(var(--nav-h) + var(--sp-3));
+
+  .swal2-title {
+    font-family: var(--font-sans);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    color: var(--text);
+    padding: 0;
+    margin: 0;
+  }
+
+  .swal2-html-container {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-2xs);
+    text-align: left;
+    color: var(--muted);
+    margin: var(--sp-1) 0 0;
+    padding: 0;
+  }
+
+  .lang-toast-flow {
+    color: var(--accent);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+
+    em { font-style: normal; color: var(--muted); }
+  }
+
+  .lang-toast-note { color: var(--muted); }
+
+  .swal2-timer-progress-bar { background: var(--accent); }
+
+  .swal2-icon.swal2-success {
+    border-color: var(--green);
+    color: var(--green);
+
+    [class^='swal2-success-line'] { background-color: var(--green); }
+    .swal2-success-ring { border-color: rgba(126, 217, 154, .35); }
+    // Les arcs blancs masquent l'anneau sur fond clair : inutiles ici.
+    [class^='swal2-success-circular-line'], .swal2-success-fix { background-color: transparent; }
+  }
+}

@@ -1,0 +1,55 @@
+// Boutons en capsule ; le fond latérite « monte » au survol du bouton fantôme
+%btn-base {
+  position: relative; overflow: hidden; isolation: isolate;
+  padding: var(--sp-3) var(--sp-5);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs); font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  text-decoration: none; display: inline-flex; align-items: center; gap: var(--sp-2);
+  transition: transform .3s var(--ease-out), box-shadow .3s, color .3s, border-color .3s;
+}
+
+.btn-primary {
+  @extend %btn-base;
+  background: var(--accent); color: var(--ink); border: 1px solid var(--accent);
+  &:hover { transform: translateY(var(--lift)); box-shadow: 0 14px 34px rgba(255, 107, 61, .35); }
+}
+
+.btn-ghost {
+  @extend %btn-base;
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border-strong);
+
+  &::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: var(--text);
+    transform: translateY(101%);
+    transition: transform .4s var(--ease-out);
+  }
+  &:hover { color: var(--ink); border-color: var(--text); transform: translateY(var(--lift)); }
+  &:hover::before { transform: none; }
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-3xs); padding: .3rem .65rem;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--muted); letter-spacing: .04em;
+  &.amber { border-color: var(--accent-dim); color: var(--accent); }
+}
+
+.proj-btn {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); letter-spacing: .08em; text-transform: uppercase;
+  padding: var(--sp-2) var(--sp-4); border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--muted); text-decoration: none;
+  transition: border-color .2s, color .2s, background-color .2s;
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  &:hover { border-color: var(--accent); color: var(--accent); }
+  &.primary {
+    background: var(--accent); border-color: var(--accent); color: var(--ink);
+    &:hover { background: var(--text); border-color: var(--text); color: var(--ink); }
+  }
+}

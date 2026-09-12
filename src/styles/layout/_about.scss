@@ -1,0 +1,70 @@
+#about { padding-top: var(--sp-10); }
+
+.about-grid {
+  display: grid; grid-template-columns: 1.3fr 1fr;
+  gap: var(--sp-10); align-items: start;
+}
+
+.about-text {
+  p {
+    font-size: var(--fs-lg); line-height: 1.75; color: var(--muted);
+    margin-bottom: var(--sp-4); max-width: 62ch;
+    strong { color: var(--text); font-weight: 600; }
+  }
+}
+
+// Citation en grand, guillemet décoratif latérite
+.quote-block {
+  position: relative;
+  padding: var(--sp-6) var(--sp-6) var(--sp-6) var(--sp-10);
+  margin: var(--sp-6) 0;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+
+  &::before {
+    content: '“';
+    position: absolute; left: var(--sp-4); top: -.1em;
+    font-family: var(--font-serif); font-size: 6rem; line-height: 1;
+    color: var(--accent);
+  }
+
+  em {
+    font-family: var(--font-serif);
+    font-size: var(--fs-xl); color: var(--text); line-height: 1.45; font-style: italic;
+  }
+}
+
+.about-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3);
+  position: sticky; top: calc(var(--nav-h) + var(--sp-5));
+}
+
+.stat-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-6) var(--sp-5);
+  min-height: 190px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: border-color .3s, transform .4s var(--ease-out), background-color .3s;
+
+  &:hover { border-color: var(--accent-dim); transform: translateY(var(--lift)) rotate(-1deg); }
+
+  // Première carte en aplat : casse la répétition
+  &:first-child {
+    background: var(--accent); border-color: var(--accent);
+    .stat-number { color: var(--ink); }
+    .stat-label  { color: #3a1a0e; }
+  }
+}
+
+.stat-number {
+  font-family: var(--font-sans); font-weight: 800;
+  font-size: var(--fs-3xl); letter-spacing: -.06em;
+  color: var(--text); line-height: .9;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); color: var(--muted); letter-spacing: .08em; line-height: 1.5;
+  text-transform: uppercase;
+}

@@ -1,0 +1,11 @@
+// Firefox
+html {
+  scrollbar-color: var(--border-strong) var(--bg);
+  scrollbar-width: thin;
+}
+
+// WebKit / Blink
+::-webkit-scrollbar        { width: 6px; height: 6px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: var(--border-strong); }
+::-webkit-scrollbar-thumb:hover { background: var(--amber-dim); }

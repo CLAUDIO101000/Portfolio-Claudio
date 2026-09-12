@@ -1,0 +1,33 @@
+// src/styles/main.scss
+
+// Abstracts (pas de CSS généré, juste des variables/mixins)
+@use 'abstracts/variables' as *;
+@use 'abstracts/mixins' as *;
+
+// Base
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/animations';
+
+// Components
+@use 'components/icons';
+@use 'components/cursor';
+@use 'components/nav';
+@use 'components/lang-switch';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/skills';
+@use 'components/terminal';
+@use 'components/form';
+
+// Layout
+@use 'layout/hero';
+@use 'layout/about';
+@use 'layout/experience';
+@use 'layout/education';
+@use 'layout/contact';
+@use 'layout/footer';
+
+// Utils
+@use 'utils/scrollbar';
+@use 'utils/responsive';
