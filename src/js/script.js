@@ -1,5 +1,6 @@
 import { generateCV } from './cv.js';
 import { t, onLangChange, initI18n } from './i18n.js';
+import { initLightbox } from './lightbox.js';
 
 // Traduit le DOM avant toute autre initialisation, pour que les modules qui
 // lisent des textes (typed, terminal) partent déjà de la bonne langue.
@@ -185,3 +186,6 @@ setInterval(()=>{
 
 const cvBtn = document.getElementById('cv-download');
 if (cvBtn) { cvBtn.addEventListener('click', generateCV); }
+
+// ── Visionneuse du certificat
+initLightbox();

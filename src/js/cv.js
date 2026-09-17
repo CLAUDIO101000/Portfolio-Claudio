@@ -3,6 +3,7 @@
 //  - chaque ligne visuelle = un seul appel doc.text() : l'ordre d'extraction du
 //    texte correspond exactement à l'ordre de lecture humain
 //  - titres de rubriques standards, police standard (Helvetica), ponctuation ASCII
+//  - aucune image : aucun contenu que l'extraction de texte laisserait de côté
 //  - métadonnées et langue du document renseignées
 
 import { t } from './i18n.js';
@@ -72,12 +73,20 @@ export const CV = {
     ['Licence Professionnelle en Informatique de Gestion', 'IS-INFO, Antananarivo', '2022 - 2025'],
     ['Baccalauréat série C', 'Institution Sainte Famille (La Salle), Antananarivo', '2020 - 2021'],
   ],
+  certifications: [
+    {
+      name: 'Prescriptive Analytics - Training Program (24 sessions) et Data and Artificial Intelligence Project Framework (7 sessions)',
+      org: 'ClearMind-Analytics, Andraharo, Antananarivo',
+      date: 'Août 2025 - Novembre 2025',
+      detail: `Formation suivie pour le Groupe Viseo : aide à la décision, optimisation, cadrage et conduite de projets data et intelligence artificielle. Certificat délivré le 21 novembre 2025.`,
+    },
+  ],
   langues: 'Malgache (langue maternelle), Français (courant), Anglais (technique)',
   permis: 'Permis de conduire, catégorie B',
   interets: 'Lecture, cuisine, jeux vidéo',
 };
 
-export function buildCVDocument(jsPDF, photo = null) {
+export function buildCVDocument(jsPDF) {
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
 
   doc.setLanguage('fr');
@@ -85,7 +94,7 @@ export function buildCVDocument(jsPDF, photo = null) {
     title: `CV - ${CV.name} - ${CV.title}`,
     subject: 'Curriculum Vitae',
     author: CV.name,
-    keywords: 'Odoo, Python, QWeb, PostgreSQL, JavaScript, TypeScript, React, Django, Laravel, Node.js, PHP, SQL, Git, Linux, Madagascar',
+    keywords: 'Odoo, Python, QWeb, PostgreSQL, JavaScript, TypeScript, React, Django, Laravel, Node.js, PHP, SQL, Git, Linux, Prescriptive Analytics, Data, Intelligence Artificielle, Madagascar',
     creator: 'Portfolio de Claudio Ranaivoson',
   });
 
@@ -124,7 +133,6 @@ export function buildCVDocument(jsPDF, photo = null) {
   };
 
   // ── En-tête : pas de bandeau coloré, le nom est le premier texte du document.
-  // La photo est posée à droite, en dehors de la colonne de texte.
   doc.setFont('helvetica', 'bold'); doc.setFontSize(20); doc.setTextColor(...DARK);
   doc.text(CV.name, M, 20);
   doc.setFont('helvetica', 'normal'); doc.setFontSize(11.5); doc.setTextColor(...MUTED);
@@ -151,13 +159,6 @@ export function buildCVDocument(jsPDF, photo = null) {
     { t: CV.github, url: `https://${CV.github}` },
     { t: CV.linkedin, url: `https://${CV.linkedin}` },
   ], 39.5);
-
-  if (photo) {
-    const S = 28, px = right - S, py = 11;
-    doc.addImage(photo, 'JPEG', px, py, S, S);
-    doc.setDrawColor(...AMBER); doc.setLineWidth(0.5);
-    doc.rect(px, py, S, S);
-  }
 
   doc.setDrawColor(...AMBER); doc.setLineWidth(0.8);
   doc.line(M, 44, right, 44);
@@ -201,6 +202,15 @@ export function buildCVDocument(jsPDF, photo = null) {
     line(`${school}  |  ${date}`, 9, 'normal', MUTED, 5.5);
   });
 
+  sectionTitle('Certifications');
+  CV.certifications.forEach((c) => {
+    checkPage(18);
+    line(c.name, 9.5, 'bold', DARK);
+    line(`${c.org}  |  ${c.date}`, 9, 'normal', MUTED, 5);
+    line(c.detail, 9, 'normal', TEXT);
+    y += 2;
+  });
+
   sectionTitle('Langues');
   line(CV.langues, 9, 'normal', TEXT);
 
@@ -222,29 +232,6 @@ export function buildCVDocument(jsPDF, photo = null) {
   return doc;
 }
 
-// Reprend la photo affichée dans le portfolio et la recadre en carré.
-// Renvoie null si elle est indisponible : le CV se génère alors sans photo.
-function getPhotoDataURL() {
-  return new Promise((resolve) => {
-    const el = document.querySelector('.avatar-wrap img');
-    if (!el || !el.getAttribute('src')) { resolve(null); return; }
-    const img = new Image();
-    img.onload = () => {
-      try {
-        const side = Math.min(img.naturalWidth, img.naturalHeight);
-        const c = document.createElement('canvas');
-        c.width = 360; c.height = 360;
-        c.getContext('2d').drawImage(
-          img, (img.naturalWidth - side) / 2, (img.naturalHeight - side) / 2, side, side, 0, 0, 360, 360,
-        );
-        resolve(c.toDataURL('image/jpeg', 0.9));
-      } catch (e) { resolve(null); }
-    };
-    img.onerror = () => resolve(null);
-    img.src = el.src;
-  });
-}
-
 // Charge jsPDF à la demande : la librairie n'est téléchargée qu'au clic.
 async function loadJsPDF() {
   if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
@@ -260,6 +247,5 @@ export async function generateCV() {
     alert(t('cv.error'));
     return;
   }
-  const photo = await getPhotoDataURL();
-  buildCVDocument(jsPDF, photo).save('CV_RANAIVOSON_Nantenaina_Claudio_Developpeur_Odoo.pdf');
+  buildCVDocument(jsPDF).save('CV_RANAIVOSON_Nantenaina_Claudio_Developpeur_Odoo.pdf');
 }

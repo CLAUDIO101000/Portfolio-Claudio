@@ -53,3 +53,96 @@
 
   &.current { border-color: var(--accent); color: var(--ink); background: var(--accent); }
 }
+
+// ── Certification : une carte détachée du registre des diplômes
+.cert-block { margin-top: var(--sp-8); }
+
+.cert-heading {
+  display: flex; align-items: center; gap: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); font-weight: 400;
+  color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
+  margin-bottom: var(--sp-4);
+}
+
+.cert-card {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: var(--sp-6);
+  width: 100%; text-align: left;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-5);
+  color: inherit; font: inherit; cursor: pointer;
+  transition: border-color .3s, transform .4s var(--ease-out), background-color .3s;
+
+  &:hover, &:focus-visible {
+    border-color: var(--accent-dim); background: var(--surface2);
+    transform: translateY(var(--lift));
+  }
+  &:hover .cert-thumb-hint { opacity: 1; }
+  &:hover .cert-cta { color: var(--accent); border-color: var(--accent); }
+}
+
+// Aperçu du scan, recadré en 4/3 — proche du format du document, le rognage reste minime
+.cert-thumb {
+  position: relative; display: block;
+  aspect-ratio: 4 / 3; overflow: hidden;
+  border: 1px solid var(--border-strong); border-radius: var(--radius);
+  background: var(--bg);
+
+  img {
+    display: block; width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    transition: transform .6s var(--ease-out);
+  }
+}
+.cert-card:hover .cert-thumb img { transform: scale(1.04); }
+
+.cert-thumb-hint {
+  position: absolute; inset: auto var(--sp-2) var(--sp-2) auto;
+  display: grid; place-items: center;
+  width: 2rem; height: 2rem; font-size: var(--fs-sm);
+  background: var(--accent); color: var(--ink); border-radius: 999px;
+  opacity: 0; transition: opacity .3s;
+}
+
+.cert-info { display: flex; flex-direction: column; gap: var(--sp-2); min-width: 0; }
+
+.cert-top {
+  display: flex; align-items: center; gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+.cert-org {
+  font-size: var(--fs-xl); font-weight: 700; letter-spacing: -.03em; line-height: 1.2;
+}
+.cert-badge {
+  font-family: var(--font-mono);
+  font-size: var(--fs-3xs); padding: .3rem .7rem;
+  border: 1px solid var(--green); color: var(--green); border-radius: 999px;
+  letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+}
+.cert-name {
+  font-family: var(--font-serif); font-style: italic;
+  font-size: var(--fs-lg); line-height: 1.3; color: var(--text); opacity: .9;
+}
+// Date puis lieu, une ligne chacun — même registre que .edu-location
+.cert-meta {
+  display: flex; flex-direction: column; gap: var(--sp-1);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); color: var(--muted); letter-spacing: .06em; line-height: 1.5;
+  margin-top: var(--sp-1);
+}
+.cert-tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-2); }
+
+.cert-cta {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  margin-top: var(--sp-3);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs); letter-spacing: .08em; text-transform: uppercase;
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--border-strong); border-radius: 999px;
+  color: var(--muted);
+  transition: border-color .2s, color .2s;
+}

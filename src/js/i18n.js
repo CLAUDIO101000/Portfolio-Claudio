@@ -6,6 +6,7 @@
 //   data-i18n-html         → innerHTML (texte contenant du balisage inline)
 //   data-i18n-placeholder  → attribut placeholder
 //   data-i18n-aria-label   → attribut aria-label
+//   data-i18n-alt          → attribut alt (images)
 //
 // Le choix est mémorisé dans localStorage ; à la première visite on suit la
 // langue du navigateur.
@@ -63,6 +64,9 @@ function applyTranslations() {
   });
   document.querySelectorAll('[data-i18n-aria-label]').forEach((el) => {
     el.setAttribute('aria-label', t(el.dataset.i18nAriaLabel));
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    el.setAttribute('alt', t(el.dataset.i18nAlt));
   });
 }
 

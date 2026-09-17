@@ -134,13 +134,27 @@ export const translations = {
     // ── Éducation
     'edu.label': '07 — Éducation',
     'edu.title': 'Mon parcours<br/>académique.',
-    'edu.intro': 'De la Terminale C au Master en Informatique de Gestion.',
+    'edu.intro': 'De la Terminale C au Master en Génie Logiciel, complété par une certification en analytique prescriptive.',
     'edu.current': '⟳ En cours',
     'edu.done': '✓ Obtenu',
     'edu.d1.date': '2025 — Présent',
     'edu.d1.diploma': 'Master — Génie Logiciel',
     'edu.d2.diploma': 'Licence Professionnelle en Informatique de Gestion',
     'edu.d3.diploma': 'Baccalauréat série C',
+
+    // ── Certification
+    'cert.heading': 'Certification professionnelle',
+    'cert.badge': '✓ Délivré',
+    'cert.p1': 'Prescriptive Analytics — Training Program (24 sessions)',
+    'cert.p2': 'Data and Artificial Intelligence Project Framework (7 sessions)',
+    'cert.date': '19 août 2025 — 17 nov. 2025',
+    'cert.place': 'Andraharo, Antananarivo — pour le Groupe Viseo',
+    'cert.view': 'Voir le certificat',
+    'cert.aria': 'Ouvrir le certificat ClearMind-Analytics en grand',
+    'cert.lbTitle': 'Certificat — ClearMind-Analytics',
+    'cert.download': 'Télécharger',
+    'cert.close': 'Fermer la visionneuse',
+    'cert.alt': "Certificat de fin de formation ClearMind-Analytics délivré à RANAIVOSON Nantenaina Claudio pour les programmes Prescriptive Analytics (24 sessions) et Data and Artificial Intelligence Project Framework (7 sessions), du 19 août au 17 novembre 2025.",
 
     // ── Contact
     'contact.label': '08 — Contact',
@@ -292,13 +306,27 @@ export const translations = {
     // ── Education
     'edu.label': '07 — Education',
     'edu.title': 'My academic<br/>background.',
-    'edu.intro': "From the science baccalaureate to a Master's in Information Systems.",
+    'edu.intro': "From the science baccalaureate to a Master's in Software Engineering, plus a certification in prescriptive analytics.",
     'edu.current': '⟳ In progress',
     'edu.done': '✓ Completed',
     'edu.d1.date': '2025 — Present',
     'edu.d1.diploma': "Master's — Software Engineering",
     'edu.d2.diploma': "Professional Bachelor's in Information Systems Management",
     'edu.d3.diploma': 'Baccalaureate, science stream (série C)',
+
+    // ── Certification
+    'cert.heading': 'Professional certification',
+    'cert.badge': '✓ Awarded',
+    'cert.p1': 'Prescriptive Analytics — Training Program (24 sessions)',
+    'cert.p2': 'Data and Artificial Intelligence Project Framework (7 sessions)',
+    'cert.date': '19 Aug 2025 — 17 Nov 2025',
+    'cert.place': 'Andraharo, Antananarivo — delivered for Groupe Viseo',
+    'cert.view': 'View the certificate',
+    'cert.aria': 'Open the ClearMind-Analytics certificate full size',
+    'cert.lbTitle': 'Certificate — ClearMind-Analytics',
+    'cert.download': 'Download',
+    'cert.close': 'Close the viewer',
+    'cert.alt': 'ClearMind-Analytics certificate of completion awarded to RANAIVOSON Nantenaina Claudio for the Prescriptive Analytics (24 sessions) and Data and Artificial Intelligence Project Framework (7 sessions) programs, from 19 August to 17 November 2025.',
 
     // ── Contact
     'contact.label': '08 — Contact',

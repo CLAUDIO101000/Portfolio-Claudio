@@ -90,5 +90,13 @@
     row-gap: var(--sp-1);
   }
 
+  // La vignette passe au-dessus du texte, en bandeau
+  .cert-card  { grid-template-columns: 1fr; gap: var(--sp-4); padding: var(--sp-4); }
+  .cert-thumb { aspect-ratio: 16 / 9; }
+  .cert-cta   { width: 100%; justify-content: center; }
+
+  .lightbox-bar   { justify-content: center; }
+  .lightbox-title { display: none; }
+
   .footer-row { flex-direction: column; text-align: center; }
 }
