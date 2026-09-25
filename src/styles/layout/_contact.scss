@@ -10,7 +10,8 @@
 
   .section-label {
     color: var(--ink);
-    &::before { background: var(--ink); box-shadow: 0 0 0 4px rgba(18, 15, 12, .15); }
+    &::before { color: var(--ink); border-color: rgba(18, 15, 12, .45); background: rgba(18, 15, 12, .08); }
+    &::after  { border-top-color: rgba(18, 15, 12, .35); }
   }
 
   :is(a, button, input, textarea):focus-visible { outline-color: var(--ink); }

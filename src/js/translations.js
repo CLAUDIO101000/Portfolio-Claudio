@@ -46,7 +46,7 @@ export const translations = {
     ],
 
     // ── À propos
-    'about.label': '01 — À propos',
+    'about.label': 'À propos',
     'about.title': 'Passionné par la<br/><em class="title-accent">technologie.</em>',
     'about.p1': "Bonjour ! Je suis <strong>RANAIVOSON Nantenaina Claudio</strong>, développeur passionné basé à <span class=\"hl\">Madagascar</span>. Depuis que j'ai découvert la programmation, je suis fasciné par le pouvoir des solutions numériques pour résoudre des problèmes complexes.",
     'about.p2': "Mes compétences couvrent le développement <strong>web</strong> et les solutions <span class=\"hl\">Odoo</span>, avec des technologies comme Python, PHP, JavaScript, React, Django et bien d'autres. Mon objectif : créer des applications <strong>modernes, intuitives et robustes</strong>.",
@@ -58,7 +58,7 @@ export const translations = {
     'about.stat4': 'Dédié à chaque projet',
 
     // ── Compétences
-    'skills.label': '02 — Compétences',
+    'skills.label': 'Compétences',
     'skills.title': 'Ce que je maîtrise.',
     'skills.cat1': 'Langages de programmation',
     'skills.cat2': 'Frameworks & Bibliothèques',
@@ -71,7 +71,7 @@ export const translations = {
     'skills.dm': 'Data Mining',
 
     // ── Services
-    'services.label': '03 — Services',
+    'services.label': 'Services',
     'services.title': 'Ce que je fais<br/>pour vous.',
     'services.c1.title': 'Développement Odoo',
     'services.c1.desc': "Création de modules Odoo personnalisés, extension des modules existants, personnalisation des vues et workflows. Spécialisé en Odoo avec maîtrise de l'ORM, QWeb et des patterns de développement avancés.",
@@ -89,7 +89,7 @@ export const translations = {
     'services.tagDoc': 'Documentation',
 
     // ── Stack technique
-    'stack.label': '04 — Stack technique',
+    'stack.label': 'Stack technique',
     'stack.title': 'Mon environnement<br/>de travail.',
     'stack.intro': 'Les langages, frameworks et outils qui rythment mon quotidien de développeur.',
     'term.whoami': 'ranaivoson_claudio · dev_web · Madagascar',
@@ -97,18 +97,18 @@ export const translations = {
     'term.status': '✓ Disponible pour nouvelles missions',
 
     // ── Projets
-    'projects.label': '05 — Projets',
+    'projects.label': 'Projets',
     'projects.title': 'Mes réalisations.',
-    'projects.p1.num': '01 — 2024 · Application Web',
+    'projects.p1.num': '2024 · Application Web',
     'projects.p1.desc': 'Application de gestion de congés permettant aux employés de soumettre des demandes et de suivre leur solde. Calcul intelligent excluant les jours fériés et weekends. Interface admin complète pour la validation des requêtes.',
-    'projects.p2.num': '02 — 2024 · Application Temps Réel',
+    'projects.p2.num': '2024 · Application Temps Réel',
     'projects.p2.desc': "Application de chat temps réel avec gestion de pseudonyme, avatar optionnel et partage d'images. Architecture Node.js + Socket.io pour une communication instantanée et fluide entre utilisateurs. Déployée sur Vercel.",
     'projects.demo': 'Démo live',
     'projects.moreText': "D'autres dépôts, expérimentations et projets en cours sont publiés sur <strong>mon profil GitHub</strong>.",
     'projects.moreCta': 'Voir tous les dépôts',
 
     // ── Expérience
-    'exp.label': '06 — Expérience professionnelle',
+    'exp.label': 'Expérience professionnelle',
     'exp.title': 'Mes expériences<br/>en entreprise.',
     'exp.intro': 'Mon parcours au sein du Groupe Viseo, du stage de licence au poste de développeur Odoo.',
     'exp.place': 'Andraharo, Antananarivo · Madagascar',
@@ -132,7 +132,7 @@ export const translations = {
     'exp.e2.t4': "Participation aux revues de code et réunions d'équipe",
 
     // ── Éducation
-    'edu.label': '07 — Éducation',
+    'edu.label': 'Éducation',
     'edu.title': 'Mon parcours<br/>académique.',
     'edu.intro': 'De la Terminale C au Master en Génie Logiciel, complété par une certification en analytique prescriptive.',
     'edu.current': '⟳ En cours',
@@ -157,7 +157,7 @@ export const translations = {
     'cert.alt': "Certificat de fin de formation ClearMind-Analytics délivré à RANAIVOSON Nantenaina Claudio pour les programmes Prescriptive Analytics (24 sessions) et Data and Artificial Intelligence Project Framework (7 sessions), du 19 août au 17 novembre 2025.",
 
     // ── Contact
-    'contact.label': '08 — Contact',
+    'contact.label': 'Contact',
     'contact.big': 'Construisons quelque<br/>chose <em>ensemble.</em>',
     'contact.sub': 'Disponible pour des missions freelance locales et à distance.',
     'contact.phone': 'Téléphone',
@@ -218,7 +218,7 @@ export const translations = {
     ],
 
     // ── About
-    'about.label': '01 — About',
+    'about.label': 'About',
     'about.title': 'Passionate about<br/><em class="title-accent">technology.</em>',
     'about.p1': 'Hi! I am <strong>RANAIVOSON Nantenaina Claudio</strong>, a passionate developer based in <span class="hl">Madagascar</span>. Ever since I discovered programming, I have been fascinated by the power of digital solutions to solve complex problems.',
     'about.p2': 'My skills span <strong>web</strong> development and <span class="hl">Odoo</span> solutions, with technologies such as Python, PHP, JavaScript, React, Django and many more. My goal: to build <strong>modern, intuitive and robust</strong> applications.',
@@ -230,7 +230,7 @@ export const translations = {
     'about.stat4': 'Committed to every project',
 
     // ── Skills
-    'skills.label': '02 — Skills',
+    'skills.label': 'Skills',
     'skills.title': 'What I work with.',
     'skills.cat1': 'Programming languages',
     'skills.cat2': 'Frameworks & Libraries',
@@ -243,7 +243,7 @@ export const translations = {
     'skills.dm': 'Data Mining',
 
     // ── Services
-    'services.label': '03 — Services',
+    'services.label': 'Services',
     'services.title': 'What I build<br/>for you.',
     'services.c1.title': 'Odoo development',
     'services.c1.desc': 'Building custom Odoo modules, extending existing ones, tailoring views and workflows. Specialised in Odoo with a solid command of the ORM, QWeb and advanced development patterns.',
@@ -261,7 +261,7 @@ export const translations = {
     'services.tagDoc': 'Documentation',
 
     // ── Tech stack
-    'stack.label': '04 — Tech stack',
+    'stack.label': 'Tech stack',
     'stack.title': 'My working<br/>environment.',
     'stack.intro': 'The languages, frameworks and tools that shape my day-to-day work as a developer.',
     'term.whoami': 'ranaivoson_claudio · web_dev · Madagascar',
@@ -269,18 +269,18 @@ export const translations = {
     'term.status': '✓ Available for new projects',
 
     // ── Projects
-    'projects.label': '05 — Projects',
+    'projects.label': 'Projects',
     'projects.title': 'What I have built.',
-    'projects.p1.num': '01 — 2024 · Web application',
+    'projects.p1.num': '2024 · Web application',
     'projects.p1.desc': 'A leave management application that lets employees submit requests and track their balance. Smart calculation excluding public holidays and weekends. Full admin interface for approving requests.',
-    'projects.p2.num': '02 — 2024 · Real-time application',
+    'projects.p2.num': '2024 · Real-time application',
     'projects.p2.desc': 'A real-time chat application with nicknames, optional avatars and image sharing. Built on Node.js + Socket.io for instant, smooth communication between users. Deployed on Vercel.',
     'projects.demo': 'Live demo',
     'projects.moreText': 'More repositories, experiments and work in progress are published on <strong>my GitHub profile</strong>.',
     'projects.moreCta': 'Browse all repositories',
 
     // ── Experience
-    'exp.label': '06 — Professional experience',
+    'exp.label': 'Professional experience',
     'exp.title': 'My experience<br/>in the field.',
     'exp.intro': 'My journey at Groupe Viseo, from the bachelor internship to an Odoo developer role.',
     'exp.place': 'Andraharo, Antananarivo · Madagascar',
@@ -304,7 +304,7 @@ export const translations = {
     'exp.e2.t4': 'Taking part in code reviews and team meetings',
 
     // ── Education
-    'edu.label': '07 — Education',
+    'edu.label': 'Education',
     'edu.title': 'My academic<br/>background.',
     'edu.intro': "From the science baccalaureate to a Master's in Software Engineering, plus a certification in prescriptive analytics.",
     'edu.current': '⟳ In progress',
@@ -329,7 +329,7 @@ export const translations = {
     'cert.alt': 'ClearMind-Analytics certificate of completion awarded to RANAIVOSON Nantenaina Claudio for the Prescriptive Analytics (24 sessions) and Data and Artificial Intelligence Project Framework (7 sessions) programs, from 19 August to 17 November 2025.',
 
     // ── Contact
-    'contact.label': '08 — Contact',
+    'contact.label': 'Contact',
     'contact.big': 'Let\'s build something<br/><em>together.</em>',
     'contact.sub': 'Available for freelance work, locally and remotely.',
     'contact.phone': 'Phone',

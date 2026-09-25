@@ -36,8 +36,32 @@ const setProgress = () => {
   const max = document.documentElement.scrollHeight - innerHeight;
   navProgressEl?.style.setProperty('--progress', max > 0 ? (scrollY / max).toFixed(4) : 0);
 };
-addEventListener('scroll', setProgress, { passive: true });
-setProgress();
+
+// ── Lien de nav actif : la section courante est la dernière dont le haut a
+// franchi le tiers supérieur du viewport. Un IntersectionObserver donnerait un
+// résultat instable ici — les sections n'ont ni la même hauteur ni le même
+// rythme, et deux d'entre elles sont souvent visibles en même temps.
+const navTargets = [...document.querySelectorAll('.nav-links a[href^="#"]')]
+  .map(a => ({ a, el: document.querySelector(a.getAttribute('href')) }))
+  .filter(x => x.el);
+
+const setActiveLink = () => {
+  const line = scrollY + innerHeight / 3;
+  let current = null;
+  for (const x of navTargets) {
+    if (x.el.getBoundingClientRect().top + scrollY <= line) current = x;
+  }
+  // En bout de page, la dernière section garde la main même si elle est courte
+  if (scrollY + innerHeight >= document.documentElement.scrollHeight - 2) {
+    current = navTargets.at(-1) ?? null;
+  }
+  navTargets.forEach(x => x.a.classList.toggle('is-active', x === current));
+};
+
+const onScroll = () => { setProgress(); setActiveLink(); };
+addEventListener('scroll', onScroll, { passive: true });
+addEventListener('resize', onScroll, { passive: true });
+onScroll();
 
 // ── Heure locale d'Antananarivo (EAT, UTC+3)
 const timeEl = document.getElementById('local-time');

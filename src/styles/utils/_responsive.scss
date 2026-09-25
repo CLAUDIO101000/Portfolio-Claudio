@@ -36,6 +36,13 @@
       font-family: var(--font-sans); font-size: var(--fs-xl); font-weight: 700;
       letter-spacing: -.02em; text-transform: none; color: var(--text);
     }
+
+    // Dans le menu déroulant, la pastille pleine serait envahissante :
+    // la section courante se signale par la couleur et un losange
+    a.is-active {
+      background: transparent; color: var(--accent);
+      &::before { content: '◆'; font-size: .5em; vertical-align: .35em; margin-right: var(--sp-2); }
+    }
   }
   nav.open .nav-links { display: flex; }
 

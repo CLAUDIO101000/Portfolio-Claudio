@@ -47,6 +47,9 @@ nav {
     font-size: var(--fs-2xs); letter-spacing: .12em; text-transform: uppercase;
     transition: color .2s, background-color .2s;
     &:hover { color: var(--text); background: var(--surface2); }
+
+    // Section en cours de lecture, posée par le JS au scroll
+    &.is-active { color: var(--ink); background: var(--accent); }
   }
 }
 

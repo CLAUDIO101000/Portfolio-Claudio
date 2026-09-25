@@ -2,13 +2,47 @@
 // La gouttière garde les bordures en pleine largeur tout en bornant le contenu
 // à --container : pas de wrapper supplémentaire dans le HTML.
 section {
+  position: relative;
   padding-block: var(--sp-12);
   padding-inline: var(--gutter);
 }
 
-// Étiquette de section : pastille latérite + texte mono
+// Numérotation automatique, dans l'ordre du DOM. Réordonner les sections dans
+// index.html suffit : aucun numéro n'est écrit à la main, ni dans le HTML ni
+// dans les dictionnaires i18n — ils ne peuvent donc plus se désynchroniser.
+body { counter-reset: sect; }
+section:not(#hero) { counter-increment: sect; }
+
+// Filet de séparation, même vocabulaire que les courbes de niveau du hero :
+// un trait pointillé tendu d'une gouttière à l'autre, piqué d'un losange à
+// gauche (le jalon qu'on retrouve sur la timeline d'expérience).
+// Le sélecteur ne vise que les sections directement précédées d'une autre
+// section : celle qui suit le bandeau défilant est déjà détachée et n'en
+// hérite pas. #contact est exclu, il ouvre son propre aplat latérite.
+section + section:not(#contact) {
+  &::before {
+    content: '';
+    position: absolute; top: 0; left: var(--gutter); right: var(--gutter);
+    border-top: 1px dashed var(--border);
+  }
+  // Losange à cheval sur le filet
+  &::after {
+    content: '';
+    position: absolute; top: -4px; left: var(--gutter);
+    width: 8px; height: 8px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+}
+
+// La section qui ouvre la page sous le bandeau défilant respire moins haut :
+// la coupure du bandeau fait déjà le travail.
+.marquee-wrap + section { padding-top: var(--sp-10); }
+
+// Étiquette de section : repère numéroté, intitulé, puis filet jusqu'à la
+// marge — chaque section se lit comme l'entrée d'un index.
 .section-label {
-  display: inline-flex; align-items: center; gap: var(--sp-3);
+  display: flex; align-items: center; gap: var(--sp-3);
   font-family: var(--font-mono);
   font-size: var(--fs-2xs);
   letter-spacing: .22em;
@@ -17,10 +51,19 @@ section {
   margin-bottom: var(--sp-5);
 
   &::before {
-    content: ''; flex: none;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-glow);
+    content: counter(sect, decimal-leading-zero);
+    flex: none;
+    display: grid; place-items: center;
+    width: 2.2em; height: 2.2em;
+    letter-spacing: normal;
+    border: 1px solid var(--accent-dim); border-radius: 50%;
+    background: var(--accent-glow);
+  }
+
+  &::after {
+    content: '';
+    flex: 1 1 auto; min-width: var(--sp-5);
+    border-top: 1px dashed var(--border);
   }
 }
 
@@ -48,7 +91,12 @@ section {
   color: var(--accent);
 }
 
-.hl { color: var(--accent); }
+// Mot surligné : trait d'encre latérite posé sous la ligne de base, comme
+// passé au feutre sur une page imprimée
+.hl {
+  color: var(--accent);
+  background: linear-gradient(var(--accent-glow), var(--accent-glow)) no-repeat 0 90% / 100% .34em;
+}
 
 // Sections en deux colonnes : titre à gauche (collant), contenu à droite
 .section-split {
