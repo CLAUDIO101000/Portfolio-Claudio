@@ -1,52 +1,9 @@
-// Sections générales
-// La gouttière garde les bordures en pleine largeur tout en bornant le contenu
-// à --container : pas de wrapper supplémentaire dans le HTML.
-section {
-  position: relative;
-  padding-block: var(--sp-12);
-  padding-inline: var(--gutter);
-}
+@use '../abstracts' as *;
 
-// Numérotation automatique, dans l'ordre du DOM. Réordonner les sections dans
-// index.html suffit : aucun numéro n'est écrit à la main, ni dans le HTML ni
-// dans les dictionnaires i18n — ils ne peuvent donc plus se désynchroniser.
-body { counter-reset: sect; }
-section:not(#hero) { counter-increment: sect; }
-
-// Filet de séparation, même vocabulaire que les courbes de niveau du hero :
-// un trait pointillé tendu d'une gouttière à l'autre, piqué d'un losange à
-// gauche (le jalon qu'on retrouve sur la timeline d'expérience).
-// Le sélecteur ne vise que les sections directement précédées d'une autre
-// section : celle qui suit le bandeau défilant est déjà détachée et n'en
-// hérite pas. #contact est exclu, il ouvre son propre aplat latérite.
-section + section:not(#contact) {
-  &::before {
-    content: '';
-    position: absolute; top: 0; left: var(--gutter); right: var(--gutter);
-    border-top: 1px dashed var(--border);
-  }
-  // Losange à cheval sur le filet
-  &::after {
-    content: '';
-    position: absolute; top: -4px; left: var(--gutter);
-    width: 8px; height: 8px;
-    background: var(--accent);
-    transform: rotate(45deg);
-  }
-}
-
-// La section qui ouvre la page sous le bandeau défilant respire moins haut :
-// la coupure du bandeau fait déjà le travail.
-.marquee-wrap + section { padding-top: var(--sp-10); }
-
-// Étiquette de section : repère numéroté, intitulé, puis filet jusqu'à la
-// marge — chaque section se lit comme l'entrée d'un index.
+// Repère numéroté + intitulé + filet jusqu'à la marge
 .section-label {
+  @include label(var(--fs-2xs), .22em);
   display: flex; align-items: center; gap: var(--sp-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs);
-  letter-spacing: .22em;
-  text-transform: uppercase;
   color: var(--accent);
   margin-bottom: var(--sp-5);
 
@@ -75,7 +32,7 @@ section + section:not(#contact) {
   margin-bottom: var(--sp-8);
   letter-spacing: -.045em;
 
-  em, .title-accent {
+  em {
     font-family: var(--font-serif);
     font-weight: 400;
     font-style: italic;
@@ -84,44 +41,8 @@ section + section:not(#contact) {
   }
 }
 
-// Mot mis en avant dans un titre de section
-.title-accent {
-  font-family: var(--font-serif);
-  font-style: italic;
-  color: var(--accent);
-}
-
-// Mot surligné : trait d'encre latérite posé sous la ligne de base, comme
-// passé au feutre sur une page imprimée
+// Surlignage au feutre, posé sous la ligne de base
 .hl {
   color: var(--accent);
   background: linear-gradient(var(--accent-glow), var(--accent-glow)) no-repeat 0 90% / 100% .34em;
 }
-
-// Sections en deux colonnes : titre à gauche (collant), contenu à droite
-.section-split {
-  display: grid;
-  grid-template-columns: minmax(260px, 380px) 1fr;
-  gap: var(--sp-10);
-  align-items: start;
-
-  .section-title { font-size: clamp(2rem, 3.6vw, 3.2rem); }
-}
-
-.split-head {
-  position: sticky;
-  top: calc(var(--nav-h) + var(--sp-5));
-  align-self: start;
-
-  .section-title { margin-bottom: var(--sp-4); }
-}
-
-.split-intro {
-  font-size: var(--fs-md);
-  color: var(--muted);
-  line-height: 1.75;
-  max-width: 34ch;
-}
-
-// Empêche le contenu large (terminal, timeline) de faire déborder la grille
-.split-body { min-width: 0; }

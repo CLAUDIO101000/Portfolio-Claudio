@@ -1,0 +1,27 @@
+@use 'sass:color';
+@use 'sass:map';
+
+// Source unique des couleurs : exposées en custom properties (base/_tokens)
+// et déclinables en transparence via alpha(). Ratios de contraste sur --bg.
+$palette: (
+  'bg':            #100e0c,
+  'surface':       #1a1714,
+  'surface2':      #24201c,
+  'border':        #3b352f,
+  'border-strong': #5f574e,  // contours de contrôles (WCAG 1.4.11)
+  'accent':        #ff6b3d,  // 6.9:1
+  'accent-dim':    #b8472a,
+  'ink':           #120f0c,  // texte sur --accent (6.9:1)
+  'ink-soft':      #3a1a0e,  // texte secondaire sur --accent (5.8:1)
+  'text':          #f4ead5,
+  'muted':         #9d9488,  // 6.3:1
+  'green':         #7ed99a,
+  'red':           #ff8a7a,
+  'blue':          #8ab4ff,
+  'purple':        #c3a6ff,
+);
+
+// '' + $name : accepte aussi green/red, que Sass lit comme des couleurs nommées
+@function alpha($name, $opacity) {
+  @return color.change(map.get($palette, '' + $name), $alpha: $opacity);
+}

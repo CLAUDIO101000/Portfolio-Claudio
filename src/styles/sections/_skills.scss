@@ -1,12 +1,13 @@
-// Catégories en grille numérotée, façon index de magazine
+@use '../abstracts' as *;
+
 .skills-categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: var(--sp-8) var(--sp-10);
   counter-reset: skcat;
-}
 
-.skills-categories > div { counter-increment: skcat; }
+  > div { counter-increment: skcat; }
+}
 
 .skill-cat-title {
   display: flex; align-items: baseline; gap: var(--sp-3);
@@ -17,8 +18,8 @@
 
   &::before {
     content: counter(skcat, decimal-leading-zero);
-    font-family: var(--font-mono); font-weight: 400;
-    font-size: var(--fs-2xs); letter-spacing: .12em;
+    @include mono(var(--fs-2xs), .12em);
+    font-weight: 400;
     color: var(--accent);
   }
 }
@@ -42,7 +43,12 @@
   &.main {
     border-color: var(--accent-dim); color: var(--accent);
     background: var(--accent-glow);
+
     &::before { content: '✦'; font-size: .8em; }
     &:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
   }
+}
+
+@include below(mobile) {
+  .skills-categories { grid-template-columns: 1fr; gap: var(--sp-6); }
 }

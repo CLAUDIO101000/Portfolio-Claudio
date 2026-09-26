@@ -1,16 +1,9 @@
-// Visionneuse d'image (certificat).
-//
-// L'URL de l'image n'est jamais écrite en dur ici : elle est reprise de la
-// vignette déjà présente dans le DOM, que Vite réécrit selon la base du site
-// (racine en dev, ./ sur GitHub Pages). Le lien de téléchargement pointe donc
-// toujours vers le bon fichier.
-
-const KEY_ESC = 'Escape';
-
+// Visionneuse du certificat. L'URL de l'image est reprise de la vignette, que
+// Vite réécrit selon la base du site : aucun chemin écrit en dur ici.
 export function initLightbox() {
   const box = document.getElementById('lightbox');
   const full = document.getElementById('lightbox-img');
-  const dl = document.getElementById('lightbox-dl');
+  const download = document.getElementById('lightbox-dl');
   const trigger = document.getElementById('cert-open');
   if (!box || !full || !trigger) return;
 
@@ -20,16 +13,14 @@ export function initLightbox() {
   const open = () => {
     if (thumb && !full.getAttribute('src')) {
       full.src = thumb.currentSrc || thumb.src;
-      if (dl) dl.href = full.src;
+      if (download) download.href = full.src;
     }
     lastFocus = document.activeElement;
     box.hidden = false;
-    // Deux frames : le temps que le navigateur prenne en compte l'affichage
-    // avant de lancer la transition d'opacité.
+    // Classe posée à la frame suivante pour que le fondu se déclenche
     requestAnimationFrame(() => box.classList.add('is-open'));
     document.body.classList.add('no-scroll');
-    const firstBtn = box.querySelector('.lightbox-btn');
-    if (firstBtn) firstBtn.focus();
+    box.querySelector('.lightbox-btn')?.focus();
   };
 
   const close = () => {
@@ -37,22 +28,32 @@ export function initLightbox() {
     document.body.classList.remove('no-scroll');
     const hide = () => { box.hidden = true; };
     box.addEventListener('transitionend', hide, { once: true });
-    setTimeout(hide, 400); // repli si la transition est désactivée (reduced motion)
-    if (lastFocus) lastFocus.focus();
+    setTimeout(hide, 400); // repli si la transition est désactivée
+    lastFocus?.focus();
   };
 
   trigger.addEventListener('click', open);
   box.querySelectorAll('[data-lb-close]').forEach((el) => el.addEventListener('click', close));
 
-  // Échap ferme ; Tab reste piégé dans la fenêtre tant qu'elle est ouverte.
+  // Échap ferme ; Tab reste piégé dans la visionneuse
   document.addEventListener('keydown', (e) => {
     if (box.hidden) return;
-    if (e.key === KEY_ESC) { close(); return; }
+    if (e.key === 'Escape') {
+      close();
+      return;
+    }
     if (e.key !== 'Tab') return;
+
     const focusable = [...box.querySelectorAll('a[href], button:not([disabled])')];
     if (!focusable.length) return;
-    const first = focusable[0], last = focusable[focusable.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 }

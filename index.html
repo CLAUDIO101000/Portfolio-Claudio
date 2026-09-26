@@ -1,31 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Portfolio de RANAIVOSON Nantenaina Claudio, développeur web passionné spécialisé en solutions numériques sur mesure — Odoo, Python, PHP, React."/>
-    <meta name="theme-color" content="#100e0c"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Claudio · Développeur Web &amp; Odoo"/>
-    <meta property="og:description" content="Portfolio de RANAIVOSON Nantenaina Claudio — solutions numériques sur mesure : Odoo, Python, PHP, React. Disponible pour missions freelance."/>
-    <meta property="og:locale" content="fr_FR"/>
-    <!-- og:image doit être une URL ABSOLUE pour LinkedIn/Facebook/WhatsApp.
-         À adapter si le site change d'adresse (domaine personnalisé, etc.). -->
-    <meta property="og:image" content="https://claudio101000.github.io/Portfolio-Claudio/img/photo_profile.jpg"/>
-    <meta property="og:image:alt" content="RANAIVOSON Nantenaina Claudio, développeur web et Odoo"/>
-    <meta name="twitter:card" content="summary_large_image"/>
-    <title>Claudio · Développeur Web Freelance</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Portfolio de RANAIVOSON Nantenaina Claudio, développeur web passionné spécialisé en solutions numériques sur mesure — Odoo, Python, PHP, React."/>
+  <meta name="author" content="RANAIVOSON Nantenaina Claudio"/>
+  <meta name="theme-color" content="#100e0c"/>
+  <meta name="color-scheme" content="dark"/>
+  <!-- URL du site : variable VITE_SITE_URL du fichier .env -->
+  <link rel="canonical" href="%VITE_SITE_URL%/"/>
+  <meta property="og:type" content="profile"/>
+  <meta property="og:url" content="%VITE_SITE_URL%/"/>
+  <meta property="og:site_name" content="Claudio · Portfolio"/>
+  <meta property="og:title" content="Claudio · Développeur Web &amp; Odoo"/>
+  <meta property="og:description" content="Portfolio de RANAIVOSON Nantenaina Claudio — solutions numériques sur mesure : Odoo, Python, PHP, React. Disponible pour missions freelance."/>
+  <meta property="og:locale" content="fr_FR"/>
+  <meta property="og:locale:alternate" content="en_US"/>
+  <meta property="profile:first_name" content="Nantenaina Claudio"/>
+  <meta property="profile:last_name" content="RANAIVOSON"/>
+  <meta property="og:image" content="%VITE_SITE_URL%/img/og-cover.jpg"/>
+  <meta property="og:image:type" content="image/jpeg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="RANAIVOSON Nantenaina Claudio, développeur web et Odoo"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <title>Claudio · Développeur Web Freelance</title>
 
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Avant le premier rendu : sans JS, les blocs animés restent visibles -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "url": "%VITE_SITE_URL%/",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "%VITE_SITE_URL%/#person",
+      "name": "RANAIVOSON Nantenaina Claudio",
+      "givenName": "Nantenaina Claudio",
+      "familyName": "RANAIVOSON",
+      "jobTitle": "Développeur Odoo",
+      "image": "%VITE_SITE_URL%/img/photo_profile.jpg",
+      "email": "mailto:ranaivosonclaudio@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Antananarivo",
+        "addressCountry": "MG"
+      },
+      "worksFor": { "@type": "Organization", "name": "Groupe Viseo" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Institut Supérieur d'Informatique (IS-INFO)" },
+      "knowsAbout": ["Odoo", "Python", "QWeb", "PostgreSQL", "JavaScript", "TypeScript", "React", "Django", "Laravel", "Node.js", "PHP"],
+      "sameAs": [
+        "https://github.com/CLAUDIO101000",
+        "https://www.linkedin.com/in/claudio-ranaivoson-8145aa341"
+      ]
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
 
-<!-- ── Sprite d'icônes (inline : aucune requête, aucun souci de compat sur <use> externe) -->
 <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-gear" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="3.2"/>
@@ -97,588 +139,587 @@
   </symbol>
 </svg>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<a class="skip-link" href="#main" data-i18n="nav.skip">Aller au contenu</a>
 
-<nav>
-  <div class="nav-logo"><a href="#">Claudio.</a></div>
-  <ul class="nav-links">
-    <li><a href="#services" data-i18n="nav.services">Services</a></li>
-    <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
-    <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
-    <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
-    <li><a href="#about" data-i18n="nav.about">À propos</a></li>
-    <li><a href="#education" data-i18n="nav.education">Éducation</a></li>
-    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-  </ul>
-  <div class="nav-status">
-    <div class="status-dot"></div>
-    <span data-i18n="nav.status">Disponible pour missions</span>
-  </div>
+<div id="cursor" aria-hidden="true"></div>
+<div id="cursor-ring" aria-hidden="true"></div>
 
-  <!-- Onglets de langue : bascule FR / EN -->
-  <div class="lang-switch" id="lang-switch" role="tablist" aria-label="Langue du site / Site language">
-    <button type="button" class="lang-tab is-active" data-lang="fr" role="tab" aria-selected="true"
-            aria-label="Basculer le site en français">FR</button>
-    <button type="button" class="lang-tab" data-lang="en" role="tab" aria-selected="false"
-            aria-label="Switch the site to English">EN</button>
-  </div>
+<header class="site-header">
+  <nav aria-label="Navigation principale" data-i18n-aria-label="nav.label">
+    <div class="nav-logo"><a href="#main" aria-label="Claudio — haut de page" data-i18n-aria-label="nav.home">Claudio.</a></div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
+      <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+      <li><a href="#education" data-i18n="nav.education">Éducation</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      <span data-i18n="nav.status">Disponible pour missions</span>
+    </div>
 
-  <button class="nav-burger" id="nav-burger" data-i18n-aria-label="nav.burger" aria-label="Ouvrir le menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+    <div class="lang-switch" id="lang-switch" role="group" aria-label="Langue du site / Site language">
+      <button type="button" class="lang-tab is-active" data-lang="fr" lang="fr" aria-pressed="true"
+              aria-label="Basculer le site en français">FR</button>
+      <button type="button" class="lang-tab" data-lang="en" lang="en" aria-pressed="false"
+              aria-label="Switch the site to English">EN</button>
+    </div>
 
-<section id="hero">
-  <!-- Courbes de niveau : un même contour répété à des échelles croissantes -->
-  <svg class="hero-topo" viewBox="-800 -500 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-    <defs>
-      <path id="topo" d="M0-300C170-315 330-210 335-40 340 120 250 255 70 290-110 325-290 240-330 70-370-100-190-285 0-300Z"/>
-    </defs>
-    <g fill="none" stroke="currentColor" stroke-width="1">
-      <g transform="translate(330 -40)">
-        <use href="#topo" class="topo-hot" transform="rotate(4) scale(.12)"/>
-        <use href="#topo" class="topo-hot" transform="rotate(10) scale(.24)"/>
-        <use href="#topo" transform="rotate(16) scale(.38)"/>
-        <use href="#topo" transform="rotate(22) scale(.54)"/>
-        <use href="#topo" transform="rotate(28) scale(.72)"/>
-        <use href="#topo" transform="rotate(34) scale(.92)"/>
-        <use href="#topo" transform="rotate(40) scale(1.14)"/>
-        <use href="#topo" transform="rotate(46) scale(1.38)"/>
-        <use href="#topo" transform="rotate(52) scale(1.64)"/>
-        <use href="#topo" transform="rotate(58) scale(1.92)"/>
-        <use href="#topo" transform="rotate(64) scale(2.22)"/>
+    <button type="button" class="nav-burger" id="nav-burger" data-i18n-aria-label="nav.burger" aria-label="Ouvrir le menu"
+            aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section id="hero">
+    <svg class="hero-topo" viewBox="-800 -500 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <path id="topo" d="M0-300C170-315 330-210 335-40 340 120 250 255 70 290-110 325-290 240-330 70-370-100-190-285 0-300Z"/>
+      </defs>
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <g transform="translate(330 -40)">
+          <use href="#topo" class="topo-hot" transform="rotate(4) scale(.12)"/>
+          <use href="#topo" class="topo-hot" transform="rotate(10) scale(.24)"/>
+          <use href="#topo" transform="rotate(16) scale(.38)"/>
+          <use href="#topo" transform="rotate(22) scale(.54)"/>
+          <use href="#topo" transform="rotate(28) scale(.72)"/>
+          <use href="#topo" transform="rotate(34) scale(.92)"/>
+          <use href="#topo" transform="rotate(40) scale(1.14)"/>
+          <use href="#topo" transform="rotate(46) scale(1.38)"/>
+          <use href="#topo" transform="rotate(52) scale(1.64)"/>
+          <use href="#topo" transform="rotate(58) scale(1.92)"/>
+          <use href="#topo" transform="rotate(64) scale(2.22)"/>
+        </g>
+        <g transform="translate(-560 360)">
+          <use href="#topo" transform="rotate(-20) scale(.2)"/>
+          <use href="#topo" transform="rotate(-12) scale(.4)"/>
+          <use href="#topo" transform="rotate(-4) scale(.62)"/>
+          <use href="#topo" transform="rotate(4) scale(.86)"/>
+        </g>
       </g>
-      <g transform="translate(-560 360)">
-        <use href="#topo" transform="rotate(-20) scale(.2)"/>
-        <use href="#topo" transform="rotate(-12) scale(.4)"/>
-        <use href="#topo" transform="rotate(-4) scale(.62)"/>
-        <use href="#topo" transform="rotate(4) scale(.86)"/>
-      </g>
-    </g>
-  </svg>
-  <div class="hero-glow"></div>
+    </svg>
+    <div class="hero-glow"></div>
 
-  <div class="hero-meta">
-    <span><strong>18°52′S</strong> · <strong>47°30′E</strong></span>
-    <span><span data-i18n="hero.localTime">Heure locale</span> · Antananarivo <strong id="local-time">--:--</strong></span>
-  </div>
-
-  <div class="hero-inner">
-    <div class="hero-left">
-      <div class="hero-tag" data-i18n="hero.tag">Développeur Web &amp; Odoo — Freelance · Madagascar</div>
-      <h1 class="hero-name">
-        <span class="line"><span>RANAIVOSON</span></span>
-        <span class="line"><span class="outline">Nantenaina</span></span>
-        <span class="line"><span><em>Claudio.</em></span></span>
-      </h1>
-      <p class="hero-subtitle" data-i18n="hero.subtitle">Donner vie à vos idées grâce à des solutions numériques sur mesure.</p>
-      <div class="typed-wrap">
-        <span id="typed-text"></span><span class="typed-cursor">|</span>
-      </div>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn-primary">
-          <svg class="icon solid" aria-hidden="true"><use href="#i-play"/></svg> <span data-i18n="hero.ctaProjects">Voir mes projets</span>
-        </a>
-        <button type="button" class="btn-ghost" id="cv-download">
-          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> <span data-i18n="hero.ctaCv">Télécharger mon CV (PDF)</span>
-        </button>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="avatar-wrap">
-        <img src="/img/photo_profile.jpg"
-             alt="RANAIVOSON Nantenaina Claudio"
-             width="1536" height="2048"
-             decoding="async" fetchpriority="high"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-        <span class="avatar-initials" style="display:none;">RC</span>
-      </div>
-      <div class="hero-badge" aria-hidden="true">
-        <svg class="badge-ring" viewBox="0 0 120 120">
-          <defs><path id="badge-circle" d="M60 60m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs>
-          <text textLength="312" lengthAdjust="spacing"><textPath href="#badge-circle" data-i18n="hero.badge">Disponible ✦ Freelance ✦ Antananarivo ✦</textPath></text>
-        </svg>
-        <span class="badge-core"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll" data-i18n="hero.scroll">Défiler</div>
-</section>
-
-<!-- Bandeau défilant : contenu dupliqué pour une boucle sans couture -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>Odoo</span><i>✦</i><span>Python</span><i>✦</i><span>React</span><i>✦</i><span>Django</span><i>✦</i>
-      <span>Laravel</span><i>✦</i><span>Node.js</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>Flutter</span><i>✦</i>
-      <span>Socket.io</span><i>✦</i><span>QWeb</span><i>✦</i>
-    </div>
-    <div class="marquee-track">
-      <span>Odoo</span><i>✦</i><span>Python</span><i>✦</i><span>React</span><i>✦</i><span>Django</span><i>✦</i>
-      <span>Laravel</span><i>✦</i><span>Node.js</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>Flutter</span><i>✦</i>
-      <span>Socket.io</span><i>✦</i><span>QWeb</span><i>✦</i>
-    </div>
-  </div>
-</div>
-
-<section id="services">
-  <div class="section-label reveal" data-i18n="services.label">Services</div>
-  <div class="section-title reveal" data-i18n-html="services.title">Ce que je fais<br/>pour vous.</div>
-  <div class="bento reveal">
-    <div class="bento-card wide">
-      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></div>
-      <div class="card-title" data-i18n="services.c1.title">Développement Odoo</div>
-      <div class="card-desc" data-i18n="services.c1.desc">Création de modules Odoo personnalisés, extension des modules existants, personnalisation des vues et workflows. Spécialisé en Odoo avec maîtrise de l'ORM, QWeb et des patterns de développement avancés.</div>
-      <div class="card-tags">
-        <span class="tag amber">Odoo</span>
-        <span class="tag">Python</span>
-        <span class="tag">XML / QWeb</span>
-        <span class="tag">PostgreSQL</span>
-      </div>
+    <div class="hero-meta">
+      <span><strong>18°52′S</strong> · <strong>47°30′E</strong></span>
+      <span><span data-i18n="hero.localTime">Heure locale</span> · Antananarivo <strong id="local-time">--:--</strong></span>
     </div>
 
-    <div class="bento-card">
-      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div>
-      <div class="card-title" data-i18n="services.c2.title">Développement Web</div>
-      <div class="card-desc" data-i18n="services.c2.desc">Applications web complètes de la base de données à l'interface utilisateur, avec React, Django, Laravel ou Node.js selon vos besoins.</div>
-      <div class="card-tags">
-        <span class="tag amber">React</span>
-        <span class="tag">Django</span>
-        <span class="tag">Laravel</span>
-        <span class="tag">Node.js</span>
-      </div>
-    </div>
-
-    <div class="bento-card">
-      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg></div>
-      <div class="card-title" data-i18n="services.c3.title">Intégrations &amp; API</div>
-      <div class="card-desc" data-i18n="services.c3.desc">Connexion de vos systèmes à des services tiers via REST, JSON-RPC, webhooks. Automatisation des flux de données entre plateformes.</div>
-      <div class="card-tags">
-        <span class="tag">REST API</span>
-        <span class="tag">JSON-RPC</span>
-        <span class="tag">Webhooks</span>
-      </div>
-    </div>
-
-    <div class="bento-card">
-      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-bot"/></svg></div>
-      <div class="card-title" data-i18n="services.c4.title">Automatisation Python</div>
-      <div class="card-desc" data-i18n="services.c4.desc">Scripts d'automatisation, tâches planifiées (cron), traitement de données en masse et outils CLI pour vos équipes métier.</div>
-      <div class="card-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Cron</span>
-        <span class="tag">CLI</span>
-      </div>
-    </div>
-
-    <div class="bento-card">
-      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></div>
-      <div class="card-title" data-i18n="services.c5.title">Apps Temps Réel</div>
-      <div class="card-desc" data-i18n="services.c5.desc">Développement d'applications avec communication temps réel : chat, notifications live, tableaux de bord dynamiques via Socket.io.</div>
-      <div class="card-tags">
-        <span class="tag amber">Socket.io</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">Express</span>
-      </div>
-    </div>
-
-    <div class="bento-card">
-      <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></div>
-      <div class="card-title" data-i18n="services.c6.title">Support &amp; Maintenance</div>
-      <div class="card-desc" data-i18n="services.c6.desc">Débogage, correction de bugs, refactoring, documentation technique et formation des équipes internes sur les outils développés.</div>
-      <div class="card-tags">
-        <span class="tag" data-i18n="services.tagSupport">Support</span>
-        <span class="tag" data-i18n="services.tagDoc">Documentation</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="section-label reveal" data-i18n="projects.label">Projets</div>
-  <div class="section-title reveal" data-i18n="projects.title">Mes réalisations.</div>
-  <div class="projects-grid reveal">
-
-    <div class="project-card">
-      <div class="project-num" data-i18n="projects.p1.num">2024 · Application Web</div>
-      <div class="project-name">CongeSystem</div>
-      <div class="project-desc" data-i18n="projects.p1.desc">Application de gestion de congés permettant aux employés de soumettre des demandes et de suivre leur solde. Calcul intelligent excluant les jours fériés et weekends. Interface admin complète pour la validation des requêtes.</div>
-      <div class="project-tags">
-        <span class="tag amber">PHP</span>
-        <span class="tag">MySQL</span>
-        <span class="tag">Bootstrap 5</span>
-        <span class="tag">SweetAlert2</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/CLAUDIO101000/CongeSystem.git" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
-          <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> GitHub
-        </a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-num" data-i18n="projects.p2.num">2024 · Application Temps Réel</div>
-      <div class="project-name">Chatroom</div>
-      <div class="project-desc" data-i18n="projects.p2.desc">Application de chat temps réel avec gestion de pseudonyme, avatar optionnel et partage d'images. Architecture Node.js + Socket.io pour une communication instantanée et fluide entre utilisateurs. Déployée sur Vercel.</div>
-      <div class="project-tags">
-        <span class="tag amber">Node.js</span>
-        <span class="tag">Socket.io</span>
-        <span class="tag">Express</span>
-        <span class="tag">JavaScript</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/CLAUDIO101000/Chatroom.git" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
-          <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> GitHub
-        </a>
-        <a href="https://chatroom-silk.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-btn">
-          <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg> <span data-i18n="projects.demo">Démo live</span>
-        </a>
-      </div>
-    </div>
-
-    <a href="https://github.com/CLAUDIO101000?tab=repositories" target="_blank" rel="noopener noreferrer" class="project-more">
-      <span class="project-more-text" data-i18n-html="projects.moreText">D'autres dépôts, expérimentations et projets en cours sont publiés sur <strong>mon profil GitHub</strong>.</span>
-      <span class="project-more-cta">
-        <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> <span data-i18n="projects.moreCta">Voir tous les dépôts</span>
-      </span>
-    </a>
-
-  </div>
-</section>
-
-<section id="skills">
-  <div class="section-label reveal" data-i18n="skills.label">Compétences</div>
-  <div class="section-title reveal" data-i18n="skills.title">Ce que je maîtrise.</div>
-  <div class="skills-categories">
-
-    <div class="reveal">
-      <div class="skill-cat-title" data-i18n="skills.cat1">Langages de programmation</div>
-      <div class="skills-row">
-        <div class="skill-pill main">Python</div>
-        <div class="skill-pill main">Odoo / QWeb</div>
-        <div class="skill-pill">PHP</div>
-        <div class="skill-pill">JavaScript</div>
-        <div class="skill-pill">TypeScript</div>
-        <div class="skill-pill">HTML / CSS</div>
-        <div class="skill-pill">R</div>
-      </div>
-    </div>
-
-    <div class="reveal reveal-delay-1">
-      <div class="skill-cat-title" data-i18n="skills.cat2">Frameworks &amp; Bibliothèques</div>
-      <div class="skills-row">
-        <div class="skill-pill">React</div>
-        <div class="skill-pill">Django</div>
-        <div class="skill-pill">Laravel</div>
-        <div class="skill-pill">Node.js</div>
-        <div class="skill-pill">Express</div>
-        <div class="skill-pill">Socket.io</div>
-        <div class="skill-pill">Bootstrap 5</div>
-        <div class="skill-pill">jQuery</div>
-      </div>
-    </div>
-
-    <div class="reveal reveal-delay-2">
-      <div class="skill-cat-title" data-i18n="skills.cat3">Développement Mobile &amp; Embarqué</div>
-      <div class="skills-row">
-        <div class="skill-pill main" data-i18n="skills.mobileApp">App Mobile</div>
-        <div class="skill-pill main">Flutter</div>
-        <div class="skill-pill">Arduino</div>
-      </div>
-    </div>
-
-    <div class="reveal reveal-delay-2">
-      <div class="skill-cat-title" data-i18n="skills.cat4">Bases de données</div>
-      <div class="skills-row">
-        <div class="skill-pill main">PostgreSQL</div>
-        <div class="skill-pill">MySQL</div>
-        <div class="skill-pill">SQLite</div>
-      </div>
-    </div>
-
-    <div class="reveal reveal-delay-3">
-      <div class="skill-cat-title" data-i18n="skills.cat5">Outils &amp; Environnement</div>
-      <div class="skills-row">
-        <div class="skill-pill">Git / GitHub</div>
-        <div class="skill-pill">Linux</div>
-        <div class="skill-pill">Figma</div>
-        <div class="skill-pill">SASS</div>
-        <div class="skill-pill">npm</div>
-      </div>
-    </div>
-
-    <div class="reveal reveal-delay-1">
-      <div class="skill-cat-title" data-i18n="skills.cat6">IA &amp; Data Mining</div>
-      <div class="skills-row">
-        <div class="skill-pill" data-i18n="skills.ml">Machine Learning</div>
-        <div class="skill-pill" data-i18n="skills.dm">Data Mining</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="stack" class="section-split">
-  <div class="split-head reveal">
-    <div class="section-label" data-i18n="stack.label">Stack technique</div>
-    <div class="section-title" data-i18n-html="stack.title">Mon environnement<br/>de travail.</div>
-    <p class="split-intro" data-i18n="stack.intro">Les langages, frameworks et outils qui rythment mon quotidien de développeur.</p>
-  </div>
-  <div class="split-body">
-  <div class="terminal reveal">
-    <div class="terminal-bar">
-      <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
-      <span class="terminal-title">claudio@dev-mg — ~/stack — zsh</span>
-    </div>
-    <div class="terminal-body" id="term-body"></div>
-  </div>
-  </div>
-</section>
-
-<section id="experience" class="section-split">
-  <div class="split-head reveal">
-    <div class="section-label" data-i18n="exp.label">Expérience professionnelle</div>
-    <div class="section-title" data-i18n-html="exp.title">Mes expériences<br/>en entreprise.</div>
-    <p class="split-intro" data-i18n="exp.intro">Mon parcours au sein du Groupe Viseo, du stage de licence au poste de développeur Odoo.</p>
-  </div>
-  <div class="split-body">
-  <div class="exp-timeline reveal">
-
-    <div class="exp-item">
-      <div class="exp-item-inner">
-        <div class="exp-header">
-          <div>
-            <div class="exp-company">Groupe Viseo</div>
-            <div class="exp-location">
-              <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
-              <span data-i18n="exp.place">Andraharo, Antananarivo · Madagascar</span>
-            </div>
-          </div>
-          <div class="exp-right">
-            <span class="exp-badge active" data-i18n="exp.e1.badge">● En poste</span>
-            <span class="exp-badge cdd" data-i18n="exp.e1.contract">CDD · 1 an</span>
-            <div class="exp-date" data-i18n="exp.e1.date">1 Juil. 2025 — 30 juin. 2026</div>
-          </div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-tag" data-i18n="hero.tag">Développeur Web &amp; Odoo — Freelance · Madagascar</div>
+        <h1 class="hero-name">
+          <span class="line"><span>RANAIVOSON</span></span>
+          <span class="line"><span class="outline">Nantenaina</span></span>
+          <span class="line"><span><em>Claudio.</em></span></span>
+        </h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">Donner vie à vos idées grâce à des solutions numériques sur mesure.</p>
+        <div class="typed-wrap">
+          <span id="typed-text"></span><span class="typed-cursor">|</span>
         </div>
-        <div class="exp-role" data-i18n="exp.e1.role">Développeur Odoo Junior</div>
-        <div class="exp-desc" data-i18n="exp.e1.desc">
-          Intégré à l'équipe technique après mon stage, je participe activement au développement et à la maintenance des solutions Odoo pour les clients du groupe.
+        <div class="hero-ctas">
+          <a href="#projects" class="btn-primary">
+            <svg class="icon solid" aria-hidden="true"><use href="#i-play"/></svg> <span data-i18n="hero.ctaProjects">Voir mes projets</span>
+          </a>
+          <button type="button" class="btn-ghost" id="cv-download">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> <span data-i18n="hero.ctaCv">Télécharger mon CV (PDF)</span>
+          </button>
         </div>
-        <ul class="exp-tasks">
-          <li data-i18n="exp.e1.t1">Développement de modules Odoo personnalisés (Python, XML, QWeb)</li>
-          <li data-i18n="exp.e1.t2">Extension et surcharge de modules existants selon les besoins métier</li>
-          <li data-i18n="exp.e1.t3">Conception de vues, wizards et rapports QWeb</li>
-          <li data-i18n="exp.e1.t4">Collaboration avec les équipes fonctionnelles pour l'analyse des besoins</li>
-          <li data-i18n="exp.e1.t5">Corrections de bugs, refactoring et maintenance corrective</li>
-        </ul>
-        <div class="exp-tech">
+      </div>
+      <div class="hero-right">
+        <div class="avatar-wrap">
+          <picture>
+            <source srcset="/img/photo_profile.webp" type="image/webp"/>
+            <img src="/img/photo_profile.jpg"
+                 alt="RANAIVOSON Nantenaina Claudio"
+                 width="1536" height="2048"
+                 decoding="async" fetchpriority="high">
+          </picture>
+          <span class="avatar-initials" hidden>RC</span>
+        </div>
+        <div class="hero-badge" aria-hidden="true">
+          <svg class="badge-ring" viewBox="0 0 120 120">
+            <defs><path id="badge-circle" d="M60 60m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs>
+            <text textLength="312" lengthAdjust="spacing"><textPath href="#badge-circle" data-i18n="hero.badge">Disponible ✦ Freelance ✦ Antananarivo ✦</textPath></text>
+          </svg>
+          <span class="badge-core"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" data-i18n="hero.scroll">Défiler</div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>Odoo</span><i>✦</i><span>Python</span><i>✦</i><span>React</span><i>✦</i><span>Django</span><i>✦</i>
+        <span>Laravel</span><i>✦</i><span>Node.js</span><i>✦</i><span>PostgreSQL</span><i>✦</i><span>Flutter</span><i>✦</i>
+        <span>Socket.io</span><i>✦</i><span>QWeb</span><i>✦</i>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="section-label reveal" data-i18n="services.label">Services</div>
+    <h2 class="section-title reveal" data-i18n-html="services.title">Ce que je fais<br/>pour vous.</h2>
+    <div class="bento reveal">
+      <div class="bento-card wide">
+        <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></div>
+        <h3 class="card-title" data-i18n="services.c1.title">Développement Odoo</h3>
+        <div class="card-desc" data-i18n="services.c1.desc">Création de modules Odoo personnalisés, extension des modules existants, personnalisation des vues et workflows. Spécialisé en Odoo avec maîtrise de l'ORM, QWeb et des patterns de développement avancés.</div>
+        <div class="card-tags">
           <span class="tag amber">Odoo</span>
-          <span class="tag amber">Python</span>
+          <span class="tag">Python</span>
           <span class="tag">XML / QWeb</span>
           <span class="tag">PostgreSQL</span>
-          <span class="tag">Git</span>
-          <span class="tag">Linux</span>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div>
+        <h3 class="card-title" data-i18n="services.c2.title">Développement Web</h3>
+        <div class="card-desc" data-i18n="services.c2.desc">Applications web complètes de la base de données à l'interface utilisateur, avec React, Django, Laravel ou Node.js selon vos besoins.</div>
+        <div class="card-tags">
+          <span class="tag amber">React</span>
+          <span class="tag">Django</span>
+          <span class="tag">Laravel</span>
+          <span class="tag">Node.js</span>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-link"/></svg></div>
+        <h3 class="card-title" data-i18n="services.c3.title">Intégrations &amp; API</h3>
+        <div class="card-desc" data-i18n="services.c3.desc">Connexion de vos systèmes à des services tiers via REST, JSON-RPC, webhooks. Automatisation des flux de données entre plateformes.</div>
+        <div class="card-tags">
+          <span class="tag">REST API</span>
+          <span class="tag">JSON-RPC</span>
+          <span class="tag">Webhooks</span>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-bot"/></svg></div>
+        <h3 class="card-title" data-i18n="services.c4.title">Automatisation Python</h3>
+        <div class="card-desc" data-i18n="services.c4.desc">Scripts d'automatisation, tâches planifiées (cron), traitement de données en masse et outils CLI pour vos équipes métier.</div>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Cron</span>
+          <span class="tag">CLI</span>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></div>
+        <h3 class="card-title" data-i18n="services.c5.title">Apps Temps Réel</h3>
+        <div class="card-desc" data-i18n="services.c5.desc">Développement d'applications avec communication temps réel : chat, notifications live, tableaux de bord dynamiques via Socket.io.</div>
+        <div class="card-tags">
+          <span class="tag amber">Socket.io</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Express</span>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-wrench"/></svg></div>
+        <h3 class="card-title" data-i18n="services.c6.title">Support &amp; Maintenance</h3>
+        <div class="card-desc" data-i18n="services.c6.desc">Débogage, correction de bugs, refactoring, documentation technique et formation des équipes internes sur les outils développés.</div>
+        <div class="card-tags">
+          <span class="tag" data-i18n="services.tagSupport">Support</span>
+          <span class="tag" data-i18n="services.tagDoc">Documentation</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="exp-item">
-      <div class="exp-item-inner">
-        <div class="exp-header">
-          <div>
-            <div class="exp-company">Groupe Viseo</div>
-            <div class="exp-location">
-              <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
-              <span data-i18n="exp.place">Andraharo, Antananarivo · Madagascar</span>
+  <section id="projects">
+    <div class="section-label reveal" data-i18n="projects.label">Projets</div>
+    <h2 class="section-title reveal" data-i18n="projects.title">Mes réalisations.</h2>
+    <div class="projects-grid reveal">
+
+      <div class="project-card">
+        <div class="project-num" data-i18n="projects.p1.num">2024 · Application Web</div>
+        <h3 class="project-name">CongeSystem</h3>
+        <div class="project-desc" data-i18n="projects.p1.desc">Application de gestion de congés permettant aux employés de soumettre des demandes et de suivre leur solde. Calcul intelligent excluant les jours fériés et weekends. Interface admin complète pour la validation des requêtes.</div>
+        <div class="project-tags">
+          <span class="tag amber">PHP</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Bootstrap 5</span>
+          <span class="tag">SweetAlert2</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/CLAUDIO101000/CongeSystem.git" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
+            <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num" data-i18n="projects.p2.num">2024 · Application Temps Réel</div>
+        <h3 class="project-name">Chatroom</h3>
+        <div class="project-desc" data-i18n="projects.p2.desc">Application de chat temps réel avec gestion de pseudonyme, avatar optionnel et partage d'images. Architecture Node.js + Socket.io pour une communication instantanée et fluide entre utilisateurs. Déployée sur Vercel.</div>
+        <div class="project-tags">
+          <span class="tag amber">Node.js</span>
+          <span class="tag">Socket.io</span>
+          <span class="tag">Express</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/CLAUDIO101000/Chatroom.git" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
+            <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> GitHub
+          </a>
+          <a href="https://chatroom-silk.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-btn">
+            <svg class="icon" aria-hidden="true"><use href="#i-external"/></svg> <span data-i18n="projects.demo">Démo live</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="https://github.com/CLAUDIO101000?tab=repositories" target="_blank" rel="noopener noreferrer" class="project-more">
+        <span class="project-more-text" data-i18n-html="projects.moreText">D'autres dépôts, expérimentations et projets en cours sont publiés sur <strong>mon profil GitHub</strong>.</span>
+        <span class="project-more-cta">
+          <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> <span data-i18n="projects.moreCta">Voir tous les dépôts</span>
+        </span>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-label reveal" data-i18n="skills.label">Compétences</div>
+    <h2 class="section-title reveal" data-i18n="skills.title">Ce que je maîtrise.</h2>
+    <div class="skills-categories">
+
+      <div class="reveal">
+        <h3 class="skill-cat-title" data-i18n="skills.cat1">Langages de programmation</h3>
+        <div class="skills-row">
+          <div class="skill-pill main">Python</div>
+          <div class="skill-pill main">Odoo / QWeb</div>
+          <div class="skill-pill">PHP</div>
+          <div class="skill-pill">JavaScript</div>
+          <div class="skill-pill">TypeScript</div>
+          <div class="skill-pill">HTML / CSS</div>
+          <div class="skill-pill">R</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <h3 class="skill-cat-title" data-i18n="skills.cat2">Frameworks &amp; Bibliothèques</h3>
+        <div class="skills-row">
+          <div class="skill-pill">React</div>
+          <div class="skill-pill">Django</div>
+          <div class="skill-pill">Laravel</div>
+          <div class="skill-pill">Node.js</div>
+          <div class="skill-pill">Express</div>
+          <div class="skill-pill">Socket.io</div>
+          <div class="skill-pill">Bootstrap 5</div>
+          <div class="skill-pill">jQuery</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <h3 class="skill-cat-title" data-i18n="skills.cat3">Développement Mobile &amp; Embarqué</h3>
+        <div class="skills-row">
+          <div class="skill-pill main" data-i18n="skills.mobileApp">App Mobile</div>
+          <div class="skill-pill main">Flutter</div>
+          <div class="skill-pill">Arduino</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <h3 class="skill-cat-title" data-i18n="skills.cat4">Bases de données</h3>
+        <div class="skills-row">
+          <div class="skill-pill main">PostgreSQL</div>
+          <div class="skill-pill">MySQL</div>
+          <div class="skill-pill">SQLite</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <h3 class="skill-cat-title" data-i18n="skills.cat5">Outils &amp; Environnement</h3>
+        <div class="skills-row">
+          <div class="skill-pill">Git / GitHub</div>
+          <div class="skill-pill">Linux</div>
+          <div class="skill-pill">Figma</div>
+          <div class="skill-pill">SASS</div>
+          <div class="skill-pill">npm</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <h3 class="skill-cat-title" data-i18n="skills.cat6">IA &amp; Data Mining</h3>
+        <div class="skills-row">
+          <div class="skill-pill" data-i18n="skills.ml">Machine Learning</div>
+          <div class="skill-pill" data-i18n="skills.dm">Data Mining</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="stack" class="section-split">
+    <div class="split-head reveal">
+      <div class="section-label" data-i18n="stack.label">Stack technique</div>
+      <h2 class="section-title" data-i18n-html="stack.title">Mon environnement<br/>de travail.</h2>
+      <p class="split-intro" data-i18n="stack.intro">Les langages, frameworks et outils qui rythment mon quotidien de développeur.</p>
+    </div>
+    <div class="split-body">
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+          <span class="terminal-title">claudio@dev-mg — ~/stack — zsh</span>
+        </div>
+        <div class="terminal-body" id="term-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section-split">
+    <div class="split-head reveal">
+      <div class="section-label" data-i18n="exp.label">Expérience professionnelle</div>
+      <h2 class="section-title" data-i18n-html="exp.title">Mes expériences<br/>en entreprise.</h2>
+      <p class="split-intro" data-i18n="exp.intro">Mon parcours au sein du Groupe Viseo, du stage de licence au poste de développeur Odoo.</p>
+    </div>
+    <div class="split-body">
+      <ol class="exp-timeline reveal">
+
+        <li class="exp-item">
+          <div class="exp-item-inner">
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">Groupe Viseo</div>
+                <div class="exp-location">
+                  <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+                  <span data-i18n="exp.place">Andraharo, Antananarivo · Madagascar</span>
+                </div>
+              </div>
+              <div class="exp-right">
+                <span class="exp-badge active" data-i18n="exp.e1.badge">● En poste</span>
+                <span class="exp-badge cdd" data-i18n="exp.e1.contract">CDD · 2 ans</span>
+                <div class="exp-date" data-i18n="exp.e1.date">1 juil. 2025 — 30 juin 2027</div>
+              </div>
+            </div>
+            <h3 class="exp-role" data-i18n="exp.e1.role">Développeur Odoo</h3>
+            <p class="exp-desc" data-i18n="exp.e1.desc">Intégré à l'équipe technique à l'issue de mon stage, je conçois, optimise et maintiens des modules Odoo déployés en production dans un environnement multi-sociétés.</p>
+            <ul class="exp-tasks">
+              <li data-i18n="exp.e1.t1">Développement et maintenance d'un module de comptabilité analytique multi-sociétés en production (Python, XML, QWeb, PostgreSQL)</li>
+              <li data-i18n="exp.e1.t2">Optimisation des performances — traitements par lots, requêtes SQL ciblées, mise en cache — pour des rapports nettement plus rapides</li>
+              <li data-i18n="exp.e1.t3">Synchronisation automatisée des écritures comptables par tâches planifiées, avec gestion des fuseaux horaires et de la concurrence</li>
+              <li data-i18n="exp.e1.t4">Tableaux de reporting interactifs (widgets JavaScript, hiérarchie repliable) utilisés au quotidien par les équipes finance</li>
+              <li data-i18n="exp.e1.t5">Refactoring, correction de bugs et revues de code</li>
+            </ul>
+            <div class="exp-tech">
+              <span class="tag amber">Odoo</span>
+              <span class="tag amber">Python</span>
+              <span class="tag">XML / QWeb</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Git</span>
+              <span class="tag">Linux</span>
             </div>
           </div>
-          <div class="exp-right">
-            <span class="exp-badge stage" data-i18n="exp.e2.badge">Stage · Licence</span>
-            <div class="exp-date" data-i18n="exp.e2.date">12 Fév. 2025 — 16 Mai 2025</div>
+        </li>
+
+        <li class="exp-item">
+          <div class="exp-item-inner">
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">Groupe Viseo</div>
+                <div class="exp-location">
+                  <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+                  <span data-i18n="exp.place">Andraharo, Antananarivo · Madagascar</span>
+                </div>
+              </div>
+              <div class="exp-right">
+                <span class="exp-badge stage" data-i18n="exp.e2.badge">Stage · Licence</span>
+                <div class="exp-date" data-i18n="exp.e2.date">12 févr. 2025 — 16 mai 2025</div>
+              </div>
+            </div>
+            <h3 class="exp-role" data-i18n="exp.e2.role">Stagiaire Développeur Odoo</h3>
+            <p class="exp-desc" data-i18n="exp.e2.desc">Stage de fin de licence réalisé au sein du département technique. Première immersion professionnelle dans l'écosystème Odoo en environnement d'entreprise.</p>
+            <ul class="exp-tasks">
+              <li data-i18n="exp.e2.t1">Découverte et prise en main de l'architecture Odoo (ORM, modèles, vues)</li>
+              <li data-i18n="exp.e2.t2">Développement de fonctionnalités sur des modules existants</li>
+              <li data-i18n="exp.e2.t3">Rédaction de rapports QWeb et personnalisation d'interfaces</li>
+              <li data-i18n="exp.e2.t4">Participation aux revues de code et réunions d'équipe</li>
+            </ul>
+            <div class="exp-tech">
+              <span class="tag amber">Odoo</span>
+              <span class="tag amber">Python</span>
+              <span class="tag">QWeb</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Git</span>
+            </div>
           </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-label reveal" data-i18n="about.label">À propos</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2 class="section-title" data-i18n-html="about.title">Passionné par la<br/><em>technologie.</em></h2>
+        <p data-i18n-html="about.p1">Bonjour ! Je suis <strong>RANAIVOSON Nantenaina Claudio</strong>, développeur passionné basé à <span class="hl">Madagascar</span>. Depuis que j'ai découvert la programmation, je suis fasciné par le pouvoir des solutions numériques pour résoudre des problèmes complexes.</p>
+        <p data-i18n-html="about.p2">Mes compétences couvrent le développement <strong>web</strong> et les solutions <span class="hl">Odoo</span>, avec des technologies comme Python, PHP, JavaScript, React, Django et bien d'autres. Mon objectif : créer des applications <strong>modernes, intuitives et robustes</strong>.</p>
+        <div class="quote-block">
+          <em data-i18n="about.quote">"En programmation, si quelqu'un vous dit 'vous compliquez trop les choses', il a soit 10 pas de retard, soit 10 pas d'avance sur vous." – Andrew Clark</em>
         </div>
-        <div class="exp-role" data-i18n="exp.e2.role">Stagiaire Développeur Odoo</div>
-        <div class="exp-desc" data-i18n="exp.e2.desc">
-          Stage de fin de licence réalisé au sein du département technique. Première immersion professionnelle dans l'écosystème Odoo en environnement d'entreprise.
+        <p data-i18n-html="about.p3">Cette citation guide mon approche : trouver l'équilibre parfait entre <strong>simplicité et innovation</strong>, toujours centré sur les besoins de l'utilisateur.</p>
+      </div>
+      <div class="about-stats reveal reveal-delay-2">
+        <div class="stat-card">
+          <div class="stat-number">2+</div>
+          <div class="stat-label" data-i18n="about.stat1">Années d'expérience</div>
         </div>
-        <ul class="exp-tasks">
-          <li data-i18n="exp.e2.t1">Découverte et prise en main de l'architecture Odoo (ORM, modèles, vues)</li>
-          <li data-i18n="exp.e2.t2">Développement de fonctionnalités sur des modules existants</li>
-          <li data-i18n="exp.e2.t3">Rédaction de rapports QWeb et personnalisation d'interfaces</li>
-          <li data-i18n="exp.e2.t4">Participation aux revues de code et réunions d'équipe</li>
-        </ul>
-        <div class="exp-tech">
-          <span class="tag amber">Odoo</span>
-          <span class="tag amber">Python</span>
-          <span class="tag">QWeb</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Git</span>
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label" data-i18n="about.stat2">Technologies maîtrisées</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">M2</div>
+          <div class="stat-label" data-i18n="about.stat3">Master Informatique (IS-INFO)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label" data-i18n="about.stat4">Dédié à chaque projet</div>
         </div>
       </div>
     </div>
+  </section>
 
-  </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="section-label reveal" data-i18n="about.label">À propos</div>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <div class="section-title" data-i18n-html="about.title">Passionné par la<br/><em class="title-accent">technologie.</em></div>
-      <p data-i18n-html="about.p1">Bonjour ! Je suis <strong>RANAIVOSON Nantenaina Claudio</strong>, développeur passionné basé à <span class="hl">Madagascar</span>. Depuis que j'ai découvert la programmation, je suis fasciné par le pouvoir des solutions numériques pour résoudre des problèmes complexes.</p>
-      <p data-i18n-html="about.p2">Mes compétences couvrent le développement <strong>web</strong> et les solutions <span class="hl">Odoo</span>, avec des technologies comme Python, PHP, JavaScript, React, Django et bien d'autres. Mon objectif : créer des applications <strong>modernes, intuitives et robustes</strong>.</p>
-      <div class="quote-block">
-        <em data-i18n="about.quote">"En programmation, si quelqu'un vous dit 'vous compliquez trop les choses', il a soit 10 pas de retard, soit 10 pas d'avance sur vous." – Andrew Clark</em>
-      </div>
-      <p data-i18n-html="about.p3">Cette citation guide mon approche : trouver l'équilibre parfait entre <strong>simplicité et innovation</strong>, toujours centré sur les besoins de l'utilisateur.</p>
+  <section id="education" class="section-split">
+    <div class="split-head reveal">
+      <div class="section-label" data-i18n="edu.label">Éducation</div>
+      <h2 class="section-title" data-i18n-html="edu.title">Mon parcours<br/>académique.</h2>
+      <p class="split-intro" data-i18n="edu.intro">De la Terminale C au Master en Génie Logiciel, complété par une certification en analytique prescriptive.</p>
     </div>
-    <div class="about-stats reveal reveal-delay-2">
-      <div class="stat-card">
-        <div class="stat-number">2+</div>
-        <div class="stat-label" data-i18n="about.stat1">Années d'expérience</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">10+</div>
-        <div class="stat-label" data-i18n="about.stat2">Technologies maîtrisées</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">M2</div>
-        <div class="stat-label" data-i18n="about.stat3">Master Informatique (IS-INFO)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">100%</div>
-        <div class="stat-label" data-i18n="about.stat4">Dédié à chaque projet</div>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="split-body">
+      <ol class="edu-timeline reveal">
+        <li class="edu-item">
+          <div class="edu-badge current" data-i18n="edu.current">⟳ En cours</div>
+          <div class="edu-date" data-i18n="edu.d1.date">2025 — Présent</div>
+          <h3 class="edu-school">Institut Supérieur d'Informatique (IS-INFO)</h3>
+          <div class="edu-location">Ampasamadinika, Antananarivo</div>
+          <div class="edu-diploma" data-i18n="edu.d1.diploma">Master — Génie Logiciel</div>
+        </li>
+        <li class="edu-item">
+          <div class="edu-badge" data-i18n="edu.done">✓ Obtenu</div>
+          <div class="edu-date">2022 — 2025</div>
+          <h3 class="edu-school">Institut Supérieur d'Informatique (IS-INFO)</h3>
+          <div class="edu-location">Ampasamadinika, Antananarivo</div>
+          <div class="edu-diploma" data-i18n="edu.d2.diploma">Licence Professionnelle en Informatique de Gestion</div>
+        </li>
+        <li class="edu-item">
+          <div class="edu-badge" data-i18n="edu.done">✓ Obtenu</div>
+          <div class="edu-date">2020 — 2021</div>
+          <h3 class="edu-school">Institution Sainte Famille (La Salle)</h3>
+          <div class="edu-location">Mahamasina, Antananarivo</div>
+          <div class="edu-diploma" data-i18n="edu.d3.diploma">Baccalauréat série C</div>
+        </li>
+      </ol>
 
-<section id="education" class="section-split">
-  <div class="split-head reveal">
-    <div class="section-label" data-i18n="edu.label">Éducation</div>
-    <div class="section-title" data-i18n-html="edu.title">Mon parcours<br/>académique.</div>
-    <p class="split-intro" data-i18n="edu.intro">De la Terminale C au Master en Génie Logiciel, complété par une certification en analytique prescriptive.</p>
-  </div>
-  <div class="split-body">
-  <div class="edu-timeline reveal">
-    <div class="edu-item">
-      <div class="edu-badge current" data-i18n="edu.current">⟳ En cours</div>
-      <div class="edu-date" data-i18n="edu.d1.date">2025 — Présent</div>
-      <div class="edu-school">Institut Supérieur d'Informatique (IS-INFO)</div>
-      <div class="edu-location">Ampasamadinika, Antananarivo</div>
-      <div class="edu-diploma" data-i18n="edu.d1.diploma">Master — Génie Logiciel</div>
-    </div>
-    <div class="edu-item">
-      <div class="edu-badge" data-i18n="edu.done">✓ Obtenu</div>
-      <div class="edu-date">2022 — 2025</div>
-      <div class="edu-school">Institut Supérieur d'Informatique (IS-INFO)</div>
-      <div class="edu-location">Ampasamadinika, Antananarivo</div>
-      <div class="edu-diploma" data-i18n="edu.d2.diploma">Licence Professionnelle en Informatique de Gestion</div>
-    </div>
-    <div class="edu-item">
-      <div class="edu-badge" data-i18n="edu.done">✓ Obtenu</div>
-      <div class="edu-date">2020 — 2021</div>
-      <div class="edu-school">Institution Sainte Famille (La Salle)</div>
-      <div class="edu-location">Mahamasina, Antananarivo</div>
-      <div class="edu-diploma" data-i18n="edu.d3.diploma">Baccalauréat série C</div>
-    </div>
-  </div>
+      <div class="cert-block reveal">
+        <h3 class="cert-heading">
+          <svg class="icon" aria-hidden="true"><use href="#i-award"/></svg>
+          <span data-i18n="cert.heading">Certification professionnelle</span>
+        </h3>
 
-  <!-- Certification professionnelle : l'aperçu ouvre l'image en grand (voir js/lightbox.js) -->
-  <div class="cert-block reveal">
-    <h3 class="cert-heading">
-      <svg class="icon" aria-hidden="true"><use href="#i-award"/></svg>
-      <span data-i18n="cert.heading">Certification professionnelle</span>
-    </h3>
-
-    <button type="button" class="cert-card" id="cert-open" data-i18n-aria-label="cert.aria">
-      <span class="cert-thumb">
-        <img src="/img/certificat.jpeg" alt="" width="1600" height="1143" loading="lazy" decoding="async"/>
-        <span class="cert-thumb-hint" aria-hidden="true"><svg class="icon"><use href="#i-maximize"/></svg></span>
-      </span>
-      <span class="cert-info">
-        <span class="cert-top">
-          <span class="cert-org">ClearMind-Analytics</span>
-          <span class="cert-badge" data-i18n="cert.badge">✓ Délivré</span>
-        </span>
-        <span class="cert-name" data-i18n="cert.p1">Prescriptive Analytics — Training Program (24 sessions)</span>
-        <span class="cert-name" data-i18n="cert.p2">Data and Artificial Intelligence Project Framework (7 sessions)</span>
-        <span class="cert-meta">
-          <span data-i18n="cert.date">19 août 2025 — 17 nov. 2025</span>
-          <span data-i18n="cert.place">Andraharo, Antananarivo — pour le Groupe Viseo</span>
-        </span>
-        <span class="cert-tags">
-          <span class="tag amber">Prescriptive Analytics</span>
-          <span class="tag">Data Science</span>
-          <span class="tag">AI</span>
-          <span class="tag">Optimization</span>
-        </span>
-        <span class="cert-cta">
-          <svg class="icon" aria-hidden="true"><use href="#i-maximize"/></svg>
-          <span data-i18n="cert.view">Voir le certificat</span>
-        </span>
-      </span>
-    </button>
-  </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="contact-glow"></div>
-  <div class="section-label reveal" data-i18n="contact.label">Contact</div>
-  <div class="contact-big reveal" data-i18n-html="contact.big">
-    Construisons quelque<br/>chose <em>ensemble.</em>
-  </div>
-  <div class="contact-sub reveal" data-i18n="contact.sub">Disponible pour des missions freelance locales et à distance.</div>
-
-  <div class="contact-grid">
-    <div class="contact-info reveal">
-      <a href="mailto:ranaivosonclaudio@gmail.com" class="contact-item-row">
-        <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
-        <div><div class="ci-label">Email</div><div class="ci-val">ranaivosonclaudio@gmail.com</div></div>
-      </a>
-      <a href="tel:+261324337246" class="contact-item-row">
-        <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-        <div><div class="ci-label" data-i18n="contact.phone">Téléphone</div><div class="ci-val">+261 32 43 372 46</div></div>
-      </a>
-      <a href="https://github.com/CLAUDIO101000" target="_blank" rel="noopener noreferrer" class="contact-item-row">
-        <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg></span>
-        <div><div class="ci-label">GitHub</div><div class="ci-val">github.com/CLAUDIO101000</div></div>
-      </a>
-      <a href="https://www.linkedin.com/in/claudio-ranaivoson-8145aa341" target="_blank" rel="noopener noreferrer" class="contact-item-row">
-        <span class="ci-icon"><svg class="icon solid" aria-hidden="true"><use href="#i-linkedin"/></svg></span>
-        <div><div class="ci-label">LinkedIn</div><div class="ci-val">Claudio Ranaivoson</div></div>
-      </a>
-    </div>
-
-    <div class="contact-form-wrap reveal reveal-delay-2">
-      <form action="https://formspree.io/f/mzzzydjj" method="POST" id="contact-form">
-        <div class="hp-field" aria-hidden="true">
-          <label data-i18n="contact.hp">Ne pas remplir</label>
-          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-        </div>
-        <input type="hidden" name="_subject" value="[Portfolio] Nouveau message de contact">
-        <div class="form-group">
-          <label for="cf-name" data-i18n="contact.name">Nom</label>
-          <input type="text" id="cf-name" name="name" data-i18n-placeholder="contact.namePh" placeholder="Votre nom" autocomplete="name" required>
-        </div>
-        <div class="form-group">
-          <label for="cf-email" data-i18n="contact.email">Email</label>
-          <input type="email" id="cf-email" name="email" data-i18n-placeholder="contact.emailPh" placeholder="votreemail@exemple.com" autocomplete="email" required>
-        </div>
-        <div class="form-group">
-          <label for="cf-message" data-i18n="contact.message">Message</label>
-          <textarea id="cf-message" name="message" data-i18n-placeholder="contact.messagePh" placeholder="Décrivez votre projet..." required></textarea>
-        </div>
-        <button type="submit" class="form-submit">
-          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg> <span data-i18n="contact.send">Envoyer le message</span>
+        <button type="button" class="cert-card" id="cert-open" data-i18n-aria-label="cert.aria"
+              aria-label="Ouvrir le certificat ClearMind-Analytics en grand">
+          <span class="cert-thumb">
+            <img src="/img/certificat.jpeg" alt="" width="1600" height="1143" loading="lazy" decoding="async"/>
+            <span class="cert-thumb-hint" aria-hidden="true"><svg class="icon"><use href="#i-maximize"/></svg></span>
+          </span>
+          <span class="cert-info">
+            <span class="cert-top">
+              <span class="cert-org">ClearMind-Analytics</span>
+              <span class="cert-badge" data-i18n="cert.badge">✓ Délivré</span>
+            </span>
+            <span class="cert-name" data-i18n="cert.p1">Prescriptive Analytics — Training Program (24 sessions)</span>
+            <span class="cert-name" data-i18n="cert.p2">Data and Artificial Intelligence Project Framework (7 sessions)</span>
+            <span class="cert-meta">
+              <span data-i18n="cert.date">19 août 2025 — 17 nov. 2025</span>
+              <span data-i18n="cert.place">Andraharo, Antananarivo — pour le Groupe Viseo</span>
+            </span>
+            <span class="cert-tags">
+              <span class="tag amber">Prescriptive Analytics</span>
+              <span class="tag">Data Science</span>
+              <span class="tag">AI</span>
+              <span class="tag">Optimization</span>
+            </span>
+            <span class="cert-cta">
+              <svg class="icon" aria-hidden="true"><use href="#i-maximize"/></svg>
+              <span data-i18n="cert.view">Voir le certificat</span>
+            </span>
+          </span>
         </button>
-      </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section id="contact">
+    <div class="contact-glow"></div>
+    <div class="section-label reveal" data-i18n="contact.label">Contact</div>
+    <h2 class="contact-big reveal" data-i18n-html="contact.big">Construisons quelque<br/>chose <em>ensemble.</em></h2>
+    <div class="contact-sub reveal" data-i18n="contact.sub">Disponible pour des missions freelance locales et à distance.</div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <a href="mailto:ranaivosonclaudio@gmail.com" class="contact-item-row">
+          <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+          <div><div class="ci-label">Email</div><div class="ci-val">ranaivosonclaudio@gmail.com</div></div>
+        </a>
+        <a href="tel:+261324337246" class="contact-item-row">
+          <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+          <div><div class="ci-label" data-i18n="contact.phone">Téléphone</div><div class="ci-val">+261 32 43 372 46</div></div>
+        </a>
+        <a href="https://github.com/CLAUDIO101000" target="_blank" rel="noopener noreferrer" class="contact-item-row">
+          <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg></span>
+          <div><div class="ci-label">GitHub</div><div class="ci-val">github.com/CLAUDIO101000</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/claudio-ranaivoson-8145aa341" target="_blank" rel="noopener noreferrer" class="contact-item-row">
+          <span class="ci-icon"><svg class="icon solid" aria-hidden="true"><use href="#i-linkedin"/></svg></span>
+          <div><div class="ci-label">LinkedIn</div><div class="ci-val">Claudio Ranaivoson</div></div>
+        </a>
+      </div>
+
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <form action="https://formspree.io/f/mzzzydjj" method="POST" id="contact-form">
+          <div class="hp-field" aria-hidden="true">
+            <label data-i18n="contact.hp">Ne pas remplir</label>
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="_subject" value="[Portfolio] Nouveau message de contact">
+          <div class="form-group">
+            <label for="cf-name" data-i18n="contact.name">Nom</label>
+            <input type="text" id="cf-name" name="name" data-i18n-placeholder="contact.namePh" placeholder="Votre nom" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label for="cf-email" data-i18n="contact.email">Email</label>
+            <input type="email" id="cf-email" name="email" data-i18n-placeholder="contact.emailPh" placeholder="votreemail@exemple.com" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label for="cf-message" data-i18n="contact.message">Message</label>
+            <textarea id="cf-message" name="message" data-i18n-placeholder="contact.messagePh" placeholder="Décrivez votre projet..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg> <span data-i18n="contact.send">Envoyer le message</span>
+          </button>
+          <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
   <div class="footer-mark" aria-hidden="true">Claudio<span>.</span></div>
@@ -693,7 +734,6 @@
   </div>
 </footer>
 
-<!-- ── Visionneuse d'image (certificat) — masquée jusqu'au clic -->
 <div class="lightbox" id="lightbox" hidden>
   <div class="lightbox-backdrop" data-lb-close></div>
   <div class="lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
@@ -704,12 +744,13 @@
           <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
           <span data-i18n="cert.download">Télécharger</span>
         </a>
-        <button type="button" class="lightbox-btn icon-only" data-lb-close data-i18n-aria-label="cert.close" aria-label="Fermer">
+        <button type="button" class="lightbox-btn icon-only" data-lb-close data-i18n-aria-label="cert.close" aria-label="Fermer la visionneuse">
           <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
         </button>
       </span>
     </div>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="" data-i18n-alt="cert.alt"/>
+    <img class="lightbox-img" id="lightbox-img" data-i18n-alt="cert.alt"
+         alt="Certificat de fin de formation ClearMind-Analytics délivré à RANAIVOSON Nantenaina Claudio pour les programmes Prescriptive Analytics (24 sessions) et Data and Artificial Intelligence Project Framework (7 sessions), du 19 août au 17 novembre 2025."/>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
-// Visionneuse plein écran pour le certificat.
-// `hidden` gère l'accessibilité (retirée du flux et du tab order) ; la classe
-// .is-open pilote seulement le fondu, une fois l'élément affiché.
+@use '../abstracts' as *;
+
+// `hidden` retire la visionneuse du flux ; .is-open ne pilote que le fondu
 .lightbox {
   position: fixed; inset: 0; z-index: 200;
   display: grid; place-items: center;
@@ -8,9 +8,6 @@
   opacity: 0;
   transition: opacity .3s var(--ease-out);
 
-  // Les styles auteur l'emportent sur `[hidden]` de la feuille du navigateur :
-  // il faut redire soi-même display:none, sinon le calque reste devant la page.
-  &[hidden] { display: none; }
   &.is-open { opacity: 1; }
 }
 
@@ -31,22 +28,18 @@
   display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
   flex-wrap: wrap;
 }
+
 .lightbox-title {
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); color: var(--muted);
-  letter-spacing: .1em; text-transform: uppercase;
+  @include label(var(--fs-2xs), .1em);
+  color: var(--muted);
 }
+
 .lightbox-actions { display: flex; align-items: center; gap: var(--sp-2); }
 
 .lightbox-btn {
-  display: inline-flex; align-items: center; gap: var(--sp-2);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); letter-spacing: .08em; text-transform: uppercase;
-  padding: var(--sp-2) var(--sp-4);
-  border: 1px solid var(--border-strong); border-radius: 999px;
-  background: rgba(26, 23, 20, .8);
-  color: var(--text); text-decoration: none; cursor: pointer;
-  transition: border-color .2s, color .2s, background-color .2s;
+  @include pill-button;
+  background: alpha(surface, .8);
+  color: var(--text); cursor: pointer;
 
   &:hover, &:focus-visible { border-color: var(--accent); color: var(--accent); }
   &.icon-only { padding: var(--sp-2); font-size: var(--fs-sm); }
@@ -61,3 +54,8 @@
 }
 
 body.no-scroll { overflow: hidden; }
+
+@include below(mobile) {
+  .lightbox-bar   { justify-content: center; }
+  .lightbox-title { display: none; }
+}

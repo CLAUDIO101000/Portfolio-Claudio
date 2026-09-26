@@ -6,8 +6,9 @@
 
 html {
   scroll-behavior: smooth;
-  // Les ancres ne passent plus sous la nav fixe
   scroll-padding-top: calc(var(--nav-h) + var(--sp-4));
+  scrollbar-color: var(--border-strong) var(--bg);
+  scrollbar-width: thin;
 }
 
 body {
@@ -20,20 +21,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: var(--accent); color: var(--ink); }
-
-// ── Curseur personnalisé
-// La classe n'est posée par le JS que sur pointeur fin : si le script échoue
-// ou sur tactile, le curseur natif reste disponible.
-// `cursor` s'hérite, mais la feuille de style UA repose `pointer`/`default` sur
-// les éléments interactifs : il faut les viser explicitement.
-html.has-custom-cursor body,
-html.has-custom-cursor :is(a, button, [role='button'], label, summary) { cursor: none; }
-// Sauf les champs de saisie : le curseur texte y est une vraie aide
-html.has-custom-cursor :is(input, textarea) { cursor: text; }
-
-img, svg { display: block; max-width: 100%; }
-
 // Grain papier
 body::before {
   content: '';
@@ -42,13 +29,13 @@ body::before {
   pointer-events: none; z-index: 1000; opacity: .55;
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
+img, svg { display: block; max-width: 100%; }
 
-// Sprite d'icônes inline : présent dans le DOM, jamais rendu
-.sprite { display: none; }
+[hidden] { display: none !important; }
+
+::selection { background: var(--accent); color: var(--ink); }
+
+::-webkit-scrollbar             { width: 6px; height: 6px; }
+::-webkit-scrollbar-track       { background: var(--bg); }
+::-webkit-scrollbar-thumb       { background: var(--border-strong); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }

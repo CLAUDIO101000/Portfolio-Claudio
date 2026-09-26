@@ -1,6 +1,9 @@
-// Liste façon registre : une ligne par diplôme, date en colonne
+@use '../abstracts' as *;
+
+// Registre : une ligne par diplôme, date en colonne
 .edu-timeline {
   display: flex; flex-direction: column;
+  list-style: none;
   border-top: 1px solid var(--border);
   max-width: 100%;
 }
@@ -9,8 +12,8 @@
   display: grid;
   grid-template-columns: 150px 1fr auto;
   grid-template-areas:
-    'date school badge'
-    'date loc    badge'
+    'date school  badge'
+    'date loc     badge'
     'date diploma badge';
   column-gap: var(--sp-6);
   padding: var(--sp-6) var(--sp-4);
@@ -29,60 +32,63 @@
 }
 
 .edu-date {
+  @include mono(var(--fs-xs), .1em);
   grid-area: date;
-  font-family: var(--font-mono);
-  font-size: var(--fs-xs); color: var(--accent); letter-spacing: .1em;
+  color: var(--accent);
   padding-top: .35em;
 }
-.edu-school   { grid-area: school; font-size: var(--fs-xl); font-weight: 700; letter-spacing: -.03em; line-height: 1.25; }
+
+.edu-school { grid-area: school; font-size: var(--fs-xl); font-weight: 700; letter-spacing: -.03em; line-height: 1.25; }
+
 .edu-location {
+  @include mono(var(--fs-2xs), .06em);
   grid-area: loc;
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); color: var(--muted); letter-spacing: .06em; margin: var(--sp-1) 0 var(--sp-2);
+  color: var(--muted); margin: var(--sp-1) 0 var(--sp-2);
 }
-.edu-diploma  { grid-area: diploma; font-family: var(--font-serif); font-size: var(--fs-xl); color: var(--text); opacity: .85; font-style: italic; line-height: 1.35; }
+
+.edu-diploma { grid-area: diploma; font-family: var(--font-serif); font-size: var(--fs-xl); color: var(--text); opacity: .85; font-style: italic; line-height: 1.35; }
+
+.edu-badge, .cert-badge {
+  @include badge;
+  border-color: var(--green); color: var(--green);
+}
 
 .edu-badge {
   grid-area: badge; align-self: start;
-  font-family: var(--font-mono);
-  font-size: var(--fs-3xs); padding: .3rem .7rem;
-  border: 1px solid var(--green); color: var(--green); border-radius: 999px;
-  letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
 
   &.current { border-color: var(--accent); color: var(--ink); background: var(--accent); }
 }
 
-// ── Certification : une carte détachée du registre des diplômes
+// Certification : carte cliquable qui ouvre la visionneuse
 .cert-block { margin-top: var(--sp-8); }
 
 .cert-heading {
+  @include label(var(--fs-2xs), .14em);
   display: flex; align-items: center; gap: var(--sp-2);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); font-weight: 400;
-  color: var(--accent); letter-spacing: .14em; text-transform: uppercase;
+  font-weight: 400;
+  color: var(--accent);
   margin-bottom: var(--sp-4);
 }
 
 .cert-card {
+  @include card;
   display: grid;
   grid-template-columns: minmax(200px, 300px) 1fr;
   gap: var(--sp-6);
   width: 100%; text-align: left;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
   padding: var(--sp-5);
   color: inherit; font: inherit; cursor: pointer;
-  transition: border-color .3s, transform .4s var(--ease-out), background-color .3s;
 
   &:hover, &:focus-visible {
-    border-color: var(--accent-dim); background: var(--surface2);
-    transform: translateY(var(--lift));
+    @include card-hover;
+    background: var(--surface2);
   }
+  &:hover .cert-thumb img  { transform: scale(1.04); }
   &:hover .cert-thumb-hint { opacity: 1; }
-  &:hover .cert-cta { color: var(--accent); border-color: var(--accent); }
+  &:hover .cert-cta        { color: var(--accent); border-color: var(--accent); }
 }
 
-// Aperçu du scan, recadré en 4/3 — proche du format du document, le rognage reste minime
+// Recadrage 4/3, proche du format du document
 .cert-thumb {
   position: relative; display: block;
   aspect-ratio: 4 / 3; overflow: hidden;
@@ -95,7 +101,6 @@
     transition: transform .6s var(--ease-out);
   }
 }
-.cert-card:hover .cert-thumb img { transform: scale(1.04); }
 
 .cert-thumb-hint {
   position: absolute; inset: auto var(--sp-2) var(--sp-2) auto;
@@ -111,36 +116,43 @@
   display: flex; align-items: center; gap: var(--sp-4);
   flex-wrap: wrap;
 }
-.cert-org {
-  font-size: var(--fs-xl); font-weight: 700; letter-spacing: -.03em; line-height: 1.2;
-}
-.cert-badge {
-  font-family: var(--font-mono);
-  font-size: var(--fs-3xs); padding: .3rem .7rem;
-  border: 1px solid var(--green); color: var(--green); border-radius: 999px;
-  letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
-}
+
+.cert-org { font-size: var(--fs-xl); font-weight: 700; letter-spacing: -.03em; line-height: 1.2; }
+
 .cert-name {
   font-family: var(--font-serif); font-style: italic;
   font-size: var(--fs-lg); line-height: 1.3; color: var(--text); opacity: .9;
 }
-// Date puis lieu, une ligne chacun — même registre que .edu-location
+
 .cert-meta {
+  @include mono(var(--fs-2xs), .06em);
   display: flex; flex-direction: column; gap: var(--sp-1);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); color: var(--muted); letter-spacing: .06em; line-height: 1.5;
+  color: var(--muted); line-height: 1.5;
   margin-top: var(--sp-1);
 }
+
 .cert-tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-2); }
 
 .cert-cta {
+  @include pill-button;
   align-self: flex-start;
-  display: inline-flex; align-items: center; gap: var(--sp-2);
   margin-top: var(--sp-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); letter-spacing: .08em; text-transform: uppercase;
-  padding: var(--sp-2) var(--sp-4);
-  border: 1px solid var(--border-strong); border-radius: 999px;
   color: var(--muted);
-  transition: border-color .2s, color .2s;
+}
+
+@include below(mobile) {
+  .edu-item {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'date    badge'
+      'school  school'
+      'loc     loc'
+      'diploma diploma';
+    row-gap: var(--sp-1);
+  }
+
+  // Vignette au-dessus du texte, en bandeau
+  .cert-card  { grid-template-columns: 1fr; gap: var(--sp-4); padding: var(--sp-4); }
+  .cert-thumb { aspect-ratio: 16 / 9; }
+  .cert-cta   { width: 100%; justify-content: center; }
 }

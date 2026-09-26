@@ -1,0 +1,48 @@
+@use '../abstracts' as *;
+
+:root {
+  @each $name, $value in $palette {
+    --#{$name}: #{$value};
+  }
+  --accent-glow: #{alpha(accent, .12)};
+
+  --font-sans:  'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+
+  --fs-3xs:   .625rem;   // 10
+  --fs-2xs:   .6875rem;  // 11
+  --fs-xs:    .75rem;    // 12
+  --fs-sm:    .8125rem;  // 13
+  --fs-md:    .9375rem;  // 15
+  --fs-lg:    1.125rem;  // 18
+  --fs-xl:    1.375rem;  // 22
+  --fs-2xl:   2rem;      // 32
+  --fs-3xl:   3rem;      // 48
+  --fs-input: 1rem;      // 16 : en dessous, iOS zoome au focus
+
+  --sp-1:  .25rem;
+  --sp-2:  .5rem;
+  --sp-3:  .75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.5rem;
+  --sp-6:  2rem;
+  --sp-8:  3rem;
+  --sp-10: 4rem;
+  --sp-12: 7rem;
+
+  --radius:    14px;
+  --radius-lg: 28px;
+  --ease-out:  cubic-bezier(.22, 1, .36, 1);
+  --lift:      -3px;
+
+  --pad-x:     var(--sp-8);
+  --container: 1400px;
+  --gutter:    max(var(--pad-x), (100% - var(--container)) / 2);
+  --nav-h:     68px;
+
+  @include below(mobile) {
+    --pad-x: var(--sp-5);
+    --sp-12: 4.5rem;
+  }
+}

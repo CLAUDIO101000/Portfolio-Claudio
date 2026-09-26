@@ -1,0 +1,42 @@
+// Bandeau incliné entre le hero et la suite. Le JS double la piste pour une
+// boucle sans couture : sans JS, le bandeau reste fixe.
+.marquee-wrap {
+  overflow: hidden;
+  padding-block: var(--sp-6);
+  margin-top: calc(var(--sp-6) * -1);
+  position: relative; z-index: 2;
+}
+
+.marquee {
+  display: flex; width: max-content;
+  background: var(--accent); color: var(--ink);
+  transform: rotate(-2deg) scale(1.04);
+  border-block: 1px solid var(--ink);
+
+  &:hover .marquee-track { animation-play-state: paused; }
+}
+
+.marquee-track {
+  display: flex; flex: none; align-items: center;
+  padding-block: var(--sp-3);
+
+  .js & { animation: marquee 32s linear infinite; }
+
+  span {
+    font-family: var(--font-sans); font-weight: 800;
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    letter-spacing: -.03em; text-transform: uppercase;
+    white-space: nowrap;
+    padding-inline: var(--sp-5);
+  }
+
+  i {
+    font-style: normal; font-size: 1.1rem;
+    display: inline-block;
+  }
+
+  span:nth-child(4n + 3) {
+    font-family: var(--font-serif); font-style: italic; font-weight: 400;
+    text-transform: none; letter-spacing: -.01em;
+  }
+}

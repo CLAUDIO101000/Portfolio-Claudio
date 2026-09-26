@@ -1,17 +1,18 @@
+@use '../abstracts' as *;
+
 .about-grid {
   display: grid; grid-template-columns: 1.3fr 1fr;
   gap: var(--sp-10); align-items: start;
 }
 
-.about-text {
-  p {
-    font-size: var(--fs-lg); line-height: 1.75; color: var(--muted);
-    margin-bottom: var(--sp-4); max-width: 62ch;
-    strong { color: var(--text); font-weight: 600; }
-  }
+.about-text p {
+  font-size: var(--fs-lg); line-height: 1.75; color: var(--muted);
+  margin-bottom: var(--sp-4); max-width: 62ch;
+
+  strong { color: var(--text); font-weight: 600; }
 }
 
-// Citation en grand, guillemet décoratif latérite
+// Citation posée de travers comme une note collée ; le survol la redresse
 .quote-block {
   position: relative;
   padding: var(--sp-6) var(--sp-6) var(--sp-6) var(--sp-10);
@@ -19,8 +20,6 @@
   background: var(--surface);
   border: 1px dashed var(--border-strong);
   border-radius: var(--radius-lg);
-  // Légèrement de travers, comme une note collée sur la page — le survol la
-  // redresse. Même inclinaison que le bandeau défilant, en plus discret.
   transform: rotate(-.5deg);
   transition: transform .5s var(--ease-out);
 
@@ -45,20 +44,21 @@
 }
 
 .stat-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  @include card;
   padding: var(--sp-6) var(--sp-5);
   min-height: 190px;
   display: flex; flex-direction: column; justify-content: space-between;
-  transition: border-color .3s, transform .4s var(--ease-out), background-color .3s;
 
-  &:hover { border-color: var(--accent-dim); transform: translateY(var(--lift)) rotate(-1deg); }
+  &:hover {
+    @include card-hover;
+    transform: translateY(var(--lift)) rotate(-1deg);
+  }
 
-  // Première carte en aplat : casse la répétition
   &:first-child {
     background: var(--accent); border-color: var(--accent);
+
     .stat-number { color: var(--ink); }
-    .stat-label  { color: #3a1a0e; }
+    .stat-label  { color: var(--ink-soft); }
   }
 }
 
@@ -69,7 +69,22 @@
 }
 
 .stat-label {
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); color: var(--muted); letter-spacing: .08em; line-height: 1.5;
-  text-transform: uppercase;
+  @include label(var(--fs-2xs), .08em);
+  color: var(--muted); line-height: 1.5;
+}
+
+@include below(tablet) {
+  .about-stats { position: static; }
+}
+
+@include below(mobile) {
+  .about-grid  { grid-template-columns: 1fr; gap: var(--sp-6); }
+  .stat-card   { min-height: 150px; }
+  .quote-block { padding: var(--sp-8) var(--sp-5) var(--sp-5); }
+}
+
+// Deux cartes de front sur 320px : le chiffre et les étiquettes doivent tenir
+@include below(xxs) {
+  .stat-card   { padding-inline: var(--sp-4); }
+  .stat-number { font-size: 2.5rem; }
 }

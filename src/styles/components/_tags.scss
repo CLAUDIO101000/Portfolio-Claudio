@@ -1,0 +1,10 @@
+@use '../abstracts' as *;
+
+.tag {
+  @include mono(var(--fs-3xs), .04em);
+  padding: .3rem .65rem;
+  border: 1px solid var(--border); border-radius: 999px;
+  color: var(--muted);
+
+  &.amber { border-color: var(--accent-dim); color: var(--accent); }
+}

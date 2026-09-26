@@ -1,0 +1,64 @@
+@use '../abstracts' as *;
+
+// La gouttière borne le contenu à --container sans wrapper supplémentaire
+section {
+  position: relative;
+  padding-block: var(--sp-12);
+  padding-inline: var(--gutter);
+}
+
+// Numérotation des sections dans l'ordre du DOM (voir .section-label)
+body { counter-reset: sect; }
+section:not(#hero) { counter-increment: sect; }
+
+// Filet pointillé piqué d'un losange entre deux sections consécutives
+section + section:not(#contact) {
+  &::before {
+    content: '';
+    position: absolute; top: 0; left: var(--gutter); right: var(--gutter);
+    border-top: 1px dashed var(--border);
+  }
+
+  &::after {
+    content: '';
+    position: absolute; top: -4px; left: var(--gutter);
+    width: 8px; height: 8px;
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+}
+
+.marquee-wrap + section { padding-top: var(--sp-10); }
+
+// Sections en deux colonnes : titre collant à gauche, contenu à droite
+.section-split {
+  display: grid;
+  grid-template-columns: minmax(260px, 380px) 1fr;
+  gap: var(--sp-10);
+  align-items: start;
+
+  .section-title { font-size: clamp(2rem, 3.6vw, 3.2rem); }
+}
+
+.split-head {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--sp-5));
+  align-self: start;
+
+  .section-title { margin-bottom: var(--sp-4); }
+}
+
+.split-intro {
+  font-size: var(--fs-md);
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 34ch;
+}
+
+.split-body { min-width: 0; }
+
+@include below(tablet) {
+  .section-split { grid-template-columns: 1fr; gap: var(--sp-6); }
+  .split-head    { position: static; }
+  .split-intro   { max-width: none; }
+}

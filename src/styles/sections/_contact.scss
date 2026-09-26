@@ -1,7 +1,7 @@
-// Section finale en aplat latérite : le point d'orgue de la page
-#contact {
-  --ink-soft: #3a1a0e; // 5.8:1 sur --accent
+@use '../abstracts' as *;
 
+// Section finale en aplat latérite
+#contact {
   background: var(--accent); color: var(--ink);
   text-align: left;
   padding-block: var(--sp-12);
@@ -10,19 +10,19 @@
 
   .section-label {
     color: var(--ink);
-    &::before { color: var(--ink); border-color: rgba(18, 15, 12, .45); background: rgba(18, 15, 12, .08); }
-    &::after  { border-top-color: rgba(18, 15, 12, .35); }
+    &::before { color: var(--ink); border-color: alpha(ink, .45); background: alpha(ink, .08); }
+    &::after  { border-top-color: alpha(ink, .35); }
   }
 
   :is(a, button, input, textarea):focus-visible { outline-color: var(--ink); }
   .contact-form-wrap :is(input, textarea, button):focus-visible { outline-color: var(--accent); }
 }
 
-// Ondes concentriques, comme un caillou jeté dans l'eau
+// Ondes concentriques
 .contact-glow {
   position: absolute; width: 1400px; height: 1400px;
   right: -500px; top: -380px;
-  background: repeating-radial-gradient(circle, transparent 0 46px, rgba(18, 15, 12, .09) 46px 47px);
+  background: repeating-radial-gradient(circle, transparent 0 46px, alpha(ink, .09) 46px 47px);
   mask-image: radial-gradient(circle, black 30%, transparent 70%);
   pointer-events: none;
 }
@@ -32,6 +32,7 @@
   font-size: clamp(2.6rem, 8vw, 7.5rem);
   line-height: .9; margin-bottom: var(--sp-5); letter-spacing: -.06em;
   position: relative;
+
   em {
     font-family: var(--font-serif); font-weight: 400; font-style: italic;
     letter-spacing: -.02em; color: var(--text);
@@ -49,12 +50,12 @@
   position: relative; align-items: end;
 }
 
-.contact-info { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(18, 15, 12, .3); }
+.contact-info { display: flex; flex-direction: column; gap: 0; border-top: 1px solid alpha(ink, .3); }
 
 .contact-item-row {
   display: flex; align-items: center; gap: var(--sp-4);
   padding: var(--sp-5) var(--sp-2);
-  border-bottom: 1px solid rgba(18, 15, 12, .3);
+  border-bottom: 1px solid alpha(ink, .3);
   color: var(--ink); text-decoration: none;
   transition: background-color .3s, padding-left .4s var(--ease-out), color .3s;
 
@@ -65,6 +66,7 @@
 
   &:hover {
     background: var(--ink); color: var(--text); padding-left: var(--sp-5);
+
     .ci-label { color: var(--muted); }
     .ci-icon  { color: var(--accent); }
     &::after  { transform: translateX(-8px) rotate(-45deg); color: var(--accent); }
@@ -77,9 +79,22 @@
   width: 28px;
   transition: color .3s;
 }
+
 .ci-label {
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); color: var(--ink-soft);
-  letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px;
+  @include label(var(--fs-2xs), .1em);
+  color: var(--ink-soft);
+  margin-bottom: 2px;
 }
+
 .ci-val { font-size: var(--fs-lg); font-weight: 600; letter-spacing: -.02em; overflow-wrap: anywhere; }
+
+.contact-form-wrap {
+  background: var(--bg); color: var(--text);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8) var(--sp-6) var(--sp-6);
+  box-shadow: 0 40px 80px -40px alpha(ink, .8);
+}
+
+@include below(mobile) {
+  .contact-grid { grid-template-columns: 1fr; gap: var(--sp-6); }
+}

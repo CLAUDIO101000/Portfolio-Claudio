@@ -1,18 +1,15 @@
-@keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(126, 217, 154, .45); }
-  50%      { box-shadow: 0 0 0 6px rgba(126, 217, 154, 0); }
-}
+@use '../abstracts' as *;
 
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: var(--sp-4) var(--gutter);
   display: flex; justify-content: space-between; align-items: center;
   gap: var(--sp-6);
-  background: rgba(16, 14, 12, .78);
+  background: alpha(bg, .78);
   backdrop-filter: blur(18px) saturate(140%);
   border-bottom: 1px solid var(--border);
 
-  // Barre de progression de lecture, pilotée par --progress (0 → 1) en JS
+  // Barre de progression de lecture (--progress de 0 à 1, posé par le JS)
   &::after {
     content: '';
     position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%;
@@ -22,51 +19,49 @@ nav {
   }
 }
 
-.nav-logo {
-  a {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.75rem; line-height: 1;
-    color: var(--text);
-    text-decoration: none;
-    display: inline-flex; align-items: baseline; gap: 2px;
+.nav-logo a {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.75rem; line-height: 1;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex; align-items: baseline; gap: 2px;
 
-    &::after { content: '●'; font-style: normal; font-size: .45em; color: var(--accent); }
-  }
+  &::after { content: '●'; font-style: normal; font-size: .45em; color: var(--accent); }
 }
 
 .nav-links {
   display: flex; gap: var(--sp-1); list-style: none;
 
   a {
+    @include label();
     display: block;
     padding: var(--sp-2) var(--sp-3);
     border-radius: 999px;
-    font-family: var(--font-mono);
     color: var(--muted); text-decoration: none;
-    font-size: var(--fs-2xs); letter-spacing: .12em; text-transform: uppercase;
     transition: color .2s, background-color .2s;
-    &:hover { color: var(--text); background: var(--surface2); }
 
-    // Section en cours de lecture, posée par le JS au scroll
+    &:hover     { color: var(--text); background: var(--surface2); }
     &.is-active { color: var(--ink); background: var(--accent); }
   }
 }
 
 .nav-status {
+  @include mono;
   display: flex; align-items: center; gap: var(--sp-2);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); color: var(--green);
+  color: var(--green);
   white-space: nowrap;
   padding: var(--sp-2) var(--sp-3);
-  border: 1px solid rgba(126, 217, 154, .3);
+  border: 1px solid alpha(green, .3);
   border-radius: 999px;
 }
 
 .status-dot {
+  --pulse-color: #{alpha(green, .45)};
+  --pulse-size: 6px;
   width: 7px; height: 7px; flex: none;
   background: var(--green); border-radius: 50%;
-  animation: pulse-dot 2s infinite;
+  animation: pulse 2s infinite;
 }
 
 .nav-burger {
@@ -93,4 +88,35 @@ nav.open .nav-burger {
   span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   span:nth-child(2) { opacity: 0; }
   span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+}
+
+// Les 7 liens débordent sous ~1100px : menu déroulant ouvert par le burger
+@include below(nav) {
+  nav { gap: var(--sp-3); }
+  .nav-status { display: none; }
+  .nav-burger { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: alpha(bg, .97);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: var(--sp-2) 0;
+    max-height: calc(100svh - var(--nav-h)); overflow-y: auto;
+
+    a {
+      padding: var(--sp-3) var(--gutter); border-radius: 0;
+      font-family: var(--font-sans); font-size: var(--fs-xl); font-weight: 700;
+      letter-spacing: -.02em; text-transform: none; color: var(--text);
+    }
+
+    a.is-active {
+      background: transparent; color: var(--accent);
+      &::before { content: '◆'; font-size: .5em; vertical-align: .35em; margin-right: var(--sp-2); }
+    }
+  }
+
+  nav.open .nav-links { display: flex; }
 }

@@ -1,5 +1,7 @@
+@use '../abstracts' as *;
+
 #hero {
-  min-height: 100svh; // svh : pas de saut lié à la barre d'URL mobile
+  min-height: 100svh;
   display: flex; flex-direction: column; justify-content: center;
   gap: var(--sp-8);
   padding: calc(var(--nav-h) + var(--sp-8)) var(--gutter) var(--sp-10);
@@ -22,21 +24,19 @@
 
 .hero-glow {
   position: absolute; width: 60vw; height: 60vw; max-width: 900px; max-height: 900px;
-  background: radial-gradient(circle, rgba(255, 107, 61, .16) 0%, transparent 62%);
+  background: radial-gradient(circle, alpha(accent, .16) 0%, transparent 62%);
   top: 50%; right: -12%; transform: translateY(-50%);
   pointer-events: none;
 }
 
-// ── Bandeau méta : coordonnées + heure locale
 .hero-meta {
+  @include label(var(--fs-2xs), .16em);
   position: relative; z-index: 1;
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-3);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); letter-spacing: .16em; text-transform: uppercase;
   color: var(--muted);
   padding-bottom: var(--sp-4);
   border-bottom: 1px dashed var(--border);
-  opacity: 0; animation: fadeUp .8s .05s forwards;
+  @include enter(.05s);
 
   span { display: inline-flex; align-items: center; gap: var(--sp-2); }
   strong { color: var(--text); font-weight: 500; }
@@ -52,12 +52,12 @@
 .hero-left  { flex: 1 1 auto; min-width: 0; }
 .hero-right { flex: 0 0 auto; position: relative; }
 
-// ── Portrait en arche, décalé sur un aplat latérite
+// Portrait en arche, décalé sur un aplat latérite
 .avatar-wrap {
   position: relative;
   width: clamp(230px, 25vw, 390px);
   aspect-ratio: 4 / 5;
-  opacity: 0; animation: fadeUp 1s .5s var(--ease-out) forwards;
+  @include enter(.5s, 1s, var(--ease-out));
 
   &::before {
     content: ''; position: absolute; inset: 0;
@@ -66,6 +66,9 @@
     transform: translate(18px, 18px);
     transition: transform .6s var(--ease-out);
   }
+
+  // Pas de boîte pour <picture> : l'<img> se cale directement sur .avatar-wrap
+  picture { display: contents; }
 
   img, .avatar-initials {
     position: relative;
@@ -79,12 +82,12 @@
 }
 
 .avatar-initials {
+  display: flex; align-items: center; justify-content: center;
   font-family: var(--font-serif); font-style: italic;
   font-size: clamp(3rem, 8vw, 7rem); color: var(--accent); user-select: none;
-  align-items: center; justify-content: center;
 }
 
-// ── Badge circulaire tournant
+// Badge circulaire tournant
 .hero-badge {
   position: absolute; left: -48px; bottom: 28px;
   width: 128px; height: 128px;
@@ -92,15 +95,14 @@
   background: var(--bg);
   border: 1px solid var(--border-strong);
   display: grid; place-items: center;
-  opacity: 0; animation: fadeUp .8s 1s forwards;
+  @include enter(1s);
 
   svg.badge-ring {
     position: absolute; inset: 6px;
     width: calc(100% - 12px); height: calc(100% - 12px);
     animation: spin 18s linear infinite;
     fill: var(--text);
-    font-family: var(--font-mono); font-size: 9.6px; letter-spacing: .16em;
-    text-transform: uppercase;
+    @include label(9.6px, .16em);
   }
 
   .badge-core {
@@ -108,23 +110,24 @@
     background: var(--accent); color: var(--ink);
     display: grid; place-items: center;
     font-size: 1.1rem;
+
     .icon { transform: rotate(-45deg); stroke-width: 2.2; }
   }
 }
 
 .hero-tag {
+  @include label(var(--fs-2xs), .18em);
   display: inline-flex; align-items: center; gap: var(--sp-2);
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); letter-spacing: .18em; text-transform: uppercase;
   color: var(--text);
   padding: var(--sp-2) var(--sp-4);
   border: 1px solid var(--border-strong); border-radius: 999px;
   margin-bottom: var(--sp-6);
-  opacity: 0; animation: fadeUp .8s .15s forwards;
+  @include enter(.15s);
+
   &::before { content: '✦'; color: var(--accent); letter-spacing: 0; }
 }
 
-// ── Nom : trois registres typographiques, chaque ligne monte derrière un masque
+// Nom sur trois registres ; chaque ligne monte derrière un masque
 .hero-name {
   font-family: var(--font-sans);
   font-weight: 800;
@@ -143,8 +146,8 @@
   .line:nth-child(2) > span { animation-delay: .32s; }
   .line:nth-child(3) > span { animation-delay: .44s; }
 
-  // Ligne en retrait (pas de text-stroke : sur une police variable il trace
-  // les contours internes qui se chevauchent)
+  // Couleur plutôt que text-stroke : sur une police variable, le contour
+  // trace aussi les tracés internes qui se chevauchent
   .outline { color: var(--muted); }
 
   em {
@@ -160,13 +163,14 @@
 .hero-subtitle {
   font-size: var(--fs-lg); color: var(--muted);
   margin-bottom: var(--sp-4); max-width: 44ch; line-height: 1.55;
-  opacity: 0; animation: fadeUp .8s .6s forwards;
+  @include enter(.6s);
 }
 
 .typed-wrap {
   font-family: var(--font-mono);
   min-height: 2rem; margin-bottom: var(--sp-6);
-  opacity: 0; animation: fadeUp .8s .7s forwards;
+  @include enter(.7s);
+
   &::before { content: '> '; color: var(--muted); }
 }
 
@@ -175,57 +179,27 @@
 
 .hero-ctas {
   display: flex; gap: var(--sp-3); flex-wrap: wrap;
-  opacity: 0; animation: fadeUp .8s .8s forwards;
+  @include enter(.8s);
 }
 
 .hero-scroll {
+  @include label(var(--fs-3xs), .25em);
   position: absolute; bottom: var(--sp-5); left: 50%; transform: translateX(-50%);
-  font-family: var(--font-mono);
-  font-size: var(--fs-3xs); color: var(--muted);
-  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--muted);
   display: flex; flex-direction: column; align-items: center; gap: var(--sp-2);
-  opacity: 0; animation: fadeUp .8s 1.2s forwards;
+  @include enter(1.2s);
+
   &::after {
     content: ''; display: block; width: 1px; height: 36px;
     background: linear-gradient(var(--accent), transparent);
   }
 }
 
-// ── Bandeau défilant incliné entre le hero et la suite
-.marquee-wrap {
-  overflow: hidden;
-  padding-block: var(--sp-6);
-  margin-top: calc(var(--sp-6) * -1);
-  position: relative; z-index: 2;
+@include below(mobile) {
+  #hero        { padding-top: calc(var(--nav-h) + var(--sp-5)); gap: var(--sp-6); }
+  .hero-meta   { font-size: var(--fs-3xs); }
+  .hero-inner  { flex-direction: column-reverse; gap: var(--sp-8); align-items: flex-start; }
+  .avatar-wrap { width: clamp(170px, 50vw, 260px); }
+  .hero-badge  { width: 104px; height: 104px; left: auto; right: -40px; bottom: -16px; }
+  .hero-scroll { display: none; }
 }
-
-.marquee {
-  display: flex; width: max-content;
-  background: var(--accent); color: var(--ink);
-  transform: rotate(-2deg) scale(1.04);
-  border-block: 1px solid var(--ink);
-}
-
-.marquee-track {
-  display: flex; flex: none; align-items: center;
-  animation: marquee 32s linear infinite;
-  padding-block: var(--sp-3);
-
-  span {
-    font-family: var(--font-sans); font-weight: 800;
-    font-size: clamp(1.4rem, 3vw, 2.4rem);
-    letter-spacing: -.03em; text-transform: uppercase;
-    white-space: nowrap;
-    padding-inline: var(--sp-5);
-  }
-  i {
-    font-style: normal; font-size: 1.1rem;
-    display: inline-block;
-  }
-  span:nth-child(4n + 3) {
-    font-family: var(--font-serif); font-style: italic; font-weight: 400;
-    text-transform: none; letter-spacing: -.01em;
-  }
-}
-
-.marquee:hover .marquee-track { animation-play-state: paused; }

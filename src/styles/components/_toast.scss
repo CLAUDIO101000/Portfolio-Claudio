@@ -1,0 +1,54 @@
+@use '../abstracts' as *;
+
+// Toast SweetAlert2 de changement de langue. Sa feuille est chargée après la
+// nôtre : chaque sélecteur est volontairement plus spécifique que le sien.
+.swal2-popup.lang-toast {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .55);
+  color: var(--text);
+  padding: var(--sp-3) var(--sp-4);
+  margin-top: calc(var(--nav-h) + var(--sp-3));
+
+  .swal2-title {
+    font-family: var(--font-sans);
+    font-size: var(--fs-md);
+    font-weight: 700;
+    color: var(--text);
+    padding: 0;
+    margin: 0;
+  }
+
+  .swal2-html-container {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2px;
+    @include mono;
+    text-align: left;
+    color: var(--muted);
+    margin: var(--sp-1) 0 0;
+    padding: 0;
+  }
+
+  .lang-toast-flow {
+    color: var(--accent);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+
+    em { font-style: normal; color: var(--muted); }
+  }
+
+  .lang-toast-note { color: var(--muted); }
+
+  .swal2-timer-progress-bar { background: var(--accent); }
+
+  .swal2-icon.swal2-success {
+    border-color: var(--green);
+    color: var(--green);
+
+    [class^='swal2-success-line'] { background-color: var(--green); }
+    .swal2-success-ring { border-color: alpha(green, .35); }
+    [class^='swal2-success-circular-line'], .swal2-success-fix { background-color: transparent; }
+  }
+}

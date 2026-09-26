@@ -1,9 +1,11 @@
+@use '../abstracts' as *;
+
 footer {
   background: var(--ink);
   padding: var(--sp-8) var(--gutter) var(--sp-5);
   overflow: hidden;
-  font-family: var(--font-mono);
-  font-size: var(--fs-2xs); color: var(--muted);
+  @include mono;
+  color: var(--muted);
 
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
@@ -30,4 +32,8 @@ footer {
   border-top: 1px solid var(--border);
 
   > span { display: inline-flex; align-items: center; gap: var(--sp-2); }
+}
+
+@include below(mobile) {
+  .footer-row { flex-direction: column; text-align: center; }
 }

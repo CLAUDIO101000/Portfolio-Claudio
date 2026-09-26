@@ -1,0 +1,26 @@
+@use '../abstracts' as *;
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed; top: var(--sp-3); left: var(--sp-3); z-index: 10000;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--accent); color: var(--ink);
+  @include label(var(--fs-xs), .06em);
+  font-weight: 700;
+  border-radius: 999px;
+  text-decoration: none;
+  transform: translateY(calc(-100% - var(--sp-5)));
+  transition: transform .25s var(--ease-out);
+
+  &:focus-visible { transform: none; outline-color: var(--text); }
+}
+
+// Cible du lien d'évitement (tabindex="-1")
+main:focus { outline: none; }
