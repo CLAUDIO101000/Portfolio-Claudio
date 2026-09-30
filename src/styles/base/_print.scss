@@ -1,0 +1,33 @@
+@use '../abstracts' as *;
+
+// Impression : palette claire, sans décor ni éléments interactifs, contenu révélé.
+// Les navigateurs n'impriment pas les fonds par défaut : les aplats d'accent sont
+// retirés et « ink » (texte posé dessus) devient sombre, sinon il serait invisible.
+@media print {
+  :root {
+    @include palette-tokens($palette-light, $extras-light);
+    --ink: #111;
+    --ink-soft: #444;
+  }
+
+  html, body { background: #fff !important; color: #000 !important; }
+  body::before { display: none; }
+
+  #cursor, #cursor-ring, nav, .skip-link, .to-top, .toast-region, .lightbox,
+  .hero-scroll, .hero-topo, .hero-topo-canvas, .project-art, .hero-glow, .hero-badge, .hero-ctas, .typed-wrap,
+  .contact-glow, .marquee-wrap, .terminal, .term-chips, .footer-mark, .contact-form-wrap,
+  .copy-btn, [data-cv-download] { display: none !important; }
+
+  .reveal, .js .reveal:not(.visible) { opacity: 1 !important; transform: none !important; }
+
+  section { padding-block: var(--sp-6); break-inside: avoid-page; }
+  #hero { min-height: 0; padding-top: var(--sp-6); }
+  .bento-card, .project-card, .exp-item, .edu-item, .stat-card { break-inside: avoid; }
+
+  .bento-card.wide, .stat-card:first-child, .edu-badge.current, .proj-btn.primary {
+    background: none !important; color: #000 !important; border: 1px solid #000 !important;
+  }
+
+  #contact { background: none; color: #000; border-radius: 0; }
+  footer { background: none; color: #000; padding-block: var(--sp-4); }
+}

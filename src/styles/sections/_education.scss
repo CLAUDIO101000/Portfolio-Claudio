@@ -27,8 +27,8 @@
     transform: scaleY(0); transform-origin: top;
     transition: transform .4s var(--ease-out);
   }
-  &:hover { background: var(--surface); padding-left: var(--sp-6); }
-  &:hover::before { transform: none; }
+  @media (hover: hover) { &:hover { background: var(--surface); padding-left: var(--sp-6); } }
+  @media (hover: hover) { &:hover::before { transform: none; } }
 }
 
 .edu-date {
@@ -83,9 +83,9 @@
     @include card-hover;
     background: var(--surface2);
   }
-  &:hover .cert-thumb img  { transform: scale(1.04); }
-  &:hover .cert-thumb-hint { opacity: 1; }
-  &:hover .cert-cta        { color: var(--accent); border-color: var(--accent); }
+  @media (hover: hover) { &:hover .cert-thumb img  { transform: scale(1.04); } }
+  @media (hover: hover) { &:hover .cert-thumb-hint { opacity: 1; } }
+  @media (hover: hover) { &:hover .cert-cta        { color: var(--accent); border-color: var(--accent); } }
 }
 
 // Recadrage 4/3, proche du format du document
@@ -151,7 +151,6 @@
     row-gap: var(--sp-1);
   }
 
-  // Vignette au-dessus du texte, en bandeau
   .cert-card  { grid-template-columns: 1fr; gap: var(--sp-4); padding: var(--sp-4); }
   .cert-thumb { aspect-ratio: 16 / 9; }
   .cert-cta   { width: 100%; justify-content: center; }

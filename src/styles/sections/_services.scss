@@ -12,8 +12,8 @@
   padding: var(--sp-6); position: relative; overflow: hidden;
   display: flex; flex-direction: column;
 
-  &:hover { @include card-hover; }
-  &:hover .card-icon { color: var(--ink); background: var(--accent); border-color: var(--accent); transform: rotate(-8deg); }
+  @media (hover: hover) { &:hover { @include card-hover; } }
+  @media (hover: hover) { &:hover .card-icon { color: var(--ink); background: var(--accent); border-color: var(--accent); transform: rotate(-8deg); } }
 
   // Halo qui suit la souris (--mx / --my posés par le JS)
   &::before {
@@ -21,7 +21,7 @@
     background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--accent-glow), transparent 60%);
     opacity: 0; transition: opacity .3s;
   }
-  &:hover::before { opacity: 1; }
+  @media (hover: hover) { &:hover::before { opacity: 1; } }
 
   &::after {
     content: counter(svc, decimal-leading-zero);
@@ -33,7 +33,6 @@
   > * { position: relative; }
   .card-tags { margin-top: auto; padding-top: var(--sp-5); }
 
-  // Carte vedette : aplat latérite en bloc 2×2
   &.wide {
     grid-column: span 2; grid-row: span 2;
     justify-content: flex-end;
@@ -56,7 +55,7 @@
     .card-tags { margin-top: var(--sp-5); padding-top: 0; }
     .tag, .tag.amber { border-color: alpha(ink, .45); color: var(--ink); }
 
-    &:hover .card-icon { color: var(--accent); background: var(--ink); border-color: var(--ink); }
+    @media (hover: hover) { &:hover .card-icon { color: var(--accent); background: var(--ink); border-color: var(--ink); } }
   }
 }
 

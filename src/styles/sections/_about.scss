@@ -23,7 +23,7 @@
   transform: rotate(-.5deg);
   transition: transform .5s var(--ease-out);
 
-  &:hover { transform: none; }
+  @media (hover: hover) { &:hover { transform: none; } }
 
   &::before {
     content: '“';
@@ -49,9 +49,11 @@
   min-height: 190px;
   display: flex; flex-direction: column; justify-content: space-between;
 
-  &:hover {
-    @include card-hover;
-    transform: translateY(var(--lift)) rotate(-1deg);
+  @media (hover: hover) {
+    &:hover {
+      @include card-hover;
+      transform: translateY(var(--lift)) rotate(-1deg);
+    }
   }
 
   &:first-child {
@@ -63,6 +65,7 @@
 }
 
 .stat-number {
+  font-variant-numeric: tabular-nums;
   font-family: var(--font-sans); font-weight: 800;
   font-size: var(--fs-3xl); letter-spacing: -.06em;
   color: var(--text); line-height: .9;

@@ -9,6 +9,9 @@ html {
   scroll-padding-top: calc(var(--nav-h) + var(--sp-4));
   scrollbar-color: var(--border-strong) var(--bg);
   scrollbar-width: thin;
+  // Évite le saut de mise en page quand le défilement est verrouillé (menu, visionneuse)
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
 }
 
 body {
@@ -30,6 +33,13 @@ body::before {
 }
 
 img, svg { display: block; max-width: 100%; }
+
+// Boutons « cliquables » pour les pointeurs qui gardent leur curseur natif
+button, [role='button'], summary { cursor: pointer; }
+button:disabled { cursor: default; }
+ul[class], ol[class] { list-style: none; }
+
+a, button { -webkit-tap-highlight-color: transparent; }
 
 [hidden] { display: none !important; }
 

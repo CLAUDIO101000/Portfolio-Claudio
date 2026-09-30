@@ -1,18 +1,19 @@
 @use 'sass:map';
 
 $breakpoints: (
+  nav-wide: 1299px,
   nav:    1100px,
   tablet: 1024px,
   mobile: 768px,
   xs:     420px,
   xxs:    360px,
+  narrow: 340px,
 );
 
 @mixin below($name) {
   @media (max-width: map.get($breakpoints, $name)) { @content; }
 }
 
-// Texte technique en JetBrains Mono
 @mixin mono($size: var(--fs-2xs), $tracking: null) {
   font-family: var(--font-mono);
   font-size: $size;
@@ -33,7 +34,6 @@ $breakpoints: (
   white-space: nowrap;
 }
 
-// Bouton capsule secondaire, contour discret
 @mixin pill-button($padding: var(--sp-2) var(--sp-4)) {
   @include label(var(--fs-2xs), .08em);
   display: inline-flex; align-items: center; gap: var(--sp-2);
@@ -43,7 +43,6 @@ $breakpoints: (
   transition: border-color .2s, color .2s, background-color .2s;
 }
 
-// Surface de carte et son survol
 @mixin card {
   background: var(--surface);
   border: 1px solid var(--border);

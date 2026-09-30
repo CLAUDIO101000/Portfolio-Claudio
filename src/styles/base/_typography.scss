@@ -24,6 +24,17 @@
   }
 }
 
+// Titres équilibrés, paragraphes sans ligne orpheline (ignoré des navigateurs qui ne connaissent pas)
+:is(.section-title, .contact-big, .hero-subtitle, .card-title, .project-name, .exp-role) { text-wrap: balance; }
+:is(p, .card-desc, .project-desc, .exp-desc, .exp-tasks li, .contact-sub) { text-wrap: pretty; }
+
+:is(.exp-date, .edu-date, .cert-meta, #local-time) { font-variant-numeric: tabular-nums; }
+
+// Petit écran : coupures de mots plutôt que lignes irrégulières
+@include below(mobile) {
+  :is(.card-desc, .project-desc, .exp-desc, .exp-tasks li, .about-text p) { hyphens: auto; }
+}
+
 .section-title {
   font-family: var(--font-sans);
   font-weight: 700;

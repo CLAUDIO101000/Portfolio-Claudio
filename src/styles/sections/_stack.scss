@@ -2,7 +2,9 @@
 
 #stack { border-top: 1px solid var(--border); }
 
+// Le terminal reste sombre dans les deux thèmes : il en garde la palette
 .terminal {
+  @include dark-scope;
   background: #0b0a08; border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -24,7 +26,10 @@
 
 .terminal-title { font-size: var(--fs-2xs); color: var(--muted); margin-left: var(--sp-3); }
 
-.terminal-body { padding: var(--sp-6); line-height: 2.1; overflow-x: auto; }
+.terminal-body {
+  padding: var(--sp-6); line-height: 2.1;
+  max-height: min(34rem, 75svh); overflow: auto;
+}
 
 .t-line {
   display: flex; gap: var(--sp-3);
@@ -33,6 +38,58 @@
 
   &.visible { animation: termLine .4s forwards; }
 }
+
+// Petit écran : sorties longues à la ligne
+@include below(mobile) {
+  .terminal-body { padding: var(--sp-5) var(--sp-4); line-height: 1.95; font-size: var(--fs-xs); }
+  .term-chips { padding: var(--sp-3) var(--sp-4) var(--sp-4); }
+  .t-line {
+    white-space: pre-wrap; overflow-wrap: anywhere;
+    gap: var(--sp-2);
+
+    > span { min-width: 0; }
+  }
+}
+
+// Invite interactive (js/features/terminal-shell.js)
+.term-form { display: flex; align-items: center; gap: var(--sp-3); }
+
+.term-prompt { display: inline-flex; gap: var(--sp-3); white-space: pre; }
+
+.term-input {
+  flex: 1; min-width: 0; padding: 0;
+  background: transparent; border: 0; outline: none;
+  color: var(--text); font: inherit; caret-color: var(--accent);
+
+  &::placeholder { color: var(--muted); }
+
+  // iOS zoome la page sur un champ de moins de 16 px
+  @media (pointer: coarse) { font-size: 16px; }
+}
+
+// Pas d'anneau sur le champ : c'est tout le terminal qui signale le focus
+.term-input:focus-visible { outline: none; }
+.terminal:focus-within { border-color: var(--accent); }
+
+.term-chips {
+  display: flex; flex-wrap: wrap; gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-6) var(--sp-5);
+  border-top: 1px dashed var(--border);
+}
+
+.term-chip {
+  @include mono(var(--fs-xs));
+  padding: var(--sp-1) var(--sp-3);
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border-strong); border-radius: 999px;
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background-color .2s;
+
+  @media (hover: hover) { &:hover { color: var(--accent); border-color: var(--accent); } }
+  &:active { background: var(--accent-glow); }
+}
+
+.t-err { color: var(--red); }
 
 .t-prompt, .t-amber { color: var(--accent); }
 .t-cmd    { color: var(--text); }

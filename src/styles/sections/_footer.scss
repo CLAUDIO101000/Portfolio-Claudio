@@ -1,8 +1,11 @@
 @use '../abstracts' as *;
 
+// Le pied de page reste sombre dans les deux thèmes : il referme la page sous
+// l'aplat latérite du contact. Le bas ménage la place du bouton « retour en haut ».
 footer {
+  @include dark-scope;
   background: var(--ink);
-  padding: var(--sp-8) var(--gutter) var(--sp-5);
+  padding: var(--sp-8) var(--gutter) calc(var(--sp-5) + 4rem);
   overflow: hidden;
   @include mono;
   color: var(--muted);

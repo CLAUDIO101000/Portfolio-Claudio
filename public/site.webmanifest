@@ -1,0 +1,15 @@
+{
+  "name": "Claudio · Développeur Web & Odoo",
+  "short_name": "Claudio",
+  "description": "Portfolio de RANAIVOSON Nantenaina Claudio — Odoo, Python, PHP, React.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#100e0c",
+  "theme_color": "#100e0c",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

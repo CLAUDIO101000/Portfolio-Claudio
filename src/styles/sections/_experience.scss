@@ -28,14 +28,14 @@
     transition: background-color .3s;
   }
   &:first-child::before { background: var(--accent); box-shadow: 0 0 0 5px var(--accent-glow); }
-  &:hover::before { background: var(--accent); }
+  @media (hover: hover) { &:hover::before { background: var(--accent); } }
 }
 
 .exp-item-inner {
   @include card;
   padding: var(--sp-6);
 
-  .exp-item:hover & { border-color: var(--accent-dim); transform: translateX(6px); }
+  @media (hover: hover) { .exp-item:hover & { border-color: var(--accent-dim); transform: translateX(6px); } }
 }
 
 .exp-header {

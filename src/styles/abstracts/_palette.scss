@@ -1,9 +1,7 @@
-@use 'sass:color';
-@use 'sass:map';
+// Couleurs en custom properties (base/_tokens), une palette par thème : le sombre est l'original,
+// le clair s'active par data-theme="light". Contrastes WCAG indiqués sur --bg.
 
-// Source unique des couleurs : exposées en custom properties (base/_tokens)
-// et déclinables en transparence via alpha(). Ratios de contraste sur --bg.
-$palette: (
+$palette-dark: (
   'bg':            #100e0c,
   'surface':       #1a1714,
   'surface2':      #24201c,
@@ -21,7 +19,51 @@ $palette: (
   'purple':        #c3a6ff,
 );
 
-// '' + $name : accepte aussi green/red, que Sass lit comme des couleurs nommées
+// « ink » = texte posé sur --accent : clair ici, car l'accent est sombre.
+$palette-light: (
+  'bg':            #f6f0e4,
+  'surface':       #fffaf1,
+  'surface2':      #ede4d3,
+  'border':        #dccfb8,
+  'border-strong': #8f8270,  // 3.3:1
+  'accent':        #ad3c0a,  // 5.4:1
+  'accent-dim':    #e2b199,
+  'ink':           #fff8ee,  // texte sur --accent (5.8:1)
+  'ink-soft':      #fee8d9,  // texte secondaire sur --accent (5.2:1)
+  'text':          #221b14,  // 15:1
+  'muted':         #685e50,  // 5.6:1
+  'green':         #1d6f3f,
+  'red':           #b3261e,
+  'blue':          #1f55b8,
+  'purple':        #6a42c4,
+);
+
+// Ombres et anneau du curseur, propres à chaque thème
+$extras-dark: (
+  'shadow-soft':   rgba(0, 0, 0, .55),
+  'shadow-strong': rgba(18, 15, 12, .8),
+  'cursor-ring':   #fff,
+);
+$extras-light: (
+  'shadow-soft':   rgba(60, 35, 15, .22),
+  'shadow-strong': rgba(70, 25, 5, .55),
+  'cursor-ring':   #fff,
+);
+
+@mixin palette-tokens($colors, $extras) {
+  @each $name, $value in $colors { --#{$name}: #{$value}; }
+  @each $name, $value in $extras { --#{$name}: #{$value}; }
+  --accent-glow: #{alpha(accent, .12)};
+}
+
+// Garde la palette sombre quel que soit le thème (terminal, visionneuse, pied de page)
+@mixin dark-scope {
+  color-scheme: dark;
+  @include palette-tokens($palette-dark, $extras-dark);
+}
+
+// Décline un token en transparence via color-mix : suit le thème actif.
+// '' + $name : green/red seraient lus par Sass comme des couleurs nommées.
 @function alpha($name, $opacity) {
-  @return color.change(map.get($palette, '' + $name), $alpha: $opacity);
+  @return color-mix(in srgb, var(--#{'' + $name}) #{$opacity * 100%}, transparent);
 }

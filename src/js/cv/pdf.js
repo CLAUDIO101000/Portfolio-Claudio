@@ -1,8 +1,6 @@
-// CV en PDF pensé pour les ATS : une colonne, texte noir sur blanc, police
-// standard, aucune image, et chaque ligne visuelle tracée d'un seul appel
-// doc.text() pour que l'extraction suive l'ordre de lecture.
+// CV en PDF adapté aux ATS : une colonne, texte noir sur blanc, aucune image, une ligne
+// visuelle = un appel doc.text() pour un ordre de lecture fidèle.
 
-import { t } from '../i18n/index.js';
 import { CV } from './data.js';
 
 function buildCVDocument(jsPDF) {
@@ -59,7 +57,6 @@ function buildCVDocument(jsPDF) {
     });
   };
 
-  // En-tête sans bandeau : le nom est le premier texte extrait
   font(20, 'bold', DARK);
   doc.text(CV.name, M, 20);
   font(11.5, 'normal', MUTED);
@@ -157,14 +154,8 @@ function buildCVDocument(jsPDF) {
   return doc;
 }
 
-// jsPDF (~400 ko) n'est téléchargé qu'au clic
+// jsPDF (~400 ko) n'est chargé qu'au clic ; rejette si la librairie est injoignable (hors ligne).
 export async function generateCV() {
-  let jsPDF;
-  try {
-    ({ jsPDF } = await import('jspdf'));
-  } catch {
-    alert(t('cv.error'));
-    return;
-  }
+  const { jsPDF } = await import('jspdf');
   buildCVDocument(jsPDF).save('CV_RANAIVOSON_Nantenaina_Claudio_Developpeur_Odoo.pdf');
 }

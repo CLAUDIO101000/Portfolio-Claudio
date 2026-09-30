@@ -1,5 +1,7 @@
 // Halo des cartes de services : suit la souris via --mx / --my
 export function initBentoGlow() {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+
   document.querySelectorAll('.bento-card').forEach((card) => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();

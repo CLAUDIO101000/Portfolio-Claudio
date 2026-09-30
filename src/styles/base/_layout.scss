@@ -55,6 +55,8 @@ section + section:not(#contact) {
   max-width: 34ch;
 }
 
+.split-action { margin-top: var(--sp-5); }
+
 .split-body { min-width: 0; }
 
 @include below(tablet) {

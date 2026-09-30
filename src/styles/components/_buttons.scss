@@ -14,7 +14,7 @@
   @extend %btn-base;
   background: var(--accent); color: var(--ink); border: 1px solid var(--accent);
 
-  &:hover { transform: translateY(var(--lift)); box-shadow: 0 14px 34px alpha(accent, .35); }
+  @media (hover: hover) { &:hover { transform: translateY(var(--lift)); box-shadow: 0 14px 34px alpha(accent, .35); } }
 }
 
 // Le fond clair « monte » au survol
@@ -29,18 +29,20 @@
     transform: translateY(101%);
     transition: transform .4s var(--ease-out);
   }
-  &:hover { color: var(--ink); border-color: var(--text); transform: translateY(var(--lift)); }
-  &:hover::before { transform: none; }
+  @media (hover: hover) { &:hover { color: var(--ink); border-color: var(--text); transform: translateY(var(--lift)); } }
+  @media (hover: hover) { &:hover::before { transform: none; } }
 }
+
+:is(.btn-primary, .btn-ghost, .proj-btn):active { transform: scale(.97); }
 
 .proj-btn {
   @include pill-button;
   color: var(--muted);
 
-  &:hover { border-color: var(--accent); color: var(--accent); }
+  @media (hover: hover) { &:hover { border-color: var(--accent); color: var(--accent); } }
 
   &.primary {
     background: var(--accent); border-color: var(--accent); color: var(--ink);
-    &:hover { background: var(--text); border-color: var(--text); color: var(--ink); }
+    @media (hover: hover) { &:hover { background: var(--text); border-color: var(--text); color: var(--ink); } }
   }
 }

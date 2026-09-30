@@ -13,7 +13,7 @@
   transform: rotate(-2deg) scale(1.04);
   border-block: 1px solid var(--ink);
 
-  &:hover .marquee-track { animation-play-state: paused; }
+  @media (hover: hover) { &:hover .marquee-track { animation-play-state: paused; } }
 }
 
 .marquee-track {

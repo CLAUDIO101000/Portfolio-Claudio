@@ -1,54 +1,87 @@
 @use '../abstracts' as *;
 
-// Toast SweetAlert2 de changement de langue. Sa feuille est chargée après la
-// nôtre : chaque sélecteur est volontairement plus spécifique que le sien.
-.swal2-popup.lang-toast {
+// Notifications (voir js/ui/toast.js). Empilées sous la barre de navigation.
+.toast-region {
+  position: fixed; z-index: 300;
+  top: calc(var(--nav-h) + var(--sp-3)); right: var(--sp-5);
+  display: flex; flex-direction: column; align-items: flex-end; gap: var(--sp-2);
+  width: min(380px, calc(100vw - var(--sp-5) * 2));
+  pointer-events: none;
+}
+
+.toast {
+  --toast-tone: var(--green);
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-start; gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-3) var(--sp-3) var(--sp-3) var(--sp-4);
   background: var(--surface);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, .55);
-  color: var(--text);
-  padding: var(--sp-3) var(--sp-4);
-  margin-top: calc(var(--nav-h) + var(--sp-3));
+  border: 1px solid var(--border-strong); border-radius: var(--radius);
+  box-shadow: 0 14px 40px var(--shadow-soft);
+  pointer-events: auto;
+  opacity: 0; transform: translateY(-8px) scale(.98);
+  transition: opacity .3s var(--ease-out), transform .4s var(--ease-out);
 
-  .swal2-title {
-    font-family: var(--font-sans);
-    font-size: var(--fs-md);
-    font-weight: 700;
-    color: var(--text);
-    padding: 0;
-    margin: 0;
+  &.is-visible { opacity: 1; transform: none; }
+  &.is-error   { --toast-tone: var(--red); }
+  &.is-info    { --toast-tone: var(--blue); }
+
+  &:not(.is-sticky)::after {
+    content: '';
+    position: absolute; left: 0; bottom: 0; height: 2px; width: 100%;
+    background: var(--toast-tone);
+    transform-origin: left;
+    animation: toastTimer var(--toast-duration, 3600ms) linear forwards;
   }
+  &.is-paused::after { animation-play-state: paused; }
+}
 
-  .swal2-html-container {
-    display: flex !important;
-    flex-direction: column;
-    gap: 2px;
-    @include mono;
-    text-align: left;
-    color: var(--muted);
-    margin: var(--sp-1) 0 0;
-    padding: 0;
+.toast-icon {
+  flex: none;
+  display: grid; place-items: center;
+  width: 1.5rem; height: 1.5rem; margin-top: 1px;
+  border: 1.5px solid var(--toast-tone); border-radius: 50%;
+  color: var(--toast-tone);
+  @include mono(var(--fs-xs));
+  font-weight: 700; line-height: 1;
+}
+
+.toast-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+
+.toast-title {
+  font-size: var(--fs-md); font-weight: 700; line-height: 1.35; color: var(--text);
+}
+
+.toast-detail {
+  @include label(var(--fs-2xs), .06em);
+  color: var(--accent);
+}
+
+.toast-text {
+  @include mono(var(--fs-xs));
+  line-height: 1.55; color: var(--muted);
+}
+
+.toast-close {
+  flex: none;
+  width: 1.75rem; height: 1.75rem; margin: -2px 0 0;
+  background: transparent; border: 0; border-radius: 50%;
+  color: var(--muted); font-size: 1.25rem; line-height: 1;
+  cursor: pointer;
+  transition: color .2s, background-color .2s;
+
+  @media (hover: hover) { &:hover { color: var(--text); background: var(--surface2); } }
+}
+
+@keyframes toastTimer { to { transform: scaleX(0); } }
+
+@include below(mobile) {
+  .toast-region {
+    left: var(--sp-4); right: var(--sp-4);
+    width: auto; align-items: stretch;
   }
+}
 
-  .lang-toast-flow {
-    color: var(--accent);
-    letter-spacing: .06em;
-    text-transform: uppercase;
-
-    em { font-style: normal; color: var(--muted); }
-  }
-
-  .lang-toast-note { color: var(--muted); }
-
-  .swal2-timer-progress-bar { background: var(--accent); }
-
-  .swal2-icon.swal2-success {
-    border-color: var(--green);
-    color: var(--green);
-
-    [class^='swal2-success-line'] { background-color: var(--green); }
-    .swal2-success-ring { border-color: alpha(green, .35); }
-    [class^='swal2-success-circular-line'], .swal2-success-fix { background-color: transparent; }
-  }
+@media (prefers-reduced-motion: reduce) {
+  .toast::after { display: none; }
 }

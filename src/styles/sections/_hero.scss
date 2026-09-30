@@ -4,7 +4,8 @@
   min-height: 100svh;
   display: flex; flex-direction: column; justify-content: center;
   gap: var(--sp-8);
-  padding: calc(var(--nav-h) + var(--sp-8)) var(--gutter) var(--sp-10);
+  // Le bas ménage la place de l'indicateur de défilement sous les boutons
+  padding: calc(var(--nav-h) + var(--sp-8)) var(--gutter) calc(var(--sp-10) + var(--sp-6));
   position: relative; overflow: hidden;
 }
 
@@ -21,6 +22,27 @@
   use { vector-effect: non-scaling-stroke; }
   .topo-hot { color: var(--accent-dim); }
 }
+
+// Terrain vivant (js/features/topo.js) : il remplace le SVG statique une fois prêt
+.hero-topo-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0; transition: opacity 1.4s var(--ease-out);
+  mask-image: radial-gradient(ellipse 80% 80% at 66% 46%, black 25%, transparent 88%);
+
+  &.is-ready { opacity: 1; }
+}
+#hero.has-terrain .hero-topo { display: none; }
+
+// Petit écran : le relief s'efface un peu sous le texte
+@include below(mobile) {
+  .hero-topo-canvas.is-ready { opacity: .6; }
+}
+
+// Hors écran, les animations décoratives en boucle sont suspendues (classe posée par hero.js)
+#hero.is-offscreen :is(.hero-topo, .badge-ring, .typed-cursor),
+#hero.is-offscreen .hero-scroll::after { animation-play-state: paused; }
 
 .hero-glow {
   position: absolute; width: 60vw; height: 60vw; max-width: 900px; max-height: 900px;
@@ -41,6 +63,7 @@
   span { display: inline-flex; align-items: center; gap: var(--sp-2); }
   strong { color: var(--text); font-weight: 500; }
   #local-time { color: var(--accent); font-variant-numeric: tabular-nums; }
+  .hero-tz { text-transform: none; letter-spacing: .04em; }
 }
 
 .hero-inner {
@@ -71,14 +94,30 @@
   picture { display: contents; }
 
   img, .avatar-initials {
-    position: relative;
+    position: relative; z-index: 1;
     width: 100%; height: 100%; object-fit: cover;
     border-radius: 999px 999px var(--radius) var(--radius);
     background: var(--surface2);
     filter: saturate(.9) contrast(1.05);
   }
 
-  &:hover::before { transform: translate(10px, 10px); }
+  // Fondu à l'arrivée de la photo (visible d'emblée sans JS)
+  img { transition: opacity .8s var(--ease-out); }
+  .js &:not(.is-loaded) img { opacity: 0; }
+
+  // Squelette en attendant la photo
+  &::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    border-radius: 999px 999px var(--radius) var(--radius);
+    background: linear-gradient(105deg, var(--surface2) 35%, var(--border) 50%, var(--surface2) 65%) 100% 0 / 300% 100%;
+    animation: shimmer 1.6s linear infinite;
+    transition: opacity .8s var(--ease-out);
+    pointer-events: none;
+  }
+  &.is-loaded::after { opacity: 0; animation-play-state: paused; }
+
+  @media (hover: hover) { &:hover::before { transform: translate(10px, 10px); } }
 }
 
 .avatar-initials {
@@ -87,7 +126,6 @@
   font-size: clamp(3rem, 8vw, 7rem); color: var(--accent); user-select: none;
 }
 
-// Badge circulaire tournant
 .hero-badge {
   position: absolute; left: -48px; bottom: 28px;
   width: 128px; height: 128px;
@@ -146,8 +184,7 @@
   .line:nth-child(2) > span { animation-delay: .32s; }
   .line:nth-child(3) > span { animation-delay: .44s; }
 
-  // Couleur plutôt que text-stroke : sur une police variable, le contour
-  // trace aussi les tracés internes qui se chevauchent
+  // Couleur plutôt que text-stroke : sur police variable, le contour trace aussi les recouvrements
   .outline { color: var(--muted); }
 
   em {
@@ -182,24 +219,41 @@
   @include enter(.8s);
 }
 
+// Lien vers la suite : le filet descend en boucle
 .hero-scroll {
   @include label(var(--fs-3xs), .25em);
-  position: absolute; bottom: var(--sp-5); left: 50%; transform: translateX(-50%);
-  color: var(--muted);
+  // Centré sans transform : fadeUp (enter) remet transform à none en fin d'animation
+  position: absolute; bottom: var(--sp-5); inset-inline: 0; margin-inline: auto; width: max-content;
+  color: var(--muted); text-decoration: none;
   display: flex; flex-direction: column; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
   @include enter(1.2s);
+  transition: color .2s;
+
+  @media (hover: hover) { &:hover { color: var(--text); } }
 
   &::after {
     content: ''; display: block; width: 1px; height: 36px;
     background: linear-gradient(var(--accent), transparent);
+    transform-origin: top;
+    animation: scrollCue 2.2s var(--ease-out) infinite;
   }
 }
 
+// Mobile : portrait compact, badge à sa droite, nom et boutons dans le premier écran
 @include below(mobile) {
-  #hero        { padding-top: calc(var(--nav-h) + var(--sp-5)); gap: var(--sp-6); }
-  .hero-meta   { font-size: var(--fs-3xs); }
-  .hero-inner  { flex-direction: column-reverse; gap: var(--sp-8); align-items: flex-start; }
-  .avatar-wrap { width: clamp(170px, 50vw, 260px); }
-  .hero-badge  { width: 104px; height: 104px; left: auto; right: -40px; bottom: -16px; }
+  #hero        { padding-block: calc(var(--nav-h) + var(--sp-5)) var(--sp-10); gap: var(--sp-5); min-height: 0; }
+  .hero-meta   { font-size: var(--fs-3xs); padding-bottom: var(--sp-3); }
+  .hero-meta > span:first-child, .hero-tz { display: none; } // coordonnées : l'heure locale suffit sur petit écran
+  .hero-inner  { flex-direction: column-reverse; gap: var(--sp-6); align-items: flex-start; }
+  .hero-tag    { margin-bottom: var(--sp-4); }
+  .hero-name   { margin-bottom: var(--sp-4); }
+  .typed-wrap  { margin-bottom: var(--sp-5); }
+  .avatar-wrap { width: clamp(118px, 34vw, 150px); }
+  .avatar-wrap::before { transform: translate(10px, 10px); }
+  .hero-badge  { width: 92px; height: 92px; left: calc(100% + var(--sp-6)); bottom: 0; }
   .hero-scroll { display: none; }
+
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .hero-ctas > * { justify-content: center; }
 }

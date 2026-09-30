@@ -1,32 +1,44 @@
-// Le curseur natif n'est masqué que si le JS a posé .has-custom-cursor
-// (pointeur fin uniquement). Les éléments interactifs sont visés un par un :
-// la feuille du navigateur leur redonne `pointer`.
+// Le curseur natif n'est masqué qu'avec .has-custom-cursor (posée par le JS, pointeur fin) ;
+// les éléments interactifs sont visés un par un car le navigateur leur redonne `pointer`.
 html.has-custom-cursor body,
 html.has-custom-cursor :is(a, button, [role='button'], label, summary) { cursor: none; }
 html.has-custom-cursor :is(input, textarea) { cursor: text; }
 
+// Positionnés par transform (posé par le JS) : pas de recalcul de mise en page
+#cursor, #cursor-ring {
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+
+html.cursor-ready :is(#cursor, #cursor-ring) { opacity: 1; }
+
 #cursor {
-  position: fixed; width: 8px; height: 8px;
+  width: 8px; height: 8px;
   background: var(--accent); border-radius: 50%;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%, -50%);
+  z-index: 9999;
   transition: width .25s var(--ease-out), height .25s var(--ease-out), opacity .2s;
 }
 
 // mix-blend-mode : l'anneau reste lisible sur la latérite comme sur l'encre
 #cursor-ring {
-  position: fixed; width: 38px; height: 38px;
-  border: 1.5px solid var(--text); border-radius: 50%;
-  pointer-events: none; z-index: 9998;
-  transform: translate(-50%, -50%);
+  width: 38px; height: 38px;
+  border: 1.5px solid var(--cursor-ring); border-radius: 50%;
+  z-index: 9998;
   mix-blend-mode: difference;
   transition: width .3s var(--ease-out), height .3s var(--ease-out),
-              background-color .3s, border-color .3s;
+              background-color .3s, border-color .3s, opacity .2s;
 }
 
 html.cursor-hover {
   #cursor      { width: 0; height: 0; }
-  #cursor-ring { width: 64px; height: 64px; background: var(--text); border-color: transparent; }
+  #cursor-ring { width: 64px; height: 64px; background: var(--cursor-ring); border-color: transparent; }
+}
+
+html.cursor-down {
+  #cursor-ring { width: 28px; height: 28px; }
+  &.cursor-hover #cursor-ring { width: 52px; height: 52px; }
 }
 
 @media (hover: none), (pointer: coarse) {

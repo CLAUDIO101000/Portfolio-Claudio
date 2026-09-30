@@ -1,8 +1,8 @@
-// Le HTML est servi en français (référencement, visiteurs sans JS) et fait foi :
-// au chargement, le français est lu dans le DOM, puis chaque langue est
-// appliquée via la même table de liaisons.
+// Le HTML est en français (SEO, visiteurs sans JS) et fait foi : le français est lu dans
+// le DOM au chargement, puis chaque langue passe par la même table de liaisons.
 
 import { translations, LANGS, LANG_NAMES } from './translations.js';
+import { showToast } from '../ui/toast.js';
 
 const STORAGE_KEY = 'portfolio-lang';
 const DEFAULT_LANG = 'fr';
@@ -26,6 +26,7 @@ const BINDINGS = [
   ['data-i18n-html', html],
   ['data-i18n-placeholder', attr('placeholder')],
   ['data-i18n-aria-label', attr('aria-label')],
+  ['data-i18n-title', attr('title')],
   ['data-i18n-alt', attr('alt')],
 ];
 
@@ -95,42 +96,13 @@ function applyAll() {
   });
 }
 
-// SweetAlert2 (~90 ko) n'est chargé qu'au premier besoin
-let swalPromise = null;
-function loadSwal() {
-  swalPromise ??= Promise.all([
-    import('sweetalert2'),
-    import('sweetalert2/dist/sweetalert2.min.css'),
-  ]).then(([mod]) => mod.default);
-  return swalPromise;
-}
-
-async function notifySwitch(from, to) {
-  // Textes figés avant l'await : deux clics rapprochés gardent chacun leur langue
-  const title = t('lang.toastTitle');
-  const note = t('lang.toastText');
-
-  let Swal;
-  try {
-    Swal = await loadSwal();
-  } catch {
-    return; // hors ligne : la bascule a eu lieu, seul le toast manque
-  }
-  Swal.fire({
-    toast: true,
-    position: 'top-end',
-    icon: 'success',
-    title,
-    html: `<span class="lang-toast-flow">${LANG_NAMES[from]} <em>&rarr;</em> ${LANG_NAMES[to]}</span>`
-        + `<span class="lang-toast-note">${note}</span>`,
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    customClass: { popup: 'lang-toast' },
-    didOpen: (el) => {
-      el.addEventListener('mouseenter', Swal.stopTimer);
-      el.addEventListener('mouseleave', Swal.resumeTimer);
-    },
+function notifySwitch(from, to) {
+  showToast({
+    id: 'lang',
+    title: t('lang.toastTitle'),
+    detail: `${LANG_NAMES[from]} → ${LANG_NAMES[to]}`,
+    text: t('lang.toastText'),
+    closeLabel: t('toast.close'),
   });
 }
 
@@ -149,11 +121,8 @@ export function setLang(lang, { notify = true } = {}) {
 export function initI18n() {
   readFrenchFromPage();
 
-  const prefetch = () => loadSwal().catch(() => {});
   document.querySelectorAll('#lang-switch .lang-tab').forEach((btn) => {
     btn.addEventListener('click', () => setLang(btn.dataset.lang));
-    btn.addEventListener('mouseenter', prefetch, { once: true });
-    btn.addEventListener('focus', prefetch, { once: true });
   });
 
   const switcher = document.getElementById('lang-switch');

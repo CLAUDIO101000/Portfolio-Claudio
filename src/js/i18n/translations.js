@@ -10,7 +10,37 @@ export const LANG_NAMES = { fr: 'Français', en: 'English' };
 
 export const translations = {
   fr: {
-    // ── Hero
+    'hero.tzSame': 'même fuseau que vous',
+    'hero.tzDiff': '{n} h vs vous',
+    'sh.label': 'Saisir une commande',
+    'sh.chips': 'Commandes suggérées',
+    'sh.hint': 'Tapez « help » pour voir les commandes, ou touchez une suggestion ci-dessous.',
+    'sh.unknown': 'commande introuvable : {cmd} — tapez « help ».',
+    'sh.d.help': 'liste des commandes',
+    'sh.d.whoami': 'qui suis-je',
+    'sh.d.skills': 'mes compétences',
+    'sh.d.projects': 'mes projets',
+    'sh.d.open': 'ouvrir un projet (open chatroom)',
+    'sh.d.experience': 'mon parcours en entreprise',
+    'sh.d.contact': 'me joindre',
+    'sh.d.cv': 'télécharger mon CV (PDF)',
+    'sh.d.theme': 'changer de thème',
+    'sh.d.lang': 'changer de langue',
+    'sh.d.goto': 'aller à une section (goto contact)',
+    'sh.d.date': 'date et heure à Antananarivo',
+    'sh.d.clear': 'vider le terminal',
+    'sh.open.done': 'ouverture de {v}…',
+    'sh.open.bad': 'projets : {list}',
+    'sh.theme.done': 'thème : {v}',
+    'sh.theme.bad': 'usage : theme light | dark',
+    'sh.lang.done': 'langue : {v}',
+    'sh.lang.bad': 'usage : lang fr | en',
+    'sh.goto.done': 'direction : {v}',
+    'sh.goto.bad': 'sections : {list}',
+    'sh.sudo': 'Permission accordée. Direction le formulaire de contact…',
+    'sh.sudo.denied': 'Permission refusée. Essayez « sudo hire claudio ».',
+    'sh.rm': 'Bien tenté. Permission refusée.',
+    'sh.exit': 'Pas de sortie ici : faites défiler la page.',
     'hero.typed': [
       'Développeur Web',
       'Spécialiste Odoo',
@@ -18,34 +48,37 @@ export const translations = {
       "Créateur d'apps temps réel",
       'Disponible pour vos projets',
     ],
-
-    // ── Stack technique
     'term.whoami': 'ranaivoson_claudio · dev_web · Madagascar',
     'term.odoo': 'Odoo Server 13.0 — Module dev · QWeb · ORM avancé',
     'term.status': '✓ Disponible pour nouvelles missions',
-
-    // ── Contact
     'contact.sending': 'Envoi en cours…',
+    'contact.errRequired': 'Ce champ est requis.',
+    'contact.errEmail': 'Saisissez une adresse e-mail valide (ex. nom@domaine.com).',
+    'contact.errShort': "Quelques mots de plus, s'il vous plaît (10 caractères minimum).",
+    'contact.fix': "Certains champs sont à corriger avant l'envoi.",
+    'contact.toastTitle': 'Message envoyé',
+    'contact.toastText': 'Merci ! Je vous réponds rapidement.',
+    'contact.copiedTitle': 'Copié dans le presse-papiers',
+    'contact.copyFailTitle': 'Copie impossible',
+    'contact.copyFailText': 'Sélectionnez le texte puis copiez-le manuellement.',
     'contact.success': 'Merci ! Votre message est bien parti, je vous réponds rapidement.',
     'contact.error': "L'envoi a échoué. Réessayez, ou écrivez-moi directement à ranaivosonclaudio@gmail.com.",
-
-    // ── Toast de changement de langue
     'lang.toastTitle': 'Langue changée',
     'lang.toastText': 'Le site est maintenant en français.',
-
-    // ── CV (PDF)
-    'cv.error': "La librairie PDF n'a pas pu se charger. Vérifie ta connexion internet puis réessaie.",
+    'toast.close': 'Fermer la notification',
+    'cv.generating': 'Génération du CV…',
+    'cv.doneTitle': 'CV téléchargé',
+    'cv.doneText': 'Le fichier PDF est dans vos téléchargements.',
+    'cv.errorTitle': 'Téléchargement impossible',
+    'cv.error': "La librairie PDF n'a pas pu se charger. Vérifiez votre connexion internet puis réessayez.",
   },
 
   en: {
-    // ── Métadonnées
     'meta.title': 'Claudio · Freelance Web Developer',
     'meta.description': 'Portfolio of RANAIVOSON Nantenaina Claudio, a passionate web developer specialised in tailor-made digital solutions — Odoo, Python, PHP, React.',
     'meta.ogTitle': 'Claudio · Web & Odoo Developer',
     'meta.ogDescription': 'Portfolio of RANAIVOSON Nantenaina Claudio — tailor-made digital solutions: Odoo, Python, PHP, React. Available for freelance work.',
     'meta.ogLocale': 'en_US',
-
-    // ── Navigation
     'nav.label': 'Main navigation',
     'nav.skip': 'Skip to content',
     'nav.home': 'Claudio — back to top',
@@ -56,14 +89,47 @@ export const translations = {
     'nav.education': 'Education',
     'nav.status': 'Available for work',
     'nav.burger': 'Open the menu',
-
-    // ── Hero
+    'nav.top': 'Back to top',
+    'theme.label': 'Light theme',
+    'a11y.newTab': '(opens in a new tab)',
     'hero.tag': 'Web & Odoo Developer — Freelance · Madagascar',
     'hero.subtitle': 'Bringing your ideas to life through tailor-made digital solutions.',
+    'hero.ctaContact': 'Get in touch',
     'hero.ctaProjects': 'See my projects',
     'hero.ctaCv': 'Download my resume (PDF)',
     'hero.scroll': 'Scroll',
     'hero.localTime': 'Local time',
+    'hero.tzSame': 'same time zone as you',
+    'hero.tzDiff': '{n} h vs you',
+    'sh.label': 'Type a command',
+    'sh.chips': 'Suggested commands',
+    'sh.hint': 'Type "help" to list the commands, or tap a suggestion below.',
+    'sh.unknown': 'command not found: {cmd} — type "help".',
+    'sh.d.help': 'list commands',
+    'sh.d.whoami': 'who am I',
+    'sh.d.skills': 'my skills',
+    'sh.d.projects': 'my projects',
+    'sh.d.open': 'open a project (open chatroom)',
+    'sh.d.experience': 'my work experience',
+    'sh.d.contact': 'reach me',
+    'sh.d.cv': 'download my resume (PDF)',
+    'sh.d.theme': 'switch theme',
+    'sh.d.lang': 'switch language',
+    'sh.d.goto': 'jump to a section (goto contact)',
+    'sh.d.date': 'date and time in Antananarivo',
+    'sh.d.clear': 'clear the terminal',
+    'sh.open.done': 'opening {v}…',
+    'sh.open.bad': 'projects: {list}',
+    'sh.theme.done': 'theme: {v}',
+    'sh.theme.bad': 'usage: theme light | dark',
+    'sh.lang.done': 'language: {v}',
+    'sh.lang.bad': 'usage: lang fr | en',
+    'sh.goto.done': 'heading to: {v}',
+    'sh.goto.bad': 'sections: {list}',
+    'sh.sudo': 'Permission granted. Heading to the contact form…',
+    'sh.sudo.denied': 'Permission denied. Try "sudo hire claudio".',
+    'sh.rm': 'Nice try. Permission denied.',
+    'sh.exit': 'No exit here: just scroll the page.',
     'hero.badge': 'Available ✦ Freelance ✦ Antananarivo ✦',
     'hero.typed': [
       'Web Developer',
@@ -72,8 +138,6 @@ export const translations = {
       'Real-time app builder',
       'Available for your projects',
     ],
-
-    // ── Services
     'services.title': 'What I build<br/>for you.',
     'services.c1.title': 'Odoo development',
     'services.c1.desc': 'Building custom Odoo modules, extending existing ones, tailoring views and workflows. Specialised in Odoo with a solid command of the ORM, QWeb and advanced development patterns.',
@@ -86,8 +150,6 @@ export const translations = {
     'services.c5.title': 'Real-time apps',
     'services.c5.desc': 'Applications built around real-time communication: chat, live notifications and dynamic dashboards powered by Socket.io.',
     'services.c6.desc': 'Debugging, bug fixing, refactoring, technical documentation and training internal teams on the tools delivered.',
-
-    // ── Projets
     'projects.label': 'Projects',
     'projects.title': 'What I have built.',
     'projects.p1.num': '2024 · Web application',
@@ -97,10 +159,9 @@ export const translations = {
     'projects.demo': 'Live demo',
     'projects.moreText': 'More repositories, experiments and work in progress are published on <strong>my GitHub profile</strong>.',
     'projects.moreCta': 'Browse all repositories',
-
-    // ── Compétences
     'skills.label': 'Skills',
     'skills.title': 'What I work with.',
+    'skills.legend': 'Core strengths',
     'skills.cat1': 'Programming languages',
     'skills.cat2': 'Frameworks & Libraries',
     'skills.cat3': 'Mobile & Embedded development',
@@ -108,16 +169,12 @@ export const translations = {
     'skills.cat5': 'Tools & Environment',
     'skills.cat6': 'AI & Data Mining',
     'skills.mobileApp': 'Mobile App',
-
-    // ── Stack technique
     'stack.label': 'Tech stack',
     'stack.title': 'My working<br/>environment.',
     'stack.intro': 'The languages, frameworks and tools that shape my day-to-day work as a developer.',
     'term.whoami': 'ranaivoson_claudio · web_dev · Madagascar',
     'term.odoo': 'Odoo Server 13.0 — Module dev · QWeb · advanced ORM',
     'term.status': '✓ Available for new projects',
-
-    // ── Expérience
     'exp.label': 'Professional experience',
     'exp.title': 'My experience<br/>in the field.',
     'exp.intro': 'My journey at Groupe Viseo, from the bachelor internship to an Odoo developer role.',
@@ -139,8 +196,6 @@ export const translations = {
     'exp.e2.t2': 'Developing features on existing modules',
     'exp.e2.t3': 'Writing QWeb reports and customising interfaces',
     'exp.e2.t4': 'Taking part in code reviews and team meetings',
-
-    // ── À propos
     'about.label': 'About',
     'about.title': 'Passionate about<br/><em>technology.</em>',
     'about.p1': 'Hi! I am <strong>RANAIVOSON Nantenaina Claudio</strong>, a passionate developer based in <span class="hl">Madagascar</span>. Ever since I discovered programming, I have been fascinated by the power of digital solutions to solve complex problems.',
@@ -151,8 +206,6 @@ export const translations = {
     'about.stat2': 'Technologies mastered',
     'about.stat3': "Master's in Computing (IS-INFO)",
     'about.stat4': 'Committed to every project',
-
-    // ── Éducation
     'edu.label': 'Education',
     'edu.title': 'My academic<br/>background.',
     'edu.intro': "From the science baccalaureate to a Master's in Software Engineering, plus a certification in prescriptive analytics.",
@@ -162,8 +215,6 @@ export const translations = {
     'edu.d1.diploma': "Master's — Software Engineering",
     'edu.d2.diploma': "Professional Bachelor's in Information Systems Management",
     'edu.d3.diploma': 'Baccalaureate, science stream (série C)',
-
-    // ── Certification
     'cert.heading': 'Professional certification',
     'cert.badge': '✓ Awarded',
     'cert.date': '19 Aug. 2025 — 17 Nov. 2025',
@@ -171,11 +222,11 @@ export const translations = {
     'cert.view': 'View the certificate',
     'cert.aria': 'Open the ClearMind-Analytics certificate full size',
     'cert.lbTitle': 'Certificate — ClearMind-Analytics',
+    'cert.zoomIn': 'Zoom in',
+    'cert.zoomOut': 'Zoom out',
     'cert.download': 'Download',
     'cert.close': 'Close the viewer',
     'cert.alt': 'ClearMind-Analytics certificate of completion awarded to RANAIVOSON Nantenaina Claudio for the Prescriptive Analytics (24 sessions) and Data and Artificial Intelligence Project Framework (7 sessions) programs, from 19 August to 17 November 2025.',
-
-    // ── Contact
     'contact.big': 'Let\'s build something<br/><em>together.</em>',
     'contact.sub': 'Available for freelance work, locally and remotely.',
     'contact.phone': 'Phone',
@@ -185,19 +236,30 @@ export const translations = {
     'contact.emailPh': 'youremail@example.com',
     'contact.messagePh': 'Tell me about your project...',
     'contact.send': 'Send the message',
+    'contact.copyEmail': 'Copy the email address',
+    'contact.copyPhone': 'Copy the phone number',
+    'contact.errRequired': 'This field is required.',
+    'contact.errEmail': 'Enter a valid email address (e.g. name@domain.com).',
+    'contact.errShort': 'Please add a few more words (10 characters minimum).',
+    'contact.fix': 'Some fields need fixing before sending.',
+    'contact.toastTitle': 'Message sent',
+    'contact.toastText': 'Thank you! I will get back to you shortly.',
+    'contact.copiedTitle': 'Copied to the clipboard',
+    'contact.copyFailTitle': 'Could not copy',
+    'contact.copyFailText': 'Select the text and copy it manually.',
     'contact.sending': 'Sending…',
     'contact.success': 'Thank you! Your message is on its way — I will get back to you shortly.',
     'contact.error': 'Sending failed. Please try again, or email me directly at ranaivosonclaudio@gmail.com.',
-
-    // ── Pied de page
     'footer.madeWith': 'Crafted with',
     'footer.andPassion': 'and passion',
-
-    // ── Toast de changement de langue
+    'footer.place': 'Madagascar · The Red Island',
     'lang.toastTitle': 'Language switched',
     'lang.toastText': 'The site is now in English.',
-
-    // ── CV (PDF)
+    'toast.close': 'Dismiss the notification',
+    'cv.generating': 'Building the resume…',
+    'cv.doneTitle': 'Resume downloaded',
+    'cv.doneText': 'The PDF file is in your downloads.',
+    'cv.errorTitle': 'Download failed',
     'cv.error': 'The PDF library could not be loaded. Check your internet connection and try again.',
   },
 };

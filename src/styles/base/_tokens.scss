@@ -1,16 +1,14 @@
 @use '../abstracts' as *;
 
 :root {
-  @each $name, $value in $palette {
-    --#{$name}: #{$value};
-  }
-  --accent-glow: #{alpha(accent, .12)};
+  color-scheme: dark;
+  @include palette-tokens($palette-dark, $extras-dark);
 
   --font-sans:  'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-mono:  'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
 
-  --fs-3xs:   .625rem;   // 10
+  --fs-3xs:   .6875rem;  // 11
   --fs-2xs:   .6875rem;  // 11
   --fs-xs:    .75rem;    // 12
   --fs-sm:    .8125rem;  // 13
@@ -45,4 +43,21 @@
     --pad-x: var(--sp-5);
     --sp-12: 4.5rem;
   }
+}
+
+// Thème clair : seules les couleurs changent, l'échelle et les espacements restent
+:root[data-theme='light'] {
+  color-scheme: light;
+  @include palette-tokens($palette-light, $extras-light);
+}
+
+// Bascule de thème : fondu des couleurs le temps du changement (classe posée par theme.js)
+html.theme-fade :is(*, *::before, *::after) {
+  transition: background-color .4s, color .4s, border-color .4s, fill .4s, stroke .4s !important;
+}
+
+// Sans color-mix() (avant 2023), alpha() est invalide : fonds opaques pour la barre, le menu et
+// le bouton flottant ; les halos décoratifs disparaissent sans gêner.
+@supports not (color: color-mix(in srgb, red 50%, transparent)) {
+  nav, .nav-links, .to-top { background: var(--bg); }
 }

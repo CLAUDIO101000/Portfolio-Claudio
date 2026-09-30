@@ -24,6 +24,15 @@
   }
 }
 
+// Légende du ✦, une seule fois sous le titre
+.skills-legend {
+  @include label(var(--fs-2xs), .12em);
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  margin: calc(var(--sp-5) * -1) 0 var(--sp-6);
+  color: var(--muted);
+}
+.skills-legend-mark { color: var(--accent); font-size: var(--fs-sm); letter-spacing: 0; }
+
 .skills-row { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
 
 .skill-pill {
@@ -35,9 +44,11 @@
   font-size: var(--fs-sm); font-weight: 500; color: var(--text);
   transition: border-color .2s, color .2s, background-color .2s, transform .3s var(--ease-out);
 
-  &:hover {
-    border-color: var(--text); background: var(--text); color: var(--ink);
-    transform: translateY(var(--lift)) rotate(-2deg);
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--text); background: var(--text); color: var(--ink);
+      transform: translateY(var(--lift)) rotate(-2deg);
+    }
   }
 
   &.main {
@@ -45,7 +56,7 @@
     background: var(--accent-glow);
 
     &::before { content: '✦'; font-size: .8em; }
-    &:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+    @media (hover: hover) { &:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); } }
   }
 }
 

@@ -19,7 +19,7 @@
   line-height: 1.6;
   transition: color .2s, background-color .2s;
 
-  &:hover { color: var(--text); }
+  @media (hover: hover) { &:hover { color: var(--text); } }
 
   &:focus-visible { outline-offset: 1px; }
 
@@ -30,11 +30,10 @@
   }
 }
 
-// Réglage global : reste visible hors du menu déroulant
-@include below(nav) {
-  .lang-switch { margin-left: auto; }
+@include below(mobile) {
+  .lang-tab { padding: var(--sp-2) var(--sp-3); }
 }
 
 @include below(xs) {
-  .lang-tab { padding: var(--sp-1) var(--sp-2); letter-spacing: .06em; }
+  .lang-tab { letter-spacing: .06em; }
 }

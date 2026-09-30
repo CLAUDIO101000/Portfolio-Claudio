@@ -4,10 +4,13 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: var(--sp-4) var(--gutter);
   display: flex; justify-content: space-between; align-items: center;
-  gap: var(--sp-6);
+  gap: clamp(var(--sp-4), 2.2vw, var(--sp-6));
   background: alpha(bg, .78);
   backdrop-filter: blur(18px) saturate(140%);
   border-bottom: 1px solid var(--border);
+  transition: background-color .3s;
+
+  &.is-scrolled { background: alpha(bg, .9); }
 
   // Barre de progression de lecture (--progress de 0 à 1, posé par le JS)
   &::after {
@@ -38,23 +41,34 @@ nav {
     display: block;
     padding: var(--sp-2) var(--sp-3);
     border-radius: 999px;
-    color: var(--muted); text-decoration: none;
+    color: var(--muted); text-decoration: none; white-space: nowrap;
     transition: color .2s, background-color .2s;
 
-    &:hover     { color: var(--text); background: var(--surface2); }
+    @media (hover: hover) { &:hover     { color: var(--text); background: var(--surface2); } }
     &.is-active { color: var(--ink); background: var(--accent); }
   }
+}
+
+.nav-tools {
+  display: flex; align-items: center; flex: none;
+  gap: var(--sp-2);
 }
 
 .nav-status {
   @include mono;
   display: flex; align-items: center; gap: var(--sp-2);
-  color: var(--green);
+  color: var(--green); text-decoration: none;
   white-space: nowrap;
   padding: var(--sp-2) var(--sp-3);
   border: 1px solid alpha(green, .3);
   border-radius: 999px;
+  transition: background-color .2s, border-color .2s;
+
+  @media (hover: hover) { &:hover { background: alpha(green, .1); border-color: var(--green); } }
 }
+
+// Statut au pied du menu déroulant (masqué sur grand écran)
+.nav-links .nav-links-status { display: none; }
 
 .status-dot {
   --pulse-color: #{alpha(green, .45)};
@@ -75,7 +89,7 @@ nav {
   border-radius: 999px;
   transition: border-color .2s;
 
-  &:hover { border-color: var(--accent); }
+  @media (hover: hover) { &:hover { border-color: var(--accent); } }
 
   span {
     display: block; height: 1.5px; width: 100%;
@@ -90,21 +104,30 @@ nav.open .nav-burger {
   span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 }
 
+// Entre 1100 et 1300px, la pastille de disponibilité n'a plus la place (hero et menu la gardent)
+@include below(nav-wide) {
+  .nav-status { display: none; }
+}
+
 // Les 7 liens débordent sous ~1100px : menu déroulant ouvert par le burger
 @include below(nav) {
   nav { gap: var(--sp-3); }
   .nav-status { display: none; }
   .nav-burger { display: flex; }
+  .nav-tools  { margin-left: auto; }
 
+  // Fermé : visibility retire le menu de l'ordre de tabulation et du lecteur d'écran
   .nav-links {
-    display: none;
+    display: flex;
     position: absolute; top: 100%; left: 0; right: 0;
     flex-direction: column; gap: 0;
     background: alpha(bg, .97);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
-    padding: var(--sp-2) 0;
+    padding: var(--sp-2) 0 var(--sp-4);
     max-height: calc(100svh - var(--nav-h)); overflow-y: auto;
+    visibility: hidden; opacity: 0; transform: translateY(-10px);
+    transition: opacity .25s var(--ease-out), transform .35s var(--ease-out), visibility 0s .35s;
 
     a {
       padding: var(--sp-3) var(--gutter); border-radius: 0;
@@ -116,7 +139,69 @@ nav.open .nav-burger {
       background: transparent; color: var(--accent);
       &::before { content: '◆'; font-size: .5em; vertical-align: .35em; margin-right: var(--sp-2); }
     }
+
+    .nav-links-status {
+      display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-3);
+      margin-top: var(--sp-3); padding: var(--sp-4) var(--gutter) 0;
+      border-top: 1px dashed var(--border);
+
+      a, .nav-cv {
+        @include mono(var(--fs-xs), .02em);
+        display: inline-flex; align-items: center; gap: var(--sp-2);
+        padding: var(--sp-2) var(--sp-4);
+        border: 1px solid alpha(green, .3); border-radius: 999px;
+        color: var(--green); font-weight: 400;
+      }
+
+      .nav-cv {
+        background: transparent; cursor: pointer;
+        border-color: var(--border-strong); color: var(--text);
+      }
+    }
   }
 
-  nav.open .nav-links { display: flex; }
+  nav.open .nav-links {
+    visibility: visible; opacity: 1; transform: none;
+    transition-delay: 0s;
+  }
+
+  // Voile sous le menu ouvert (absolute : le backdrop-filter de la barre rend fixed relatif à elle)
+  nav.open::before {
+    content: '';
+    position: absolute; top: 100%; left: 0; right: 0; height: 100vh;
+    background: alpha(bg, .7);
+    pointer-events: none;
+  }
+}
+
+@include below(mobile) {
+  nav { padding-block: var(--sp-3); }
+  .nav-burger { width: 44px; height: 44px; padding: 14px 12px; }
+}
+
+// 320 px : logo, langue, thème et menu sur une ligne
+@include below(narrow) {
+  // Préfixés de .nav-tools : les composants voisins, chargés après, l'emporteraient
+  nav { padding-inline: var(--sp-4); }
+  .nav-tools { gap: var(--sp-1); }
+  .nav-tools .nav-burger, .nav-tools .theme-toggle { width: 40px; height: 40px; }
+  .nav-tools .nav-burger { padding-inline: 11px; }
+  .nav-tools .lang-tab { padding-inline: var(--sp-2); }
+}
+
+// Sans JS : menu et réglages inutilisables, la barre se déplie avec ses liens visibles
+html:not(.js) {
+  .lang-switch, .theme-toggle, .nav-burger, .to-top, .copy-btn, [data-cv-download] { display: none; }
+
+  nav { position: relative; flex-wrap: wrap; }
+
+  .nav-links {
+    display: flex; flex-direction: row; flex-wrap: wrap;
+    position: static; visibility: visible; opacity: 1; transform: none;
+    width: 100%; max-height: none; padding: 0;
+    background: none; border: 0;
+
+    a { padding: var(--sp-2) var(--sp-3); font: inherit; letter-spacing: inherit; text-transform: uppercase; color: var(--muted); }
+    .nav-links-status { display: none; }
+  }
 }

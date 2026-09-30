@@ -1,14 +1,25 @@
-// Visionneuse du certificat. L'URL de l'image est reprise de la vignette, que
-// Vite réécrit selon la base du site : aucun chemin écrit en dur ici.
+// Visionneuse du certificat : l'URL vient de la vignette (réécrite par Vite).
 export function initLightbox() {
   const box = document.getElementById('lightbox');
   const full = document.getElementById('lightbox-img');
   const download = document.getElementById('lightbox-dl');
   const trigger = document.getElementById('cert-open');
+  const zoomButton = document.getElementById('lightbox-zoom');
   if (!box || !full || !trigger) return;
 
   const thumb = trigger.querySelector('img');
   let lastFocus = null;
+
+  const setZoom = (zoomed) => {
+    box.classList.toggle('is-zoomed', zoomed);
+    if (zoomed) {
+      const panel = box.querySelector('.lightbox-panel');
+      panel.scrollLeft = (panel.scrollWidth - panel.clientWidth) / 2;
+    }
+  };
+  const toggleZoom = () => setZoom(!box.classList.contains('is-zoomed'));
+  zoomButton?.addEventListener('click', toggleZoom);
+  full.addEventListener('click', toggleZoom);
 
   const open = () => {
     if (thumb && !full.getAttribute('src')) {
@@ -17,19 +28,21 @@ export function initLightbox() {
     }
     lastFocus = document.activeElement;
     box.hidden = false;
-    // Classe posée à la frame suivante pour que le fondu se déclenche
+    // Classe à la frame suivante, pour déclencher le fondu
     requestAnimationFrame(() => box.classList.add('is-open'));
     document.body.classList.add('no-scroll');
     box.querySelector('.lightbox-btn')?.focus();
   };
 
   const close = () => {
+    setZoom(false);
     box.classList.remove('is-open');
     document.body.classList.remove('no-scroll');
     const hide = () => { box.hidden = true; };
     box.addEventListener('transitionend', hide, { once: true });
     setTimeout(hide, 400); // repli si la transition est désactivée
-    lastFocus?.focus();
+    // Safari ne focalise pas le bouton cliqué : repli sur le déclencheur
+    (lastFocus && lastFocus !== document.body ? lastFocus : trigger).focus();
   };
 
   trigger.addEventListener('click', open);

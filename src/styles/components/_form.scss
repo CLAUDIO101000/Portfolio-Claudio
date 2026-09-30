@@ -16,6 +16,9 @@
     margin-bottom: var(--sp-2);
   }
 
+  // Astérisque en CSS : le texte traduit reste intact
+  &:has(:required) label::after { content: ' *'; color: var(--accent); }
+
   input, textarea {
     width: 100%; background: transparent;
     border: 0; border-bottom: 1px solid var(--border-strong);
@@ -26,12 +29,32 @@
     line-height: 1.5; outline: none;
     transition: border-color .2s; resize: vertical;
 
-    &::placeholder  { color: var(--muted); opacity: .7; }
+    // Pleine opacité : à .7, le contraste passait sous 4,5:1
+    &::placeholder  { color: var(--muted); opacity: 1; }
+
+    // Autofill : transition repoussée indéfiniment pour garder le fond du formulaire
+    &:-webkit-autofill {
+      -webkit-text-fill-color: var(--text);
+      caret-color: var(--text);
+      transition: background-color 600000s 0s, color 600000s 0s;
+    }
     &:focus         { border-color: var(--accent); }
     &:focus-visible { outline: none; box-shadow: 0 1px 0 0 var(--accent); }
+
+    &[aria-invalid='true']                { border-color: var(--red); }
+    &[aria-invalid='true']:focus-visible  { box-shadow: 0 1px 0 0 var(--red); }
   }
 
-  textarea { min-height: 120px; }
+  textarea { min-height: 120px; max-height: 420px; }
+}
+
+.field-error {
+  @include mono(var(--fs-xs), .02em);
+  margin-top: var(--sp-2);
+  line-height: 1.5; color: var(--red);
+
+  &:empty { display: none; }
+  &::before { content: '! '; font-weight: 700; }
 }
 
 .form-submit {
@@ -45,9 +68,22 @@
 
   .icon { transition: transform .3s var(--ease-out); }
 
-  &:hover       { background: var(--text); transform: translateY(var(--lift)); }
-  &:hover .icon { transform: translateX(4px); }
+  @media (hover: hover) { &:hover       { background: var(--text); transform: translateY(var(--lift)); } }
+  @media (hover: hover) { &:hover .icon { transform: translateX(4px); } }
   &:disabled    { opacity: .6; cursor: progress; transform: none; background: var(--accent); }
+
+  &:active:not(:disabled) { transform: scale(.98); }
+
+  &.is-loading {
+    opacity: .85;
+    .icon { display: none; }
+    &::before {
+      content: '';
+      width: 1em; height: 1em;
+      border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+  }
 }
 
 // Zone live : vide tant qu'il n'y a rien à annoncer, jamais en display:none

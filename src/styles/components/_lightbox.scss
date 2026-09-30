@@ -2,6 +2,7 @@
 
 // `hidden` retire la visionneuse du flux ; .is-open ne pilote que le fondu
 .lightbox {
+  @include dark-scope; // fond sombre quel que soit le thème
   position: fixed; inset: 0; z-index: 200;
   display: grid; place-items: center;
   padding: var(--sp-4);
@@ -51,6 +52,34 @@
   object-fit: contain;
   background: #fff;
   border: 1px solid var(--border-strong); border-radius: var(--radius);
+  cursor: zoom-in;
+}
+
+#lightbox-zoom {
+  .zoom-out { display: none; }
+}
+.lightbox.is-zoomed #lightbox-zoom {
+  .zoom-in  { display: none; }
+  .zoom-out { display: inline; }
+  svg.zoom-out { display: block; }
+}
+
+// Zoom : le certificat prend sa taille lisible, la fenêtre défile, la barre reste collée en haut
+.lightbox.is-zoomed {
+  .lightbox-panel { overflow: auto; overscroll-behavior: contain; }
+
+  .lightbox-bar {
+    position: sticky; top: 0; left: 0; z-index: 1;
+    padding-bottom: var(--sp-2);
+    background: rgba(8, 7, 6, .9);
+  }
+
+  .lightbox-img {
+    flex: none;
+    width: max(200%, 900px); max-width: none; height: auto;
+    object-fit: initial;
+    cursor: zoom-out;
+  }
 }
 
 body.no-scroll { overflow: hidden; }

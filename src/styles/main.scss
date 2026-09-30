@@ -1,3 +1,4 @@
+@use 'base/fonts';
 @use 'base/tokens';
 @use 'base/reset';
 @use 'base/accessibility';
@@ -12,6 +13,8 @@
 @use 'components/nav';
 @use 'components/lang-switch';
 @use 'components/toast';
+@use 'components/to-top';
+@use 'components/theme-toggle';
 @use 'components/form';
 @use 'components/lightbox';
 
@@ -26,3 +29,6 @@
 @use 'sections/education';
 @use 'sections/contact';
 @use 'sections/footer';
+
+// En dernier : les règles d'impression l'emportent sur les styles d'écran
+@use 'base/print';

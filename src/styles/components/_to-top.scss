@@ -1,0 +1,29 @@
+@use '../abstracts' as *;
+
+// Retour en haut : visible après le premier écran ; visibility le sort de l'ordre de tabulation
+.to-top {
+  position: fixed; z-index: 90;
+  right: var(--sp-5); bottom: var(--sp-5);
+  display: grid; place-items: center;
+  width: 48px; height: 48px;
+  background: alpha(surface, .9); color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: 50%;
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem; cursor: pointer;
+  visibility: hidden; opacity: 0; transform: translateY(12px);
+  transition: opacity .3s var(--ease-out), transform .4s var(--ease-out), visibility 0s .4s,
+              background-color .2s, color .2s, border-color .2s;
+
+  &.is-visible {
+    visibility: visible; opacity: 1; transform: none;
+    transition-delay: 0s;
+  }
+
+  @media (hover: hover) { &:hover { background: var(--accent); border-color: var(--accent); color: var(--ink); } }
+
+  .icon { stroke-width: 2; }
+}
+
+@include below(mobile) {
+  .to-top { right: var(--sp-4); bottom: var(--sp-4); }
+}

@@ -4,21 +4,38 @@ export function initHero() {
   initAvatarFallback();
   initLocalClock();
   initTypedText();
+  initOffscreenPause();
 }
 
-// Photo introuvable : les initiales prennent sa place
+// Courbes, badge et curseur en boucle : suspendus hors écran (batterie)
+function initOffscreenPause() {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+  new IntersectionObserver(([entry]) => {
+    hero.classList.toggle('is-offscreen', !entry.isIntersecting);
+  }).observe(hero);
+}
+
+// Photo en fondu dès qu'elle est prête, initiales si elle est introuvable ;
+// `complete` couvre le cas où l'évènement a précédé le module.
 function initAvatarFallback() {
-  const img = document.querySelector('.avatar-wrap img');
-  const initials = document.querySelector('.avatar-initials');
+  const wrap = document.querySelector('.avatar-wrap');
+  const img = wrap?.querySelector('img');
+  const initials = wrap?.querySelector('.avatar-initials');
   if (!img || !initials) return;
 
+  const showPhoto = () => wrap.classList.add('is-loaded');
   const showInitials = () => {
     img.closest('picture').hidden = true;
     initials.hidden = false;
+    wrap.classList.add('is-loaded');
   };
-  // Le module s'exécute après le parsing : l'erreur a pu survenir avant
-  if (img.complete && img.naturalWidth === 0) showInitials();
-  else img.addEventListener('error', showInitials, { once: true });
+
+  if (img.complete) (img.naturalWidth > 0 ? showPhoto : showInitials)();
+  else {
+    img.addEventListener('load', showPhoto, { once: true });
+    img.addEventListener('error', showInitials, { once: true });
+  }
 }
 
 function initLocalClock() {
@@ -32,10 +49,26 @@ function initLocalClock() {
   const tick = () => { el.textContent = format.format(new Date()); };
   tick();
   setInterval(tick, 1000);
+  initTimeZoneOffset();
 }
 
-// Texte tapé puis effacé, phrase après phrase, dans la langue active.
-// Mouvement réduit : première phrase affichée d'un bloc.
+// Décalage d'Antananarivo (UTC+3, sans heure d'été) avec le fuseau du visiteur
+function initTimeZoneOffset() {
+  const el = document.getElementById('tz-offset');
+  if (!el) return;
+
+  onLangChange((lang) => {
+    const diff = 3 + new Date().getTimezoneOffset() / 60;
+    if (diff === 0) {
+      el.textContent = ` · ${t('hero.tzSame')}`;
+      return;
+    }
+    const n = `${diff > 0 ? '+' : '−'}${Math.abs(diff).toLocaleString(lang)}`;
+    el.textContent = ` · ${t('hero.tzDiff').replace('{n}', n)}`;
+  });
+}
+
+// Texte tapé puis effacé, dans la langue active (mouvement réduit : première phrase fixe).
 function initTypedText() {
   const el = document.getElementById('typed-text');
   if (!el) return;

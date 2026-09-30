@@ -12,8 +12,12 @@
   padding: var(--sp-8);
   padding-top: calc(var(--sp-12) + var(--sp-4));
   position: relative; overflow: hidden;
+  isolation: isolate; // le relief passe derrière le texte, devant le fond de la carte
 
-  &:hover { @include card-hover; }
+  @media (hover: hover) { &:hover { @include card-hover; } }
+
+  // Le lien du titre couvre toute la carte ; .project-links reste au-dessus
+  &:has(.project-link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   // Grand numéro fantôme
   &::before {
@@ -25,9 +29,8 @@
     transition: color .4s, -webkit-text-stroke-color .4s;
     pointer-events: none;
   }
-  &:hover::before { color: var(--accent-glow); -webkit-text-stroke-color: var(--accent); }
+  @media (hover: hover) { &:hover::before { color: var(--accent-glow); -webkit-text-stroke-color: var(--accent); } }
 
-  // Flèche en pastille
   &::after {
     content: '↗'; position: absolute; top: var(--sp-6); right: var(--sp-6);
     width: 48px; height: 48px; border-radius: 50%;
@@ -35,8 +38,9 @@
     border: 1px solid var(--border-strong);
     color: var(--text); font-size: 1.2rem;
     transition: background-color .3s, color .3s, border-color .3s, transform .4s var(--ease-out);
+    pointer-events: none;
   }
-  &:hover::after { background: var(--accent); border-color: var(--accent); color: var(--ink); transform: rotate(45deg); }
+  @media (hover: hover) { &:hover::after { background: var(--accent); border-color: var(--accent); color: var(--ink); transform: rotate(45deg); } }
 }
 
 .project-num {
@@ -45,6 +49,18 @@
   margin-bottom: var(--sp-3);
 }
 .project-name  { font-family: var(--font-sans); font-weight: 800; font-size: clamp(2rem, 3.4vw, 2.8rem); margin-bottom: var(--sp-3); letter-spacing: -.05em; line-height: 1; }
+.project-link {
+  color: inherit; text-decoration: none;
+
+  &::after { content: ''; position: absolute; inset: 0; }
+
+  // Anneau de focus porté par la carte (:has) ; le soulignement sert de repère sans :has()
+  &:focus-visible {
+    outline: none;
+    text-decoration: underline; text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px; text-underline-offset: .12em;
+  }
+}
 .project-desc  { font-size: var(--fs-md); color: var(--muted); line-height: 1.7; max-width: 58ch; }
 .project-tags  { display: flex; flex-wrap: wrap; gap: var(--sp-1); margin-top: var(--sp-5); }
 .project-links { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-5); position: relative; z-index: 1; }
@@ -60,8 +76,8 @@
   text-decoration: none; color: inherit;
   transition: border-color .3s, background-color .3s;
 
-  &:hover { border-color: var(--accent); border-style: solid; background: var(--accent-glow); }
-  &:hover .project-more-cta { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+  @media (hover: hover) { &:hover { border-color: var(--accent); border-style: solid; background: var(--accent-glow); } }
+  @media (hover: hover) { &:hover .project-more-cta { background: var(--accent); border-color: var(--accent); color: var(--ink); } }
 }
 
 .project-more-text {
@@ -79,4 +95,16 @@
   .projects-grid { grid-template-columns: 1fr; }
   .project-card  { padding: var(--sp-6); padding-top: var(--sp-12); }
   .project-more  { flex-direction: column; align-items: flex-start; padding: var(--sp-6); }
+}
+
+// Carte topographique propre à chaque projet (js/features/topo.js), fondue vers le bas
+.project-art {
+  position: absolute; z-index: -1;
+  top: 0; left: 0;
+  width: 100%; height: 11rem;
+  pointer-events: none;
+  opacity: 0; transition: opacity .8s var(--ease-out);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+
+  &.is-ready { opacity: .9; }
 }
