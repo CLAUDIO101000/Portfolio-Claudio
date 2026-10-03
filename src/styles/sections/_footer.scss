@@ -40,3 +40,20 @@ footer {
 @include below(mobile) {
   .footer-row { flex-direction: column; text-align: center; }
 }
+
+// Fraîcheur du site et lien vers son code
+.footer-meta {
+  display: flex; justify-content: center; align-items: center; flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  margin-top: var(--sp-3);
+  font-size: var(--fs-2xs);
+  color: var(--muted);
+
+  > * { display: inline-flex; align-items: center; gap: var(--sp-2); }
+
+  // Zone de clic confortable sans changer la hauteur de ligne
+  a { padding-block: var(--sp-2); }
+  .icon { width: 1em; height: 1em; }
+}
+
+footer .footer-row a { display: inline-block; padding-block: var(--sp-2); }

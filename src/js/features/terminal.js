@@ -3,6 +3,8 @@ import { onFirstVisible } from '../utils/on-first-visible.js';
 import { prompt, output, languages, frameworks, tools, lineElement } from '../utils/term-lines.js';
 import { initTerminalShell } from './terminal-shell.js';
 
+const LINE_DELAY = 110;
+
 const lines = () => [
   prompt('whoami'),
   output('t-amber', t('term.whoami')),
@@ -16,6 +18,7 @@ const lines = () => [
   ...tools(),
   prompt('echo $STATUS'),
   output('t-amber', `${t('term.status')} ■`),
+  output('t-out', t('sh.hint')),
 ];
 
 export function initTerminal() {
@@ -25,27 +28,40 @@ export function initTerminal() {
 
   const shell = initTerminalShell();
   let started = false;
+  let rendered = [];
 
-  const render = (animate) => {
+  // Toutes les lignes sont posées dès le chargement, invisibles : le terminal a sa taille définitive
+  // avant de se jouer. Sinon il grandirait de plusieurs centaines de pixels à l'écran et décalerait
+  // tout ce qui le suit (un lien d'ancre qui le traverse atterrirait à côté de sa cible).
+  const build = () => {
     intro.textContent = '';
-    const all = lines();
-    all.forEach((segments, i) => {
+    rendered = lines().map((segments) => {
       const line = lineElement(segments);
       intro.appendChild(line);
-      if (animate) setTimeout(() => line.classList.add('visible'), i * 110);
-      else line.classList.add('visible');
+      return line;
     });
+  };
+
+  const play = () => {
+    rendered.forEach((line, i) => setTimeout(() => line.classList.add('visible'), i * LINE_DELAY));
     // L'invite n'apparaît qu'une fois la présentation affichée
-    setTimeout(shell.reveal, animate ? all.length * 110 + 200 : 0);
+    setTimeout(shell.reveal, rendered.length * LINE_DELAY + 200);
   };
 
   onFirstVisible([terminal], () => {
     started = true;
-    render(true);
+    play();
   }, { threshold: 0.3 });
 
-  // Déjà joué : redessiné sans animation dans la nouvelle langue
-  onLangChange(() => { if (started) render(false); });
+  // Au clavier, l'invite doit être atteignable sans attendre la fin de l'animation d'intro :
+  // la première pression sur Tab la révèle (la place est déjà réservée, rien ne bouge)
+  document.addEventListener('keydown', (e) => { if (e.key === 'Tab') shell.reveal(); }, { once: true });
+
+  // Langue changée : lignes redessinées ; si le terminal a déjà joué, elles apparaissent d'un coup
+  onLangChange(() => {
+    build();
+    if (started) rendered.forEach((line) => line.classList.add('visible'));
+  });
 
   // Curseur clignotant en fin de dernière ligne
   setInterval(() => {

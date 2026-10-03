@@ -23,3 +23,13 @@ html[data-theme='light'] .theme-toggle {
 @include below(mobile) {
   .theme-toggle { width: 44px; height: 44px; }
 }
+
+// Révélation circulaire du thème (theme.js) : l'ancienne vue reste fixe, la nouvelle l'écarte
+// par un clip-path animé en JS.
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }

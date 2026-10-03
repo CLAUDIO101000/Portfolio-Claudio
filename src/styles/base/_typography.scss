@@ -41,7 +41,7 @@
   font-size: clamp(2.2rem, 5.2vw, 4.4rem);
   line-height: .98;
   margin-bottom: var(--sp-8);
-  letter-spacing: -.045em;
+  letter-spacing: -.035em;
 
   em {
     font-family: var(--font-serif);
@@ -57,3 +57,6 @@
   color: var(--accent);
   background: linear-gradient(var(--accent-glow), var(--accent-glow)) no-repeat 0 90% / 100% .34em;
 }
+
+// Évite une coupure de ligne dans un mot composé (ex. « IS-INFO » coupé au tiret)
+.nowrap { white-space: nowrap; }

@@ -48,7 +48,7 @@
   color: var(--accent);
   margin-bottom: var(--sp-3);
 }
-.project-name  { font-family: var(--font-sans); font-weight: 800; font-size: clamp(2rem, 3.4vw, 2.8rem); margin-bottom: var(--sp-3); letter-spacing: -.05em; line-height: 1; }
+.project-name  { font-family: var(--font-sans); font-weight: 800; font-size: clamp(2rem, 3.4vw, 2.8rem); margin-bottom: var(--sp-3); letter-spacing: -.04em; line-height: 1; }
 .project-link {
   color: inherit; text-decoration: none;
 
@@ -64,6 +64,61 @@
 .project-desc  { font-size: var(--fs-md); color: var(--muted); line-height: 1.7; max-width: 58ch; }
 .project-tags  { display: flex; flex-wrap: wrap; gap: var(--sp-1); margin-top: var(--sp-5); }
 .project-links { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-top: var(--sp-5); position: relative; z-index: 1; }
+
+// Projet professionnel mis en avant : pleine largeur, texte à gauche et points forts à droite.
+// Code privé : pas de lien vers un dépôt, donc ni flèche ↗ ni lien étendu à toute la carte.
+.project-featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: var(--sp-10);
+  align-content: start;
+
+  &::after { display: none; }
+
+  > :not(.project-art, .project-points) { grid-column: 1; }
+  > .project-points { grid-column: 2; grid-row: 1 / span 5; align-self: center; }
+
+  @include below(tablet) {
+    display: block;
+    .project-points { margin-top: var(--sp-6); }
+  }
+}
+
+.project-points {
+  display: grid; gap: var(--sp-5);
+  padding-left: var(--sp-6);
+  border-left: 1px dashed var(--border-strong);
+  list-style: none;
+
+  li {
+    display: grid; gap: var(--sp-1);
+    color: var(--muted); font-size: var(--fs-md); line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  @include below(tablet) {
+    padding-left: 0; padding-top: var(--sp-5);
+    border-left: 0; border-top: 1px dashed var(--border-strong);
+  }
+}
+
+.project-point-label {
+  @include label(var(--fs-2xs), .15em);
+  display: flex; align-items: center; gap: var(--sp-2);
+  color: var(--accent);
+
+  &::before { content: ''; width: 6px; height: 6px; background: var(--accent); transform: rotate(45deg); }
+}
+
+// Pastille d'information (non cliquable)
+.project-private {
+  @include label(var(--fs-2xs), .08em);
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  color: var(--muted);
+  border: 1px dashed var(--border-strong); border-radius: 999px;
+}
 
 // Carte de fin de grille : renvoie vers le profil GitHub
 .project-more {

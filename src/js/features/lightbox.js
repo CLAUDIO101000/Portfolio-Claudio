@@ -1,4 +1,4 @@
-// Visionneuse du certificat : l'URL vient de la vignette (réécrite par Vite).
+// Visionneuse du certificat : l'image est chargée à la demande (loading=lazy, boîte cachée).
 export function initLightbox() {
   const box = document.getElementById('lightbox');
   const full = document.getElementById('lightbox-img');
@@ -7,7 +7,6 @@ export function initLightbox() {
   const zoomButton = document.getElementById('lightbox-zoom');
   if (!box || !full || !trigger) return;
 
-  const thumb = trigger.querySelector('img');
   let lastFocus = null;
 
   const setZoom = (zoomed) => {
@@ -21,11 +20,10 @@ export function initLightbox() {
   zoomButton?.addEventListener('click', toggleZoom);
   full.addEventListener('click', toggleZoom);
 
+  // Même fichier que la vignette (donc déjà en cache) ; le lien de téléchargement pointe dessus
+  if (download) download.href = full.src;
+
   const open = () => {
-    if (thumb && !full.getAttribute('src')) {
-      full.src = thumb.currentSrc || thumb.src;
-      if (download) download.href = full.src;
-    }
     lastFocus = document.activeElement;
     box.hidden = false;
     // Classe à la frame suivante, pour déclencher le fondu

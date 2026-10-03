@@ -28,7 +28,7 @@
   &::before {
     content: '“';
     position: absolute; left: var(--sp-4); top: -.1em;
-    font-family: var(--font-serif); font-size: 6rem; line-height: 1;
+    font-family: var(--font-serif); font-style: italic; font-size: 6rem; line-height: 1;
     color: var(--accent);
   }
 
@@ -67,7 +67,7 @@
 .stat-number {
   font-variant-numeric: tabular-nums;
   font-family: var(--font-sans); font-weight: 800;
-  font-size: var(--fs-3xl); letter-spacing: -.06em;
+  font-size: var(--fs-3xl); letter-spacing: -.04em;
   color: var(--text); line-height: .9;
 }
 
@@ -90,4 +90,18 @@
 @include below(xxs) {
   .stat-card   { padding-inline: var(--sp-4); }
   .stat-number { font-size: 2.5rem; }
+}
+
+// Faits pratiques : langues, lieu, mode de mission
+.about-facts {
+  display: grid; gap: var(--sp-3);
+  margin-top: var(--sp-6); padding-top: var(--sp-5);
+  border-top: 1px dashed var(--border-strong);
+
+  > div { display: grid; grid-template-columns: 8.5rem 1fr; gap: var(--sp-4); align-items: baseline; }
+
+  dt { @include label(var(--fs-2xs), .15em); color: var(--accent); }
+  dd { font-size: var(--fs-md); color: var(--text); line-height: 1.55; }
+
+  @include below(mobile) { > div { grid-template-columns: 1fr; gap: var(--sp-1); } }
 }

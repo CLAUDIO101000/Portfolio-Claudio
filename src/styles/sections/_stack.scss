@@ -33,8 +33,12 @@
 
 .t-line {
   display: flex; gap: var(--sp-3);
-  white-space: pre;
+  // pre-wrap : l'alignement en colonnes est conservé, et une ligne trop longue passe à la ligne
+  // au lieu de déborder du cadre
+  white-space: pre-wrap; overflow-wrap: anywhere;
   opacity: 0; transform: translateX(-6px);
+
+  > span { min-width: 0; }
 
   &.visible { animation: termLine .4s forwards; }
 }
@@ -43,13 +47,12 @@
 @include below(mobile) {
   .terminal-body { padding: var(--sp-5) var(--sp-4); line-height: 1.95; font-size: var(--fs-xs); }
   .term-chips { padding: var(--sp-3) var(--sp-4) var(--sp-4); }
-  .t-line {
-    white-space: pre-wrap; overflow-wrap: anywhere;
-    gap: var(--sp-2);
-
-    > span { min-width: 0; }
-  }
+  .t-line { gap: var(--sp-2); }
 }
+
+// Invite et suggestions apparaissent après la présentation (terminal.js) ; leur place est réservée
+// dès le chargement pour que la page ne bouge pas.
+.terminal:not(.is-ready) :is(.term-form, .term-chips) { visibility: hidden; }
 
 // Invite interactive (js/features/terminal-shell.js)
 .term-form { display: flex; align-items: center; gap: var(--sp-3); }
@@ -67,9 +70,26 @@
   @media (pointer: coarse) { font-size: 16px; }
 }
 
+// Bouton d'exécution : au doigt, il remplace la touche Entrée du clavier virtuel
+.term-run {
+  flex: none; display: grid; place-items: center;
+  width: 1.9rem; height: 1.9rem;
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border-strong); border-radius: 50%;
+  cursor: pointer;
+  transition: color .2s, border-color .2s, background-color .2s;
+
+  .icon { width: .9rem; height: .9rem; }
+  @media (hover: hover) { &:hover { color: var(--accent); border-color: var(--accent); } }
+  &:active { background: var(--accent-glow); }
+  @media (pointer: coarse) { width: 2.75rem; height: 2.75rem; }
+}
+
 // Pas d'anneau sur le champ : c'est tout le terminal qui signale le focus
 .term-input:focus-visible { outline: none; }
 .terminal:focus-within { border-color: var(--accent); }
+// Un simple liseré de bordure est trop discret pour un focus clavier : anneau net autour de la fenêtre
+.terminal:has(:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .term-chips {
   display: flex; flex-wrap: wrap; gap: var(--sp-2);

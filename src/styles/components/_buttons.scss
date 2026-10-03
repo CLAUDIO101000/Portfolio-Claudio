@@ -46,3 +46,6 @@
     @media (hover: hover) { &:hover { background: var(--text); border-color: var(--text); color: var(--ink); } }
   }
 }
+
+// Génération du CV en cours (le bouton reste focalisable : aria-busy, pas disabled)
+[data-cv-download][aria-busy='true'] { cursor: progress; }

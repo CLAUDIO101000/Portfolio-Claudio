@@ -13,7 +13,12 @@ export function initCvButtons() {
     label.textContent = t(key);
   };
 
+  // La librairie PDF se charge dès que le visiteur approche d'un bouton : le téléchargement part sans attente
+  const warmUp = () => import('../cv/pdf.js').then((pdf) => pdf.preloadPdfLibrary()).catch(() => { /* hors ligne : l'erreur sera signalée au clic */ });
+
   buttons.forEach((button) => {
+    ['pointerenter', 'focus', 'touchstart'].forEach((type) => button.addEventListener(type, warmUp, { once: true, passive: true }));
+
     const originalKey = labelOf(button)?.dataset.i18n;
     if (!originalKey) return;
 
@@ -22,12 +27,12 @@ export function initCvButtons() {
       busy = true;
       buttons.forEach((b) => b.setAttribute('aria-disabled', 'true'));
       button.setAttribute('aria-busy', 'true');
-      button.disabled = true;
       setLabel(button, 'cv.generating');
 
       try {
         const { generateCV } = await import('../cv/pdf.js');
-        await generateCV();
+        // Le CV suit la langue du site
+        await generateCV(document.documentElement.lang);
         showToast({
           id: 'cv', title: t('cv.doneTitle'), text: t('cv.doneText'), closeLabel: t('toast.close'),
         });
@@ -38,7 +43,6 @@ export function initCvButtons() {
       } finally {
         busy = false;
         buttons.forEach((b) => b.removeAttribute('aria-disabled'));
-        button.disabled = false;
         button.removeAttribute('aria-busy');
         setLabel(button, originalKey);
       }

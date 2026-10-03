@@ -2,16 +2,26 @@ import { t, setLang } from '../i18n/index.js';
 import { output, row, languages, frameworks, tools, lineElement } from '../utils/term-lines.js';
 
 const SECTIONS = ['services', 'projects', 'skills', 'stack', 'experience', 'about', 'education', 'contact'];
-const CHIPS = ['help', 'skills', 'projects', 'experience', 'contact', 'cv'];
+const CHIPS = ['help', 'neofetch', 'skills', 'projects', 'experience', 'contact', 'cv'];
 const MAX_LINES = 200;
+// Début du stage chez Groupe Viseo : sert à l'« uptime » de neofetch
+const CAREER_START = new Date('2025-02-12');
 
 const fill = (text, values) => text.replace(/\{(\w+)\}/g, (_, key) => values[key]);
 const currentTheme = () => (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
 const currentLang = () => document.documentElement.lang;
 
-// Projets lus dans la page : le terminal n'a pas de liste à tenir à jour
+// Mois entiers écoulés depuis une date, exprimés en années + mois
+function elapsedSince(from, to = new Date()) {
+  let months = (to.getFullYear() - from.getFullYear()) * 12 + to.getMonth() - from.getMonth();
+  if (to.getDate() < from.getDate()) months -= 1;
+  return { years: Math.floor(months / 12), months: months % 12 };
+}
+
+// Projets lus dans la page : le terminal n'a pas de liste à tenir à jour.
+// Les cartes sans lien (code privé) ne s'ouvrent pas : elles n'en font pas partie.
 function projects() {
-  return [...document.querySelectorAll('.project-card')].map((card) => {
+  return [...document.querySelectorAll('.project-card:has(.project-link)')].map((card) => {
     const link = card.querySelector('.project-link');
     const name = link.firstChild.textContent.trim();
     return {
@@ -26,6 +36,29 @@ function projects() {
 const cmds = {
   help: { usage: 'help', desc: 'sh.d.help', run: () => Object.values(cmds).map((c) => row('t-amber', c.usage, 20, t(c.desc))) },
   whoami: { usage: 'whoami', desc: 'sh.d.whoami', run: () => [output('t-amber', t('term.whoami'))] },
+  neofetch: {
+    usage: 'neofetch',
+    desc: 'sh.d.neofetch',
+    run: () => {
+      const unit = (value, name) => new Intl.NumberFormat(currentLang(), { style: 'unit', unit: name, unitDisplay: 'long' }).format(value);
+      const { years, months } = elapsedSince(CAREER_START);
+      const uptime = [years && unit(years, 'year'), months && unit(months, 'month')].filter(Boolean).join(' ');
+      const info = (label, value) => row('t-blue', label, 8, value);
+      return [
+        output('t-amber', 'claudio@dev-mg'),
+        output('t-out', '─'.repeat(14)),
+        info('role', `${t('exp.e1.role')} · Groupe Viseo`),
+        info('stack', 'Python · Odoo · PostgreSQL · JavaScript'),
+        info('base', 'Antananarivo, Madagascar · UTC+3'),
+        info('uptime', fill(t('sh.nf.uptime'), { v: uptime || unit(0, 'month') })),
+        info('langs', t('sh.nf.langs')),
+        info('shell', 'zsh'),
+        info('status', t('term.status')),
+        // Nuancier façon neofetch : les couleurs du thème
+        ['t-err', 't-amber', 't-green', 't-blue', 't-purple'].map((cls) => ({ cls, text: '███ ' })),
+      ];
+    },
+  },
   skills: { usage: 'skills', desc: 'sh.d.skills', run: () => [...languages(), ...frameworks(), ...tools()] },
   projects: {
     usage: 'projects',
@@ -131,11 +164,11 @@ export function initTerminalShell() {
   const form = document.getElementById('term-form');
   const input = document.getElementById('term-input');
   const chips = document.getElementById('term-chips');
+  const terminal = document.querySelector('.terminal');
   if (!body || !log || !form || !input || !chips) return { reveal() {} };
 
   const history = [];
   let cursor = 0;
-  let shown = false;
 
   const print = (segments) => {
     const line = lineElement(segments);
@@ -197,12 +230,7 @@ export function initTerminalShell() {
   });
 
   return {
-    reveal() {
-      form.hidden = false;
-      chips.hidden = false;
-      if (shown) return;
-      shown = true;
-      print(output('t-out', t('sh.hint')));
-    },
+    // Invite et suggestions occupent leur place depuis le début (visibility) : rien ne bouge à leur apparition
+    reveal() { terminal?.classList.add('is-ready'); },
   };
 }

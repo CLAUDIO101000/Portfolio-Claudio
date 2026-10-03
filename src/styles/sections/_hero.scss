@@ -170,7 +170,9 @@
   font-family: var(--font-sans);
   font-weight: 800;
   font-size: clamp(2.9rem, 7.4vw, 7.6rem);
-  line-height: .9; letter-spacing: -.055em;
+  // Capitales : un interlettrage trop serré fait fusionner les lettres (la police resserre déjà d'elle-même
+  // aux grandes tailles, par son axe de corps optique)
+  line-height: .9; letter-spacing: -.03em;
   margin-bottom: var(--sp-6);
   text-transform: uppercase;
 
@@ -244,7 +246,11 @@
 @include below(mobile) {
   #hero        { padding-block: calc(var(--nav-h) + var(--sp-5)) var(--sp-10); gap: var(--sp-5); min-height: 0; }
   .hero-meta   { font-size: var(--fs-3xs); padding-bottom: var(--sp-3); }
-  .hero-meta > span:first-child, .hero-tz { display: none; } // coordonnées : l'heure locale suffit sur petit écran
+  // Coordonnées et fuseau : l'heure locale suffit sur petit écran. L'heure redevient un bloc de texte
+  // (en inline-flex, ses morceaux se répartissaient en colonnes). `.hero-meta .hero-tz` pour l'emporter
+  // sur `.hero-meta span`.
+  .hero-meta > span:first-child, .hero-meta .hero-tz { display: none; }
+  .hero-meta > span:last-child { display: block; }
   .hero-inner  { flex-direction: column-reverse; gap: var(--sp-6); align-items: flex-start; }
   .hero-tag    { margin-bottom: var(--sp-4); }
   .hero-name   { margin-bottom: var(--sp-4); }

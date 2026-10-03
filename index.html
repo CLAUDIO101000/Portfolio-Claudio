@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Portfolio de RANAIVOSON Nantenaina Claudio, développeur web passionné spécialisé en solutions numériques sur mesure — Odoo, Python, PHP, React."/>
   <meta name="author" content="RANAIVOSON Nantenaina Claudio"/>
+  <meta name="robots" content="index, follow, max-image-preview:large"/>
   <meta name="theme-color" content="#100e0c"/>
   <meta name="color-scheme" content="dark light"/>
   <!-- URL du site : variable VITE_SITE_URL du fichier .env -->
@@ -27,7 +28,8 @@
   <meta name="twitter:title" content="Claudio · Développeur Web &amp; Odoo"/>
   <meta name="twitter:description" content="Portfolio de RANAIVOSON Nantenaina Claudio — solutions numériques sur mesure : Odoo, Python, PHP, React. Disponible pour missions freelance."/>
   <meta name="twitter:image" content="%VITE_SITE_URL%/img/og-cover.jpg"/>
-  <title>Claudio · Développeur Web Freelance</title>
+  <meta name="twitter:image:alt" content="RANAIVOSON Nantenaina Claudio, développeur web et Odoo"/>
+  <title>Claudio Ranaivoson · Développeur Odoo &amp; Web Freelance</title>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
   <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
@@ -57,6 +59,8 @@
       "givenName": "Nantenaina Claudio",
       "familyName": "RANAIVOSON",
       "jobTitle": "Développeur Odoo",
+      "description": "Développeur Odoo et web à Antananarivo (Madagascar), disponible pour des missions freelance locales ou à distance.",
+      "knowsLanguage": ["mg", "fr", "en"],
       "image": "%VITE_SITE_URL%/img/photo_profile.jpg",
       "email": "mailto:ranaivosonclaudio@gmail.com",
       "address": {
@@ -168,6 +172,9 @@
   <symbol id="i-copy" viewBox="0 0 24 24">
     <rect x="9" y="9" width="12" height="12" rx="2"/>
     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+  </symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24">
+    <rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>
   </symbol>
   <symbol id="i-check" viewBox="0 0 24 24">
     <polyline points="4 12.5 9.5 18 20 6.5"/>
@@ -293,8 +300,8 @@
         <div class="avatar-wrap">
           <picture>
             <source type="image/webp"
-                    srcset="/img/photo_profile-400.webp 400w, /img/photo_profile-600.webp 600w, /img/photo_profile.webp 800w"
-                    sizes="(max-width: 768px) 150px, 390px"/>
+                    srcset="/img/photo_profile-280.webp 280w, /img/photo_profile-400.webp 400w, /img/photo_profile-600.webp 600w, /img/photo_profile.webp 800w"
+                    sizes="(max-width: 768px) clamp(118px, 34vw, 150px), 390px"/>
             <img src="/img/photo_profile.jpg"
                  alt="RANAIVOSON Nantenaina Claudio"
                  width="1536" height="2048"
@@ -332,7 +339,7 @@
       <div class="bento-card wide">
         <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></div>
         <h3 class="card-title" data-i18n="services.c1.title">Développement Odoo</h3>
-        <div class="card-desc" data-i18n="services.c1.desc">Création de modules Odoo personnalisés, extension des modules existants, personnalisation des vues et workflows. Spécialisé en Odoo avec maîtrise de l'ORM, QWeb et des patterns de développement avancés.</div>
+        <div class="card-desc" data-i18n="services.c1.desc">Création de modules Odoo personnalisés, extension des modules existants, personnalisation des vues et workflows. Spécialisé en Odoo avec maîtrise de l’ORM, QWeb et des patterns de développement avancés.</div>
         <div class="card-tags">
           <span class="tag amber">Odoo</span>
           <span class="tag">Python</span>
@@ -344,7 +351,7 @@
       <div class="bento-card">
         <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg></div>
         <h3 class="card-title" data-i18n="services.c2.title">Développement Web</h3>
-        <div class="card-desc" data-i18n="services.c2.desc">Applications web complètes de la base de données à l'interface utilisateur, avec React, Django, Laravel ou Node.js selon vos besoins.</div>
+        <div class="card-desc" data-i18n="services.c2.desc">Applications web complètes de la base de données à l’interface utilisateur, avec React, Django, Laravel ou Node.js selon vos besoins.</div>
         <div class="card-tags">
           <span class="tag amber">React</span>
           <span class="tag">Django</span>
@@ -367,7 +374,7 @@
       <div class="bento-card">
         <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-bot"/></svg></div>
         <h3 class="card-title" data-i18n="services.c4.title">Automatisation Python</h3>
-        <div class="card-desc" data-i18n="services.c4.desc">Scripts d'automatisation, tâches planifiées (cron), traitement de données en masse et outils CLI pour vos équipes métier.</div>
+        <div class="card-desc" data-i18n="services.c4.desc">Scripts d’automatisation, tâches planifiées (cron), traitement de données en masse et outils CLI pour vos équipes métier.</div>
         <div class="card-tags">
           <span class="tag">Python</span>
           <span class="tag">Cron</span>
@@ -378,7 +385,7 @@
       <div class="bento-card">
         <div class="card-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></div>
         <h3 class="card-title" data-i18n="services.c5.title">Apps Temps Réel</h3>
-        <div class="card-desc" data-i18n="services.c5.desc">Développement d'applications avec communication temps réel : chat, notifications live, tableaux de bord dynamiques via Socket.io.</div>
+        <div class="card-desc" data-i18n="services.c5.desc">Développement d’applications avec communication temps réel : chat, notifications live, tableaux de bord dynamiques via Socket.io.</div>
         <div class="card-tags">
           <span class="tag amber">Socket.io</span>
           <span class="tag">Node.js</span>
@@ -403,6 +410,43 @@
     <h2 id="projects-title" class="section-title reveal" data-i18n="projects.title">Mes réalisations.</h2>
     <div class="projects-grid reveal">
 
+      <!-- Projet professionnel : le code est privé (Groupe Viseo), le détail est dans l'expérience -->
+      <div class="project-card project-featured">
+        <canvas class="project-art" data-seed="Odoo" aria-hidden="true"></canvas>
+        <div class="project-num" data-i18n="projects.p0.num">2025 · Odoo en production</div>
+        <h3 class="project-name" data-i18n="projects.p0.name">Comptabilité analytique multi-sociétés</h3>
+        <div class="project-desc" data-i18n="projects.p0.desc">Module Odoo déployé en production au sein du Groupe Viseo, dans un environnement multi-sociétés. Je le développe, l’optimise et le maintiens au quotidien.</div>
+        <div class="project-tags">
+          <span class="tag amber">Odoo</span>
+          <span class="tag">Python</span>
+          <span class="tag">XML / QWeb</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+        <div class="project-links">
+          <span class="project-private">
+            <svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> <span data-i18n="projects.private">Code privé · Groupe Viseo</span>
+          </span>
+          <a href="#experience" class="proj-btn">
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg> <span data-i18n="projects.seeExp">Voir mon expérience</span>
+          </a>
+        </div>
+        <ul class="project-points">
+          <li>
+            <span class="project-point-label" data-i18n="projects.p0.k1">Performance</span>
+            <span data-i18n="projects.p0.v1">Traitements par lots, requêtes SQL ciblées et mise en cache : des rapports nettement plus rapides.</span>
+          </li>
+          <li>
+            <span class="project-point-label" data-i18n="projects.p0.k2">Synchronisation</span>
+            <span data-i18n="projects.p0.v2">Écritures comptables synchronisées par tâches planifiées, avec gestion des fuseaux horaires et de la concurrence.</span>
+          </li>
+          <li>
+            <span class="project-point-label" data-i18n="projects.p0.k3">Reporting</span>
+            <span data-i18n="projects.p0.v3">Tableaux interactifs (widgets JavaScript, hiérarchie repliable) utilisés chaque jour par les équipes finance.</span>
+          </li>
+        </ul>
+      </div>
+
       <div class="project-card">
         <canvas class="project-art" data-seed="CongeSystem" aria-hidden="true"></canvas>
         <div class="project-num" data-i18n="projects.p1.num">2024 · Application Web</div>
@@ -425,7 +469,7 @@
         <canvas class="project-art" data-seed="Chatroom" aria-hidden="true"></canvas>
         <div class="project-num" data-i18n="projects.p2.num">2024 · Application Temps Réel</div>
         <h3 class="project-name"><a href="https://chatroom-silk.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Chatroom</a></h3>
-        <div class="project-desc" data-i18n="projects.p2.desc">Application de chat temps réel avec gestion de pseudonyme, avatar optionnel et partage d'images. Architecture Node.js + Socket.io pour une communication instantanée et fluide entre utilisateurs. Déployée sur Vercel.</div>
+        <div class="project-desc" data-i18n="projects.p2.desc">Application de chat temps réel avec gestion de pseudonyme, avatar optionnel et partage d’images. Architecture Node.js + Socket.io pour une communication instantanée et fluide entre utilisateurs. Déployée sur Vercel.</div>
         <div class="project-tags">
           <span class="tag amber">Node.js</span>
           <span class="tag">Socket.io</span>
@@ -443,7 +487,7 @@
       </div>
 
       <a href="https://github.com/CLAUDIO101000?tab=repositories" target="_blank" rel="noopener noreferrer" class="project-more">
-        <span class="project-more-text" data-i18n-html="projects.moreText">D'autres dépôts, expérimentations et projets en cours sont publiés sur <strong>mon profil GitHub</strong>.</span>
+        <span class="project-more-text" data-i18n-html="projects.moreText">D’autres dépôts, expérimentations et projets en cours sont publiés sur <strong>mon profil GitHub</strong>.</span>
         <span class="project-more-cta">
           <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> <span data-i18n="projects.moreCta">Voir tous les dépôts</span>
         </span>
@@ -540,13 +584,16 @@
         <div class="terminal-body" id="term-body">
           <div id="term-intro"></div>
           <div id="term-log" role="log"></div>
-          <form class="term-form" id="term-form" autocomplete="off" hidden>
+          <form class="term-form" id="term-form" autocomplete="off">
             <span class="term-prompt" aria-hidden="true"><span class="t-prompt">➜</span><span class="t-cmd">~/claudio</span></span>
             <input class="term-input" id="term-input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off"
                    spellcheck="false" enterkeyhint="send" data-i18n-aria-label="sh.label" aria-label="Saisir une commande"/>
+            <button type="submit" class="term-run" data-i18n-aria-label="sh.run" aria-label="Exécuter la commande" data-i18n-title="sh.run" title="Exécuter la commande">
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </button>
           </form>
         </div>
-        <div class="term-chips" id="term-chips" role="group" data-i18n-aria-label="sh.chips" aria-label="Commandes suggérées" hidden></div>
+        <div class="term-chips" id="term-chips" role="group" data-i18n-aria-label="sh.chips" aria-label="Commandes suggérées"></div>
       </div>
     </div>
   </section>
@@ -580,9 +627,9 @@
               </div>
             </div>
             <h3 class="exp-role" data-i18n="exp.e1.role">Développeur Odoo</h3>
-            <p class="exp-desc" data-i18n="exp.e1.desc">Intégré à l'équipe technique à l'issue de mon stage, je conçois, optimise et maintiens des modules Odoo déployés en production dans un environnement multi-sociétés.</p>
+            <p class="exp-desc" data-i18n="exp.e1.desc">Intégré à l’équipe technique à l’issue de mon stage, je conçois, optimise et maintiens des modules Odoo déployés en production dans un environnement multi-sociétés.</p>
             <ul class="exp-tasks">
-              <li data-i18n="exp.e1.t1">Développement et maintenance d'un module de comptabilité analytique multi-sociétés en production (Python, XML, QWeb, PostgreSQL)</li>
+              <li data-i18n="exp.e1.t1">Développement et maintenance d’un module de comptabilité analytique multi-sociétés en production (Python, XML, QWeb, PostgreSQL)</li>
               <li data-i18n="exp.e1.t2">Optimisation des performances — traitements par lots, requêtes SQL ciblées, mise en cache — pour des rapports nettement plus rapides</li>
               <li data-i18n="exp.e1.t3">Synchronisation automatisée des écritures comptables par tâches planifiées, avec gestion des fuseaux horaires et de la concurrence</li>
               <li data-i18n="exp.e1.t4">Tableaux de reporting interactifs (widgets JavaScript, hiérarchie repliable) utilisés au quotidien par les équipes finance</li>
@@ -616,12 +663,12 @@
               </div>
             </div>
             <h3 class="exp-role" data-i18n="exp.e2.role">Stagiaire Développeur Odoo</h3>
-            <p class="exp-desc" data-i18n="exp.e2.desc">Stage de fin de licence réalisé au sein du département technique. Première immersion professionnelle dans l'écosystème Odoo en environnement d'entreprise.</p>
+            <p class="exp-desc" data-i18n="exp.e2.desc">Stage de fin de licence réalisé au sein du département technique. Première immersion professionnelle dans l’écosystème Odoo en environnement d’entreprise.</p>
             <ul class="exp-tasks">
-              <li data-i18n="exp.e2.t1">Découverte et prise en main de l'architecture Odoo (ORM, modèles, vues)</li>
+              <li data-i18n="exp.e2.t1">Découverte et prise en main de l’architecture Odoo (ORM, modèles, vues)</li>
               <li data-i18n="exp.e2.t2">Développement de fonctionnalités sur des modules existants</li>
-              <li data-i18n="exp.e2.t3">Rédaction de rapports QWeb et personnalisation d'interfaces</li>
-              <li data-i18n="exp.e2.t4">Participation aux revues de code et réunions d'équipe</li>
+              <li data-i18n="exp.e2.t3">Rédaction de rapports QWeb et personnalisation d’interfaces</li>
+              <li data-i18n="exp.e2.t4">Participation aux revues de code et réunions d’équipe</li>
             </ul>
             <div class="exp-tech">
               <span class="tag amber">Odoo</span>
@@ -642,17 +689,31 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <h2 id="about-title" class="section-title" data-i18n-html="about.title">Passionné par la<br/><em>technologie.</em></h2>
-        <p data-i18n-html="about.p1">Bonjour ! Je suis <strong>RANAIVOSON Nantenaina Claudio</strong>, développeur passionné basé à <span class="hl">Madagascar</span>. Depuis que j'ai découvert la programmation, je suis fasciné par le pouvoir des solutions numériques pour résoudre des problèmes complexes.</p>
-        <p data-i18n-html="about.p2">Mes compétences couvrent le développement <strong>web</strong> et les solutions <span class="hl">Odoo</span>, avec des technologies comme Python, PHP, JavaScript, React, Django et bien d'autres. Mon objectif : créer des applications <strong>modernes, intuitives et robustes</strong>.</p>
+        <p data-i18n-html="about.p1">Bonjour ! Je suis <strong>RANAIVOSON Nantenaina Claudio</strong>, développeur passionné basé à <span class="hl">Madagascar</span>. Depuis que j’ai découvert la programmation, je suis fasciné par le pouvoir des solutions numériques pour résoudre des problèmes complexes.</p>
+        <p data-i18n-html="about.p2">Mes compétences couvrent le développement <strong>web</strong> et les solutions <span class="hl">Odoo</span>, avec des technologies comme Python, PHP, JavaScript, React, Django et bien d’autres. Mon objectif : créer des applications <strong>modernes, intuitives et robustes</strong>.</p>
         <div class="quote-block">
-          <em data-i18n="about.quote">"En programmation, si quelqu'un vous dit 'vous compliquez trop les choses', il a soit 10 pas de retard, soit 10 pas d'avance sur vous." – Andrew Clark</em>
+          <em data-i18n="about.quote">En programmation, si quelqu’un vous dit « vous compliquez trop les choses », il a soit 10 pas de retard, soit 10 pas d’avance sur vous. – Andrew Clark</em>
         </div>
-        <p data-i18n-html="about.p3">Cette citation guide mon approche : trouver l'équilibre parfait entre <strong>simplicité et innovation</strong>, toujours centré sur les besoins de l'utilisateur.</p>
+        <p data-i18n-html="about.p3">Cette citation guide mon approche : trouver l’équilibre parfait entre <strong>simplicité et innovation</strong>, toujours centré sur les besoins de l’utilisateur.</p>
+        <dl class="about-facts">
+          <div>
+            <dt data-i18n="about.f1.label">Langues</dt>
+            <dd data-i18n="about.f1.value">Malgache (langue maternelle) · Français (courant) · Anglais (technique)</dd>
+          </div>
+          <div>
+            <dt data-i18n="about.f2.label">Basé à</dt>
+            <dd data-i18n="about.f2.value">Antananarivo, Madagascar · UTC+3</dd>
+          </div>
+          <div>
+            <dt data-i18n="about.f3.label">Missions</dt>
+            <dd data-i18n="about.f3.value">Freelance, sur place ou à distance</dd>
+          </div>
+        </dl>
       </div>
       <div class="about-stats reveal reveal-delay-2">
         <div class="stat-card">
-          <div class="stat-number">1+</div>
-          <div class="stat-label" data-i18n="about.stat1">Années d'expérience</div>
+          <div class="stat-number" data-since="2025-02-12">1+</div>
+          <div class="stat-label" data-i18n="about.stat1">Années d’expérience</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">10+</div>
@@ -660,7 +721,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number">M2</div>
-          <div class="stat-label" data-i18n="about.stat3">Master Informatique (IS-INFO)</div>
+          <div class="stat-label" data-i18n-html="about.stat3">Master Informatique (<span class="nowrap">IS-INFO</span>)</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">100%</div>
@@ -681,14 +742,14 @@
         <li class="edu-item">
           <div class="edu-badge current" data-i18n="edu.current">⟳ En cours</div>
           <div class="edu-date" data-i18n="edu.d1.date">2025 — Présent</div>
-          <h3 class="edu-school">Institut Supérieur d'Informatique (IS-INFO)</h3>
+          <h3 class="edu-school">Institut Supérieur d’Informatique (<span class="nowrap">IS-INFO</span>)</h3>
           <div class="edu-location">Ampasamadinika, Antananarivo</div>
           <div class="edu-diploma" data-i18n="edu.d1.diploma">Master — Génie Logiciel</div>
         </li>
         <li class="edu-item">
           <div class="edu-badge" data-i18n="edu.done">✓ Obtenu</div>
           <div class="edu-date">2022 — 2025</div>
-          <h3 class="edu-school">Institut Supérieur d'Informatique (IS-INFO)</h3>
+          <h3 class="edu-school">Institut Supérieur d’Informatique (<span class="nowrap">IS-INFO</span>)</h3>
           <div class="edu-location">Ampasamadinika, Antananarivo</div>
           <div class="edu-diploma" data-i18n="edu.d2.diploma">Licence Professionnelle en Informatique de Gestion</div>
         </li>
@@ -718,13 +779,13 @@
               <span class="cert-org">ClearMind-Analytics</span>
               <span class="cert-badge" data-i18n="cert.badge">✓ Délivré</span>
             </span>
-            <span class="cert-name" data-i18n="cert.p1">Prescriptive Analytics — Training Program (24 sessions)</span>
-            <span class="cert-name" data-i18n="cert.p2">Data and Artificial Intelligence Project Framework (7 sessions)</span>
+            <span class="cert-name" lang="en" data-i18n="cert.p1">Prescriptive Analytics — Training Program (24 sessions)</span>
+            <span class="cert-name" lang="en" data-i18n="cert.p2">Data and Artificial Intelligence Project Framework (7 sessions)</span>
             <span class="cert-meta">
               <span data-i18n="cert.date">19 août 2025 — 17 nov. 2025</span>
               <span data-i18n="cert.place">Andraharo, Antananarivo — pour le Groupe Viseo</span>
             </span>
-            <span class="cert-tags">
+            <span class="cert-tags" lang="en">
               <span class="tag amber">Prescriptive Analytics</span>
               <span class="tag">Data Science</span>
               <span class="tag">AI</span>
@@ -761,7 +822,7 @@
         <div class="contact-row">
           <a href="tel:+261324337246" class="contact-item-row">
             <span class="ci-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-            <div><div class="ci-label" data-i18n="contact.phone">Téléphone</div><div class="ci-val">+261 32 43 372 46</div></div>
+            <div><div class="ci-label" data-i18n="contact.phone">Téléphone</div><div class="ci-val">+261&nbsp;32&nbsp;43&nbsp;372&nbsp;46</div></div>
           </a>
           <button type="button" class="copy-btn" data-copy="+261 32 43 372 46" data-i18n-aria-label="contact.copyPhone" aria-label="Copier le numéro de téléphone" data-i18n-title="contact.copyPhone" title="Copier le numéro de téléphone">
             <svg class="icon copy-icon" aria-hidden="true"><use href="#i-copy"/></svg>
@@ -797,12 +858,13 @@
           </div>
           <div class="form-group">
             <label for="cf-message" data-i18n="contact.message">Message</label>
-            <textarea id="cf-message" name="message" data-i18n-placeholder="contact.messagePh" placeholder="Décrivez votre projet..." minlength="10" maxlength="3000" aria-describedby="cf-message-error" required></textarea>
+            <textarea id="cf-message" name="message" data-i18n-placeholder="contact.messagePh" placeholder="Décrivez votre projet…" minlength="10" maxlength="3000" aria-describedby="cf-message-error" required></textarea>
             <p class="field-error" id="cf-message-error"></p>
           </div>
           <button type="submit" class="form-submit">
             <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg> <span data-i18n="contact.send">Envoyer le message</span>
           </button>
+          <p class="form-hint" data-i18n="contact.hint">Astuce : Ctrl (ou ⌘) + Entrée envoie le message.</p>
           <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -815,13 +877,19 @@
   <div class="footer-mark" aria-hidden="true">Claudio<span>.</span></div>
   <div class="footer-row">
     <span>© <span id="footer-year">2026</span> — <a href="https://github.com/CLAUDIO101000">RANAIVOSON Nantenaina Claudio</a></span>
-    <span data-i18n="footer.place">Madagascar · L'Île Rouge</span>
+    <span data-i18n="footer.place">Madagascar · L’Île Rouge</span>
     <span>
       <span data-i18n="footer.madeWith">Conçu avec</span>
       <svg class="icon" aria-hidden="true"><use href="#i-coffee"/></svg>
       <span data-i18n="footer.andPassion">et passion</span>
     </span>
   </div>
+  <p class="footer-meta">
+    <span><span data-i18n="footer.updated">Mis à jour le</span> <time id="footer-updated" datetime="%BUILD_DATE%">%BUILD_DATE%</time></span>
+    <a href="https://github.com/CLAUDIO101000/Portfolio-Claudio" target="_blank" rel="noopener noreferrer">
+      <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> <span data-i18n="footer.source">Code source du site</span>
+    </a>
+  </p>
 </footer>
 
 <button type="button" class="to-top" id="to-top" data-i18n-aria-label="nav.top" aria-label="Retour en haut de page" data-i18n-title="nav.top" title="Retour en haut de page">
@@ -849,7 +917,7 @@
         </button>
       </span>
     </div>
-    <img class="lightbox-img" id="lightbox-img" data-i18n-alt="cert.alt"
+    <img class="lightbox-img" id="lightbox-img" src="/img/certificat.jpeg" loading="lazy" decoding="async" data-i18n-alt="cert.alt"
          alt="Certificat de fin de formation ClearMind-Analytics délivré à RANAIVOSON Nantenaina Claudio pour les programmes Prescriptive Analytics (24 sessions) et Data and Artificial Intelligence Project Framework (7 sessions), du 19 août au 17 novembre 2025."/>
   </div>
 </div>

@@ -1,9 +1,17 @@
-import { t } from '../i18n/index.js';
+import { t, onLangChange } from '../i18n/index.js';
 import { showToast } from '../ui/toast.js';
 
 const SEND_TIMEOUT = 15000;
 const MIN_MESSAGE_LENGTH = 10;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+// Sujet du lien « mailto » dans la langue du site
+export function initMailLink() {
+  const link = document.querySelector('a[href^="mailto:"]');
+  if (!link) return;
+  const address = link.getAttribute('href').split('?')[0];
+  onLangChange(() => { link.setAttribute('href', `${address}?subject=${encodeURIComponent(t('contact.mailSubject'))}`); });
+}
 
 // Clé i18n du message d'erreur d'un champ, ou null s'il est valide
 function fieldProblem(field) {
@@ -99,6 +107,9 @@ export function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // Envoi déjà en cours (le bouton reste focalisable : aria-disabled et non disabled)
+    if (submit.getAttribute('aria-disabled') === 'true') return;
+
     // Pot de miel rempli : robot, on n'envoie rien
     if (form.querySelector('input[name="_gotcha"]')?.value) return;
 
@@ -114,7 +125,7 @@ export function initContactForm() {
     }
     replyTo.value = form.querySelector('input[name="email"]').value;
 
-    submit.disabled = true;
+    submit.setAttribute('aria-disabled', 'true');
     submit.classList.add('is-loading');
     form.setAttribute('aria-busy', 'true');
     setSubmitLabel('contact.sending');
@@ -143,7 +154,7 @@ export function initContactForm() {
       setStatus('contact.error', 'error');
     } finally {
       clearTimeout(timer);
-      submit.disabled = false;
+      submit.removeAttribute('aria-disabled');
       submit.classList.remove('is-loading');
       form.removeAttribute('aria-busy');
       setSubmitLabel(idleLabelKey);

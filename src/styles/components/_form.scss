@@ -70,9 +70,9 @@
 
   @media (hover: hover) { &:hover       { background: var(--text); transform: translateY(var(--lift)); } }
   @media (hover: hover) { &:hover .icon { transform: translateX(4px); } }
-  &:disabled    { opacity: .6; cursor: progress; transform: none; background: var(--accent); }
+  &:is(:disabled, [aria-disabled='true']) { opacity: .6; cursor: progress; transform: none; background: var(--accent); }
 
-  &:active:not(:disabled) { transform: scale(.98); }
+  &:active:not(:is(:disabled, [aria-disabled='true'])) { transform: scale(.98); }
 
   &.is-loading {
     opacity: .85;
@@ -84,6 +84,16 @@
       animation: spin .7s linear infinite;
     }
   }
+}
+
+// Raccourci clavier : sans objet au doigt
+.form-hint {
+  @include mono(var(--fs-2xs), .04em);
+  margin-top: var(--sp-3);
+  text-align: center;
+  color: var(--muted);
+
+  @media not all and (hover: hover) and (pointer: fine) { display: none; }
 }
 
 // Zone live : vide tant qu'il n'y a rien à annoncer, jamais en display:none

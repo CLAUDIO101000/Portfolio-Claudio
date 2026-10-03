@@ -29,12 +29,15 @@
 .contact-big {
   font-family: var(--font-sans); font-weight: 800;
   font-size: clamp(2.6rem, 8vw, 7.5rem);
-  line-height: .9; margin-bottom: var(--sp-5); letter-spacing: -.06em;
+  line-height: .9; margin-bottom: var(--sp-5); letter-spacing: -.04em;
   position: relative;
 
   em {
     font-family: var(--font-serif); font-weight: 400; font-style: italic;
     letter-spacing: -.02em; color: var(--text);
+
+    // Thème clair : le brun foncé sur l'aplat rouille est terne (2,8:1) ; le ton « ink-soft » tient 5,2:1
+    :root[data-theme='light'] & { color: var(--ink-soft); }
   }
 }
 

@@ -1,17 +1,18 @@
 // CV en PDF adapté aux ATS : une colonne, texte noir sur blanc, aucune image, une ligne
 // visuelle = un appel doc.text() pour un ordre de lecture fidèle.
 
-import { CV } from './data.js';
+import { getCV } from './data.js';
 
-function buildCVDocument(jsPDF) {
+export function buildCVDocument(jsPDF, lang) {
+  const CV = getCV(lang);
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
 
-  doc.setLanguage('fr');
+  doc.setLanguage(CV.lang);
   doc.setProperties({
-    title: `CV - ${CV.name} - ${CV.title}`,
-    subject: 'Curriculum Vitae',
+    title: `${CV.documentTitle} - ${CV.name} - ${CV.title}`,
+    subject: CV.subject,
     author: CV.name,
-    keywords: 'Odoo, Python, QWeb, PostgreSQL, JavaScript, TypeScript, React, Django, Laravel, Node.js, PHP, SQL, Git, Linux, Prescriptive Analytics, Data, Intelligence Artificielle, Madagascar',
+    keywords: CV.keywords,
     creator: 'Portfolio de Claudio Ranaivoson',
   });
 
@@ -86,10 +87,10 @@ function buildCVDocument(jsPDF) {
   rule(44, 0.8);
   y = 54;
 
-  sectionTitle('Profil');
+  sectionTitle(CV.titles.profile);
   line(CV.profil);
 
-  sectionTitle('Expérience professionnelle');
+  sectionTitle(CV.titles.experience);
   CV.experiences.forEach((exp) => {
     checkPage(18);
     line(exp.role, { size: 10.5, style: 'bold', color: DARK, lh: 4.8 });
@@ -98,14 +99,14 @@ function buildCVDocument(jsPDF) {
     y += 3;
   });
 
-  sectionTitle('Compétences');
+  sectionTitle(CV.titles.skills);
   CV.competences.forEach(([cat, val]) => {
     checkPage(6);
     line(`${cat} : ${val}`);
     y += 0.8;
   });
 
-  sectionTitle('Projets');
+  sectionTitle(CV.titles.projects);
   CV.projets.forEach((p) => {
     checkPage(20);
     heading(p.name);
@@ -113,18 +114,19 @@ function buildCVDocument(jsPDF) {
     line(p.desc);
     checkPage(5);
     font(8.5, 'normal', AMBER);
-    doc.textWithLink(p.url, M, y, { url: p.url });
+    const url = CV.projectUrls[p.name];
+    doc.textWithLink(url, M, y, { url });
     y += 6;
   });
 
-  sectionTitle('Formation');
+  sectionTitle(CV.titles.education);
   CV.formation.forEach(([diploma, school, date]) => {
     checkPage(12);
     heading(diploma);
     meta([school, date], 5.5);
   });
 
-  sectionTitle('Certifications');
+  sectionTitle(CV.titles.certifications);
   CV.certifications.forEach((c) => {
     checkPage(18);
     heading(c.name);
@@ -134,9 +136,9 @@ function buildCVDocument(jsPDF) {
   });
 
   [
-    ['Langues', CV.langues],
-    ['Informations complémentaires', CV.permis],
-    [`Centres d'intérêt`, CV.interets],
+    [CV.titles.languages, CV.langues],
+    [CV.titles.extra, CV.permis],
+    [CV.titles.interests, CV.interets],
   ].forEach(([title, value]) => {
     sectionTitle(title);
     line(value);
@@ -154,8 +156,12 @@ function buildCVDocument(jsPDF) {
   return doc;
 }
 
-// jsPDF (~400 ko) n'est chargé qu'au clic ; rejette si la librairie est injoignable (hors ligne).
-export async function generateCV() {
+// Chargement anticipé de la librairie (survol, toucher ou focus d'un bouton CV) : le clic n'attend plus le réseau.
+export const preloadPdfLibrary = () => import('jspdf');
+
+// jsPDF (~400 ko) n'est chargé qu'au clic (ou juste avant, voir plus haut) ; rejette si la librairie est injoignable (hors ligne).
+// Le CV est produit dans la langue du site (« fr » ou « en »).
+export async function generateCV(lang = 'fr') {
   const { jsPDF } = await import('jspdf');
-  buildCVDocument(jsPDF).save('CV_RANAIVOSON_Nantenaina_Claudio_Developpeur_Odoo.pdf');
+  buildCVDocument(jsPDF, lang).save(getCV(lang).fileName);
 }
