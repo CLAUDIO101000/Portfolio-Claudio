@@ -1,6 +1,5 @@
 import { t } from '../i18n/index.js';
 
-const REPO_URL = 'https://github.com/CLAUDIO101000/Portfolio-Claudio';
 const EMAIL = 'ranaivosonclaudio@gmail.com';
 
 // Message pour les développeurs qui ouvrent les outils de développement : un recruteur technique
@@ -11,7 +10,6 @@ export function initConsoleSignature() {
   const plain = 'font: 13px ui-monospace, Menlo, Consolas, monospace;';
 
   console.log(`%cClaudio.%c\n${t('console.hello')}`, title, plain);
-  console.log(`%c→%c ${t('console.source')} ${REPO_URL}`, strong, plain);
   console.log(`%c→%c ${t('console.contact')} ${EMAIL}`, strong, plain);
   console.log(`%c→%c ${t('console.hint')}`, strong, plain);
 }
