@@ -37,8 +37,11 @@ export function initCvButtons() {
           id: 'cv', title: t('cv.doneTitle'), text: t('cv.doneText'), closeLabel: t('toast.close'),
         });
       } catch {
+        // Connexion présente : la cause la plus probable est un onglet resté ouvert pendant un déploiement
+        // (les fichiers à empreinte de l'ancienne version n'existent plus), pas le réseau
+        const text = navigator.onLine === false ? t('cv.error') : t('cv.errorStale');
         showToast({
-          id: 'cv', kind: 'error', title: t('cv.errorTitle'), text: t('cv.error'), duration: 7000, closeLabel: t('toast.close'),
+          id: 'cv', kind: 'error', title: t('cv.errorTitle'), text, duration: 8000, closeLabel: t('toast.close'),
         });
       } finally {
         busy = false;

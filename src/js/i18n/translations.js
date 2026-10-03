@@ -79,6 +79,7 @@ export const translations = {
     'cv.doneText': 'Le fichier PDF est dans vos téléchargements.',
     'cv.errorTitle': 'Téléchargement impossible',
     'cv.error': "La librairie PDF n’a pas pu se charger. Vérifiez votre connexion internet puis réessayez.",
+    'cv.errorStale': "Le site vient d’être mis à jour. Rechargez la page (Ctrl + F5), puis réessayez.",
   },
 
   en: {
@@ -297,5 +298,6 @@ export const translations = {
     'cv.doneText': 'The PDF file is in your downloads.',
     'cv.errorTitle': 'Download failed',
     'cv.error': 'The PDF library could not be loaded. Check your internet connection and try again.',
+    'cv.errorStale': 'The site has just been updated. Reload the page (Ctrl + F5), then try again.',
   },
 };
