@@ -2,9 +2,13 @@
 
 // La gouttière borne le contenu à --container sans wrapper supplémentaire
 section {
+  // Air au-dessus du contenu. Une ancre cale le contenu (pas le bord de la section) sous la barre :
+  // le décalage négatif annule ce vide et laisse --anchor-gap, quelle que soit la section.
+  --section-pt: var(--sp-12);
   position: relative;
-  padding-block: var(--sp-12);
+  padding-block: var(--section-pt) var(--sp-12);
   padding-inline: var(--gutter);
+  scroll-margin-top: calc(var(--anchor-gap) - var(--section-pt));
 }
 
 // Numérotation des sections dans l'ordre du DOM (voir .section-label)
@@ -28,7 +32,7 @@ section + section:not(#contact) {
   }
 }
 
-.marquee-wrap + section { padding-top: var(--sp-10); }
+.marquee-wrap + section { --section-pt: var(--sp-10); }
 
 // Sections en deux colonnes : titre collant à gauche, contenu à droite
 .section-split {
@@ -42,7 +46,7 @@ section + section:not(#contact) {
 
 .split-head {
   position: sticky;
-  top: calc(var(--nav-h) + var(--sp-5));
+  top: var(--anchor-top);
   align-self: start;
 
   .section-title { margin-bottom: var(--sp-4); }

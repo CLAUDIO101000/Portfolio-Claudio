@@ -37,11 +37,26 @@
   --pad-x:     var(--sp-8);
   --container: 1400px;
   --gutter:    max(var(--pad-x), (100% - var(--container)) / 2);
-  --nav-h:     68px;
+  // Hauteur de la barre fixe, bordure comprise. Valeur de repli avant le JS : nav.js la remplace par
+  // la mesure réelle (elle varie avec la largeur et les polices), de sorte que tout ce qui se cale
+  // sur la barre — ancres, éléments collants, toasts — tombe au pixel près.
+  --nav-h:     71px;
+  // Où commence le contenu d'une section atteinte par une ancre : sous la barre, avec cet air.
+  // Les colonnes collantes s'arrêtent à la même hauteur, donc rien ne bouge quand elles s'accrochent.
+  --anchor-gap: var(--sp-5);
+  --anchor-top: calc(var(--nav-h) + var(--anchor-gap));
+
+  @include below(nav) {
+    --nav-h: 69px;
+  }
 
   @include below(mobile) {
     --pad-x: var(--sp-5);
     --sp-12: 4.5rem;
+  }
+
+  @include below(narrow) {
+    --nav-h: 66.6px;
   }
 }
 

@@ -191,6 +191,9 @@ nav.open .nav-burger {
 
 // Sans JS : menu et réglages inutilisables, la barre se déplie avec ses liens visibles
 html:not(.js) {
+  // La barre est dans le flux : rien à réserver sous elle pour les ancres ni pour le hero
+  --nav-h: 0px;
+
   .lang-switch, .theme-toggle, .nav-burger, .to-top, .copy-btn, [data-cv-download] { display: none; }
 
   nav { position: relative; flex-wrap: wrap; }

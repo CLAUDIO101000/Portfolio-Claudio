@@ -7,6 +7,8 @@
   // Le bas ménage la place de l'indicateur de défilement sous les boutons
   padding: calc(var(--nav-h) + var(--sp-8)) var(--gutter) calc(var(--sp-10) + var(--sp-6));
   position: relative; overflow: hidden;
+  // Le hero est le haut de page : une ancre vers lui le cale contre le bord, pas sous la barre
+  scroll-margin-top: calc(-1 * var(--nav-h));
 }
 
 // Courbes de niveau : clin d'œil au relief des Hautes Terres

@@ -39,9 +39,11 @@
   <link rel="preload" href="/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="preload" href="/fonts/jetbrains-mono-latin-wght.woff2" as="font" type="font/woff2" crossorigin/>
 
-  <!-- Avant le premier rendu : classe .js (sans JS, le contenu reste visible) et thème clair mémorisé (sans flash) -->
+  <!-- Avant le premier rendu : classe .js (sans JS, le contenu reste visible), .is-landing si la page
+       s'ouvre sur une ancre (arrivée directe, retirée par anchors.js) et thème clair mémorisé (sans flash) -->
   <script>
     document.documentElement.classList.add('js');
+    if (location.hash.length > 1) document.documentElement.classList.add('is-landing');
     try {
       if (localStorage.getItem('portfolio-theme') === 'light') document.documentElement.dataset.theme = 'light';
     } catch (e) { /* stockage indisponible : thème sombre */ }
@@ -450,7 +452,7 @@
       <div class="project-card">
         <canvas class="project-art" data-seed="CongeSystem" aria-hidden="true"></canvas>
         <div class="project-num" data-i18n="projects.p1.num">2024 · Application Web</div>
-        <h3 class="project-name"><a href="https://github.com/CLAUDIO101000/CongeSystem.git" target="_blank" rel="noopener noreferrer" class="project-link">CongeSystem</a></h3>
+        <h3 class="project-name"><a href="https://github.com/CLAUDIO101000/CongeSystem" target="_blank" rel="noopener noreferrer" class="project-link">CongeSystem</a></h3>
         <div class="project-desc" data-i18n="projects.p1.desc">Application de gestion de congés permettant aux employés de soumettre des demandes et de suivre leur solde. Calcul intelligent excluant les jours fériés et weekends. Interface admin complète pour la validation des requêtes.</div>
         <div class="project-tags">
           <span class="tag amber">PHP</span>
@@ -459,7 +461,7 @@
           <span class="tag">SweetAlert2</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/CLAUDIO101000/CongeSystem.git" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
+          <a href="https://github.com/CLAUDIO101000/CongeSystem" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
             <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> GitHub
           </a>
         </div>
@@ -477,7 +479,7 @@
           <span class="tag">JavaScript</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/CLAUDIO101000/Chatroom.git" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
+          <a href="https://github.com/CLAUDIO101000/Chatroom" target="_blank" rel="noopener noreferrer" class="proj-btn primary">
             <svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg> GitHub
           </a>
           <a href="https://chatroom-silk.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-btn">
@@ -876,7 +878,7 @@
 <footer>
   <div class="footer-mark" aria-hidden="true">Claudio<span>.</span></div>
   <div class="footer-row">
-    <span>© <span id="footer-year">2026</span> — <a href="https://github.com/CLAUDIO101000">RANAIVOSON Nantenaina Claudio</a></span>
+    <span>© <span id="footer-year">2026</span> — <a href="https://github.com/CLAUDIO101000" target="_blank" rel="noopener noreferrer me">RANAIVOSON Nantenaina Claudio</a></span>
     <span data-i18n="footer.place">Madagascar · L’Île Rouge</span>
     <span>
       <span data-i18n="footer.madeWith">Conçu avec</span>

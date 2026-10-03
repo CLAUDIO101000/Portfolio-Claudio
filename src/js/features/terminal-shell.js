@@ -1,4 +1,5 @@
 import { t, setLang } from '../i18n/index.js';
+import { goToSection } from './anchors.js';
 import { output, row, languages, frameworks, tools, lineElement } from '../utils/term-lines.js';
 
 const SECTIONS = ['services', 'projects', 'skills', 'stack', 'experience', 'about', 'education', 'contact'];
@@ -125,7 +126,7 @@ const cmds = {
     run: ([name = '']) => {
       const id = name.toLowerCase();
       if (!SECTIONS.includes(id)) return [output('t-out', fill(t('sh.goto.bad'), { list: SECTIONS.join(', ') }))];
-      document.getElementById(id)?.scrollIntoView();
+      goToSection(document.getElementById(id));
       return [output('t-green', fill(t('sh.goto.done'), { v: id }))];
     },
   },
@@ -144,7 +145,7 @@ function secret(name, args) {
   if (name === 'sudo') {
     if (args[0] === 'hire' && args[1] === 'claudio') {
       setTimeout(() => {
-        document.getElementById('contact')?.scrollIntoView();
+        goToSection(document.getElementById('contact'));
         document.getElementById('cf-name')?.focus({ preventScroll: true });
       }, 900);
       return [output('t-green', t('sh.sudo'))];

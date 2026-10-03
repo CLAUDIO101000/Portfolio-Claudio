@@ -26,9 +26,11 @@
 
 .terminal-title { font-size: var(--fs-2xs); color: var(--muted); margin-left: var(--sp-3); }
 
+// Hauteur fixe, pas un plafond : avec max-height, la fenêtre grandissait de 13 px dès la première
+// commande tapée (la sortie atteignait le plafond) et décalait tout ce qui la suit dans la page.
 .terminal-body {
   padding: var(--sp-6); line-height: 2.1;
-  max-height: min(34rem, 75svh); overflow: auto;
+  height: min(34rem, 75svh); overflow: auto;
 }
 
 .t-line {

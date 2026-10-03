@@ -2,6 +2,7 @@ import './styles/main.scss';
 
 import { initI18n } from './js/i18n/index.js';
 import { initCursor } from './js/features/cursor.js';
+import { initAnchors } from './js/features/anchors.js';
 import { initNav } from './js/features/nav.js';
 import { initHero } from './js/features/hero.js';
 import { initMarquee } from './js/features/marquee.js';
@@ -27,6 +28,7 @@ initI18n();
 
 initTheme();
 initCursor();
+initAnchors();
 initNav();
 initHero();
 // Le relief se dessine après le premier affichage (il apparaît en fondu de toute façon)

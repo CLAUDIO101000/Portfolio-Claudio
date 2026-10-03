@@ -40,7 +40,7 @@
 
 .about-stats {
   display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3);
-  position: sticky; top: calc(var(--nav-h) + var(--sp-5));
+  position: sticky; top: var(--anchor-top);
 }
 
 .stat-card {

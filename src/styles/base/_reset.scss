@@ -6,7 +6,11 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + var(--sp-4));
+  // Page ouverte sur une ancre : arrivée directe plutôt qu'un long défilement depuis le haut
+  &.is-landing { scroll-behavior: auto; }
+  // La cible d'une ancre s'aligne sous la barre ; chaque section ajuste son propre décalage
+  // (scroll-margin-top, voir _layout.scss) pour que son contenu tombe à --anchor-gap.
+  scroll-padding-top: var(--nav-h);
   scrollbar-color: var(--border-strong) var(--bg);
   scrollbar-width: thin;
   // Évite le saut de mise en page quand le défilement est verrouillé (menu, visionneuse)
